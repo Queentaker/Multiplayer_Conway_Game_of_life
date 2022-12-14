@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grid {
-    //fleightweight
+    //fleightweight still needs to be implemented
     private List<List<GridCell>> grid;
     private void createGrid (){
         for (int i=0;i<100;i++){
@@ -19,5 +19,10 @@ public class Grid {
     }
     public Grid(){
         createGrid();
+    }
+
+    //grid constructer so that one can easily create a copy of another grid;
+    public Grid(Grid anotherGrid){
+        this.grid=anotherGrid.grid;
     }
 }
