@@ -6,19 +6,18 @@ import java.util.List;
 public class Grid {
     //fleightweight still needs to be implemented
     private List<List<GridCell>> grid;
-    private void createGrid (){
-        for (int i=0;i<100;i++){
+    private void createGrid (int gridSize){
+        for (int i=0;i<gridSize;i++){
             List<GridCell> row=new ArrayList<GridCell>();
-            for (int j=0;j<100;j++){
+            for (int j=0;j<gridSize;j++){
                 GridCell gridCell=new GridCell();
                 row.add(gridCell);
-
             }
         }
 
     }
-    public Grid(){
-        createGrid();
+    public Grid(int gridSize){
+        createGrid(gridSize);
     }
 
     //grid constructer so that one can easily create a copy of another grid;
