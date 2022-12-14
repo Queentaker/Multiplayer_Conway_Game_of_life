@@ -17,9 +17,10 @@ public class EvolveNextGen {
         }
         //work needs to be done
     }
-    private int getAliveNeighbors(int x, int y){
-        Map<int,int> neighborCount=new HashMap<int,int>();
-        int counterAliveNeighbors=0;
+    private NumNeighbors getAliveNeighbors(int x, int y){
+        Map<int,NumNeighbors> neighborCount=new HashMap<int,NumNeighbors>();
+        NumNeighbors counterAliveNeighbors=NumNeighbors.Zero;
+        //needs to be implemted correctly current version doesn't work
         for (int i=-1 ; i<2 ; i++)
             for (int j=-1 ; j<2 ; j++)
                 if (i !=0 && j != 0)
@@ -40,7 +41,7 @@ public class EvolveNextGen {
         return counterAliveNeighbors;
     }
     private boolean doesGridCellSurvive(int x, int y){
-        int aliveNeighbors=getAliveNeighbors(x,y);
-        return aliveNeighbors==2 || aliveNeighbors==3;
+        NumNeighbors aliveNeighbors=getAliveNeighbors(x,y);
+        return aliveNeighbors==NumNeighbors.Two || aliveNeighbors==NumNeighbors.Three;
     }
 }
