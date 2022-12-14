@@ -1,7 +1,8 @@
 package player;
 
-public class HumanPlayer implements Player{
-    public int getPlayerId(){
-        return 0;
+public class HumanPlayer extends Player{
+
+    public HumanPlayer(String name, String signatureSymbol) {
+        super(name, signatureSymbol);
     }
 }
