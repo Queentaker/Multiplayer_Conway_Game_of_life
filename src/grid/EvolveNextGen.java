@@ -1,12 +1,46 @@
 package grid;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EvolveNextGen {
     private Grid beforeEvolution;
+    private int upperBoundary;
     public void evolve(Grid grid){
         beforeEvolution= new Grid(grid);
+        upperBoundary= beforeEvolution.getGridSize();
+
+        for (int i=0; i<upperBoundary;i++){
+            for (int j=0;j<upperBoundary;j++){
+                //does
+            }
+        }
         //work needs to be done
     }
-    private int getAliveNeighbors(){
-        return 0;
+    private int getAliveNeighbors(int x, int y){
+        Map<int,int> neighborCount=new HashMap<int,int>();
+        int counterAliveNeighbors=0;
+        for (int i=-1 ; i<2 ; i++)
+            for (int j=-1 ; j<2 ; j++)
+                if (i !=0 && j != 0)
+                {
+                    int row = x + i;
+                    int colum = y + j;
+
+                    int lowerBoundary = 0;
+                    if (row >= lowerBoundary && colum >= lowerBoundary && row < upperBoundary && colum < upperBoundary)
+                    {
+                        GridCell gridCell=beforeEvolution.getGridCell(row,colum);
+                        //if (gridCell.isOccupied() && gridCell.getPlayerId()==playerId)
+                        //{
+                          //  counterAliveNeighbors++;
+                        //}
+                    }
+                }
+        return counterAliveNeighbors;
+    }
+    private boolean doesGridCellSurvive(int x, int y){
+        int aliveNeighbors=getAliveNeighbors(x,y);
+        return aliveNeighbors==2 || aliveNeighbors==3;
     }
 }
