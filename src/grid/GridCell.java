@@ -1,9 +1,11 @@
 package grid;
 
+import player.PlayersSignature;
+
 public class GridCell {
 
-    private boolean isOccupied;
-    private String playerId;
+    private final boolean isOccupied;
+    private PlayersSignature playersSignature;
     //todo flyweight
 
 
@@ -11,25 +13,33 @@ public class GridCell {
     public GridCell(){
         isOccupied=false;
     }
-    public GridCell(String playerId){
-        this.playerId=playerId;
+    public GridCell(PlayersSignature playersSignature){
+        this.playersSignature = playersSignature;
         isOccupied=true;
     }
 
     public boolean isOccupied() {
         return isOccupied;
     }
-    public String  getPlayerId(){
-        assert playerId!=null;
-        return playerId;
+    //needs a better name but with function one can get the playersID
+    public String getPlayersSignatureId(){
+        assert playersSignature !=null;
+        return playersSignature.getPlayerId();
     }
-    public void place(String playerId){
+    public String displayGrid(){
+        // empty gridcell
+        if (playersSignature==null){
+            return "";
+        }
+        return playersSignature.getPlayerSymbol();
+    }
+    /*public void place(String playerId){
         isOccupied=true;
         this.playerId=playerId;
     }
     public void remove (String playerId){
         isOccupied=false;
 
-    }
+    }*/
 
 }

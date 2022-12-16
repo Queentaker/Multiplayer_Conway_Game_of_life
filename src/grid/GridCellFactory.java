@@ -1,9 +1,12 @@
 package grid;
 
+import player.PlayersSignature;
+
 import java.util.HashMap;
 
 public class GridCellFactory {
-    private HashMap<String,GridCell> occupiedGridCells= new HashMap<>();
+    //todo make factory singleton to allow global access
+    private final HashMap<PlayersSignature,GridCell> occupiedGridCells= new HashMap<>();
     private GridCell emptyCell;
 
     public GridCell getEmptyGridCell() {
@@ -13,17 +16,14 @@ public class GridCellFactory {
         return emptyCell;
     }
 
-    public GridCell getGridCell(String id){
-        if (!occupiedGridCells.containsKey(id)){
-            occupiedGridCells.put(id, new GridCell(id));
+    public GridCell getGridCell(PlayersSignature playersSignature){
+        if (!occupiedGridCells.containsKey(playersSignature)){
+            occupiedGridCells.put(playersSignature, new GridCell(playersSignature));
         }
-        return occupiedGridCells.get(id);
+        return occupiedGridCells.get(playersSignature);
     }
 
-    //todo
         /*
-
-
 public class FlyweightFactory {
     private HashMap<String, Flyweight> flyweights = new HashMap<>();
 

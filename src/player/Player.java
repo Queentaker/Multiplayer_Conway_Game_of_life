@@ -7,9 +7,9 @@ public abstract class Player implements PlayersSignature{
     private final String  playerId;
     private final String signatureSymbol;
     public Player (String name,String signatureSymbol){
-        this.playerId=UUID.randomUUID().toString();
         this.name=name;
         this.signatureSymbol=signatureSymbol;
+        this.playerId=UUID.randomUUID().toString();
     }
     @Override
     public String getPlayerId() {
