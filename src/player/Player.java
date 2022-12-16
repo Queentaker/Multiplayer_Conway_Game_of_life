@@ -20,5 +20,7 @@ public abstract class Player implements PlayersSignature{
         return signatureSymbol;
     }
 
-
+    public String getName() {
+        return name;
+    }
 }
