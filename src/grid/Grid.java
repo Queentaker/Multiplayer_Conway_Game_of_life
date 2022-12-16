@@ -11,6 +11,7 @@ public class Grid {
         for (int i=0;i<gridSize;i++){
             List<GridCell> row=new ArrayList<GridCell>();
             for (int j=0;j<gridSize;j++){
+                //todo flyweight
                 GridCell gridCell=new GridCell();
                 row.add(gridCell);
             }
