@@ -8,15 +8,15 @@ public class Grid {
     private List<List<GridCell>> grid;
     private final int gridSize;
     private void createGrid (){
+        GridCellFactory gridCellFactory=GridCellFactory.getInstance();
+
         for (int i=0;i<gridSize;i++){
             List<GridCell> row=new ArrayList<GridCell>();
             for (int j=0;j<gridSize;j++){
-                //todo flyweight
-                GridCell gridCell=new GridCell();
-                row.add(gridCell);
+                row.add(gridCellFactory.getEmptyGridCell());
             }
+            grid.add(row);
         }
-
     }
     public void setGridCell(int x,int y, GridCell gridCell){
         List<GridCell> row=grid.get(x);
