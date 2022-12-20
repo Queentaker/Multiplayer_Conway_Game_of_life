@@ -31,7 +31,7 @@ public class Grid {
         createGrid();
     }
 
-    //grid constructer so that one can easily create a copy of another grid;
+    //grid constructer so that one can easily create a copy of the grid;
     public Grid(Grid anotherGrid){
         this.gridSize=anotherGrid.gridSize;
         this.grid=anotherGrid.grid;

@@ -1,5 +1,7 @@
 package grid;
 
+import player.PlayersSignature;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +20,7 @@ public class EvolveNextGen {
         //work needs to be done
     }
     private NumNeighbors getAliveNeighbors(int x, int y){
-        Map<String,NumNeighbors> neighborCount=new HashMap<String,NumNeighbors>();
+        Map<PlayersSignature,NumNeighbors> neighborCount=new HashMap<PlayersSignature,NumNeighbors>();
 
         NumNeighbors counterAliveNeighbors=NumNeighbors.Zero;
         //needs to be implemented correctly current version doesn't work

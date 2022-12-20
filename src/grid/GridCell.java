@@ -22,10 +22,11 @@ public class GridCell {
         return isOccupied;
     }
     //needs a better name but with function one can get the playersID
-    public String getPlayersSignatureId(){
+    public PlayersSignature getPlayersSignature(){
         assert playersSignature !=null;
-        return playersSignature.getPlayerId();
+        return playersSignature;
     }
+
     public String displayGrid(){
         // empty gridcell
         if (playersSignature==null){
