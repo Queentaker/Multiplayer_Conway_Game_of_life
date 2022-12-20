@@ -18,6 +18,10 @@ public class Grid {
         }
 
     }
+    public void setGridCell(int x,int y, GridCell gridCell){
+        List<GridCell> row=grid.get(x);
+        row.set(y,gridCell);
+    }
     public GridCell getGridCell(int x,int y){
         return grid.get(x).get(y);
     }
