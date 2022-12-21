@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 import player.HumanPlayer;
 import player.PlayersSignature;
 
+import java.awt.*;
+
 public class GridCellFactoryTest {
-    PlayersSignature playersSignatureBob=new HumanPlayer("bob","alpha");
+    PlayersSignature playersSignatureBob=new HumanPlayer("bob", Color.BLUE);
     GridCellFactory gridCellFactory=GridCellFactory.getInstance();
     @Test
     public void getEmptyCellTest(){
