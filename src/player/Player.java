@@ -1,14 +1,15 @@
 package player;
 
+import java.awt.*;
 import java.util.UUID;
 
 public abstract class Player implements PlayersSignature{
     private final String name;
     private final String  playerId;
-    private final String signatureSymbol;
-    public Player (String name,String signatureSymbol){
+    private final Color playersColor;
+    public Player (String name, Color playersColor){
         this.name=name;
-        this.signatureSymbol=signatureSymbol;
+        this.playersColor=playersColor;
         this.playerId=UUID.randomUUID().toString();
     }
     @Override
@@ -16,8 +17,8 @@ public abstract class Player implements PlayersSignature{
         return playerId;
     }
     @Override
-    public String getPlayerSymbol() {
-        return signatureSymbol;
+    public Color getPlayerColor() {
+        return playersColor;
     }
 
     public String getName() {

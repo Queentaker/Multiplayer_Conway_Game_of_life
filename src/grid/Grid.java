@@ -6,14 +6,12 @@ import player.PlayersSignature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grid implements ModifyGrid{
+public class Grid implements AddRemoveGridCell {
     //fleightweight still needs to be implemented
     private List<List<GridCell>> grid;
     private final int gridSize;
     private final GridCellFactory gridCellFactory=GridCellFactory.getInstance();
     private void createGrid (){
-
-
         for (int i=0;i<gridSize;i++){
             List<GridCell> row=new ArrayList<GridCell>();
             for (int j=0;j<gridSize;j++){
