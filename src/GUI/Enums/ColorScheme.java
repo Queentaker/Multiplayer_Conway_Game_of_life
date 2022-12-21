@@ -5,7 +5,7 @@ import java.awt.*;
 public enum ColorScheme {
     LIGHT_COLOR(new Color(0x999999)),
     MEDIUM_COLOR(new Color(0x555555)),
-    BLUE_COLOR(new Color(1000)),
+    BLUE_COLOR(Color.BLUE),
     GREEN_COLOR(new Color(1020000)),
     DARK_COLOR(new Color(0x000000));
 

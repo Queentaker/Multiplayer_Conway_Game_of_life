@@ -61,7 +61,7 @@ public class Grid implements AddRemoveGridCell {
         if (!getGridCell(x,y).isOccupied()){
             throw new IllegalUserInputException("you can't remove your an empty cell");
         }
-        if (getGridCell(x,y).getPlayersSignature()==playersSignature){
+        if (getGridCell(x, y).getPlayersSignature().getPlayerId().equals(playersSignature.getPlayerId())){
             throw new IllegalUserInputException("You can't remove your own cell");
         }
         setGridCell(x,y,gridCellFactory.getEmptyGridCell());

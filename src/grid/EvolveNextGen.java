@@ -8,6 +8,7 @@ import java.util.Map;
 public class EvolveNextGen {
     private Grid beforeEvolution;
     private int upperBoundary;
+    private final GridCellFactory gridCellFactory=GridCellFactory.getInstance();
     public void evolve(Grid grid){
         beforeEvolution= new Grid(grid);
         upperBoundary= beforeEvolution.getGridSize();
