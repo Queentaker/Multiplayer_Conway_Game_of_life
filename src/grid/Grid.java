@@ -1,14 +1,18 @@
 package grid;
 
+import exception.IllegalUserInputException;
+import player.PlayersSignature;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grid {
+public class Grid implements ModifyGrid{
     //fleightweight still needs to be implemented
     private List<List<GridCell>> grid;
     private final int gridSize;
+    private final GridCellFactory gridCellFactory=GridCellFactory.getInstance();
     private void createGrid (){
-        GridCellFactory gridCellFactory=GridCellFactory.getInstance();
+
 
         for (int i=0;i<gridSize;i++){
             List<GridCell> row=new ArrayList<GridCell>();
@@ -39,5 +43,29 @@ public class Grid {
     public Grid(Grid anotherGrid){
         this.gridSize=anotherGrid.gridSize;
         this.grid=anotherGrid.grid;
+    }
+
+    @Override
+    public void addGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException {
+        assert x>=0 && x<gridSize;
+        assert y>=0 && y<gridSize;
+        if (getGridCell(x,y).isOccupied()){
+            throw new IllegalUserInputException("You can't add a cell to an already occupied one");
+        }
+        setGridCell(x,y,gridCellFactory.getGridCell(playersSignature));
+
+    }
+
+    @Override
+    public void removeGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException{
+        assert x>=0 && x<gridSize;
+        assert y>=0 && y<gridSize;
+        if (!getGridCell(x,y).isOccupied()){
+            throw new IllegalUserInputException("you can't remove your an empty cell");
+        }
+        if (getGridCell(x,y).getPlayersSignature()==playersSignature){
+            throw new IllegalUserInputException("You can't remove your own cell");
+        }
+        setGridCell(x,y,gridCellFactory.getEmptyGridCell());
     }
 }
