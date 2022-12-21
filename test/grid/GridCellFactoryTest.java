@@ -3,12 +3,14 @@ package grid;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import player.HumanPlayer;
+import player.Player;
 import player.PlayersSignature;
 
 import java.awt.*;
 
 public class GridCellFactoryTest {
-    PlayersSignature playersSignatureBob=new HumanPlayer("bob", Color.BLUE);
+    Player bob=new HumanPlayer("bob", Color.BLUE);
+    PlayersSignature playersSignatureBob=bob;
     GridCellFactory gridCellFactory=GridCellFactory.getInstance();
     @Test
     public void getEmptyCellTest(){
@@ -26,5 +28,12 @@ public class GridCellFactoryTest {
     public void singletonTest(){
         GridCellFactory gridCellFactory2=GridCellFactory.getInstance();
         Assertions.assertEquals(gridCellFactory,gridCellFactory2);
+    }
+    @Test
+    public void samePlayerDifferentSignatureTest(){
+        PlayersSignature playersSignatureBob2=bob;
+        GridCell bobGridCell1=gridCellFactory.getGridCell(playersSignatureBob);
+        GridCell bobGridCell2=gridCellFactory.getGridCell(playersSignatureBob2);
+        Assertions.assertEquals(bobGridCell1,bobGridCell2);
     }
 }
