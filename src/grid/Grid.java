@@ -22,6 +22,7 @@ public class Grid implements AddRemoveGridCell {
     }
 
     public Grid(int gridSize){
+        assert gridSize>0;
         this.grid= new ArrayList<>();
         this.gridSize=gridSize;
         createGrid();
@@ -29,6 +30,7 @@ public class Grid implements AddRemoveGridCell {
     //grid constructer so that one can easily create a copy of the grid;
     //todo does not work
     public Grid(Grid anotherGrid){
+        assert anotherGrid!=null;
         this.gridSize=anotherGrid.gridSize;
         this.grid=copyGrid(anotherGrid);
     }

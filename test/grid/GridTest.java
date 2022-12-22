@@ -24,4 +24,11 @@ public class GridTest {
         Grid copyGrid= new Grid(grid);
         Assertions.assertEquals(grid.getGridCell(5,5),copyGrid.getGridCell(5,5));
     }
+    @Test
+    public void copyGridTest3(){
+        Grid copyGrid=new Grid(grid);
+        GridCell blueGridCell=new GridCell(Signature1);
+        copyGrid.setGridCell(0,3, blueGridCell);
+        Assertions.assertNotEquals(grid.getGridCell(0,3),copyGrid.getGridCell(0,3));
+    }
 }
