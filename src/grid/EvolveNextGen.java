@@ -8,7 +8,7 @@ public class EvolveNextGen {
     private Grid beforeEvolution;
     private int upperBoundary;
     private int lowerBoundary = 0;
-    private final GridCellFactory gridCellFactory = GridCellFactory.getInstance();
+    private final GridCellFactory factory = GridCellFactory.getInstance();
 
     public void evolve(Grid grid) {
         beforeEvolution = new Grid(grid);
@@ -18,10 +18,10 @@ public class EvolveNextGen {
             for (int y = 0; y < upperBoundary; y++) {
                 Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(x, y);
                 if (!doesGridCellSurvive(aliveNeighborsMap)){
-                    grid.setGridCell(x,y,gridCellFactory.getEmptyGridCell());
+                    grid.setGridCell(x,y, factory.getEmptyGridCell());
                 }
                 else {
-                    grid.setGridCell(x,y,gridCellFactory.getGridCell(getSignatureAliveCell(aliveNeighborsMap)));
+                    grid.setGridCell(x,y, factory.getGridCell(getSignatureAliveCell(aliveNeighborsMap)));
                 }
             }
         }
@@ -29,7 +29,7 @@ public class EvolveNextGen {
     }
 
     private Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(int x, int y) {
-        Map<PlayersSignature, NumNeighbors> neighborCount = new HashMap<PlayersSignature, NumNeighbors>();
+        Map<PlayersSignature, NumNeighbors> neighborCountMap = new HashMap<PlayersSignature, NumNeighbors>();
         for (int i = -1; i < 2; i++)
             for (int j = -1; j < 2; j++)
                 if (i != 0 && j != 0) {
@@ -37,24 +37,24 @@ public class EvolveNextGen {
                     int colum = y + j;
 
                     if (doesCoordinateExist(row, colum)) {
-                        updateHashTable(row, colum, neighborCount);
+                        updateHashTable(row, colum, neighborCountMap);
                     }
                 }
-        return neighborCount;
+        return neighborCountMap;
     }
 
     private boolean doesCoordinateExist(int row, int colum) {
         return row >= lowerBoundary && colum >= lowerBoundary && row < upperBoundary && colum < upperBoundary;
     }
 
-    private void updateHashTable(int row, int colum, Map<PlayersSignature, NumNeighbors> neighborCount) {
+    private void updateHashTable(int row, int colum, Map<PlayersSignature, NumNeighbors> neighborCountMap) {
         GridCell gridCell = beforeEvolution.getGridCell(row, colum);
         if (gridCell.isOccupied()) {
             PlayersSignature signature = gridCell.getPlayersSignature();
-            if (!neighborCount.containsKey(signature)) {
-                neighborCount.put(signature, NumNeighbors.One);
+            if (!neighborCountMap.containsKey(signature)) {
+                neighborCountMap.put(signature, NumNeighbors.One);
             } else {
-                neighborCount.put(signature, NumNeighbors.getEnum(neighborCount.get(signature).value + 1));
+                neighborCountMap.put(signature, NumNeighbors.getEnum(neighborCountMap.get(signature).value + 1));
             }
         }
     }
@@ -83,7 +83,7 @@ public class EvolveNextGen {
         assert survivingPlayersSignatures.size()>0;
         return randomValidPlayer(survivingPlayersSignatures);
     }
-    //this needs to be done for the scenario that a player a has 2 neigbhoring and player 3 b to cell x
+    //this needs to be done for the scenario that a player a has 2 neigbhoring and player 3 b to the cell x
     //randomly a playerSignature is going to be selected
     private PlayersSignature randomValidPlayer(List<PlayersSignature> survivingPlayersSignatures){
         int length=survivingPlayersSignatures.size();

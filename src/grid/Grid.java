@@ -8,14 +8,14 @@ import java.util.List;
 
 public class Grid implements AddRemoveGridCell {
     //fleightweight still needs to be implemented
-    private List<List<GridCell>> grid;
+    private final List<ArrayList<GridCell>> grid;
     private final int gridSize;
-    private final GridCellFactory gridCellFactory=GridCellFactory.getInstance();
+    private final GridCellFactory cellFactory =GridCellFactory.getInstance();
     private void createGrid (){
         for (int i=0;i<gridSize;i++){
-            List<GridCell> row=new ArrayList<GridCell>();
+            ArrayList<GridCell> row=new ArrayList<GridCell>();
             for (int j=0;j<gridSize;j++){
-                row.add(gridCellFactory.getEmptyGridCell());
+                row.add(cellFactory.getEmptyGridCell());
             }
             grid.add(row);
         }
@@ -33,11 +33,13 @@ public class Grid implements AddRemoveGridCell {
     }
 
     public Grid(int gridSize){
+        this.grid= new ArrayList<>();
         this.gridSize=gridSize;
         createGrid();
     }
 
     //grid constructer so that one can easily create a copy of the grid;
+    //todo does not work
     public Grid(Grid anotherGrid){
         this.gridSize=anotherGrid.gridSize;
         this.grid=anotherGrid.grid;
@@ -50,7 +52,7 @@ public class Grid implements AddRemoveGridCell {
         if (getGridCell(x,y).isOccupied()){
             throw new IllegalUserInputException("You can't add a cell to an already occupied one");
         }
-        setGridCell(x,y,gridCellFactory.getGridCell(playersSignature));
+        setGridCell(x,y, cellFactory.getGridCell(playersSignature));
 
     }
 
@@ -64,6 +66,6 @@ public class Grid implements AddRemoveGridCell {
         if (getGridCell(x, y).getPlayersSignature().getPlayerId().equals(playersSignature.getPlayerId())){
             throw new IllegalUserInputException("You can't remove your own cell");
         }
-        setGridCell(x,y,gridCellFactory.getEmptyGridCell());
+        setGridCell(x,y, cellFactory.getEmptyGridCell());
     }
 }
