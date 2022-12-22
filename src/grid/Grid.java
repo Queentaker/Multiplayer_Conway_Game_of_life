@@ -20,6 +20,31 @@ public class Grid implements AddRemoveGridCell {
             grid.add(row);
         }
     }
+
+    public Grid(int gridSize){
+        this.grid= new ArrayList<>();
+        this.gridSize=gridSize;
+        createGrid();
+    }
+    //grid constructer so that one can easily create a copy of the grid;
+    //todo does not work
+    public Grid(Grid anotherGrid){
+        this.gridSize=anotherGrid.gridSize;
+        this.grid=copyGrid(anotherGrid);
+    }
+    private List<ArrayList<GridCell>> copyGrid(Grid anotherGrid){
+        assert gridSize== anotherGrid.gridSize;
+        List<ArrayList<GridCell>> copy=new ArrayList<>();
+        for (int x=0;x<gridSize;x++){
+            ArrayList<GridCell> row=new ArrayList<GridCell>();
+            for (int y=0;y<gridSize;y++){
+                row.add(anotherGrid.getGridCell(x,y));
+            }
+            copy.add(row);
+        }
+        return copy;
+    }
+
     public void setGridCell(int x,int y, GridCell gridCell){
         List<GridCell> row=grid.get(x);
         row.set(y,gridCell);
@@ -32,18 +57,6 @@ public class Grid implements AddRemoveGridCell {
         return gridSize;
     }
 
-    public Grid(int gridSize){
-        this.grid= new ArrayList<>();
-        this.gridSize=gridSize;
-        createGrid();
-    }
-
-    //grid constructer so that one can easily create a copy of the grid;
-    //todo does not work
-    public Grid(Grid anotherGrid){
-        this.gridSize=anotherGrid.gridSize;
-        this.grid=anotherGrid.grid;
-    }
 
     @Override
     public void addGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException {
