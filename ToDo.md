@@ -10,7 +10,7 @@ here is a list of what needs to be done apart from testing
 - [ ] create 4-6 template patterns that are legal
 - [ ] make grid and templates work together
 - [ ] not necessary create grititerator that returns list of neighbors
-- [ ] if done so change grid to be flexibale to recantangle
+- [x] if done so change grid to be flexibale to recantangle
 - [ ] nextgen needs to count the cells when evolving 
 
 ## Gameflow
