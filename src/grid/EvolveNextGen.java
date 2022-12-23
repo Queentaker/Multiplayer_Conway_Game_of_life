@@ -9,6 +9,7 @@ public class EvolveNextGen {
     private int upperBoundary;
     private int lowerBoundary = 0;
     private final GridCellFactory factory = GridCellFactory.getInstance();
+    private int generation=0;
 
     public void evolve(Grid grid) {
         beforeEvolution = new Grid(grid);
@@ -25,6 +26,7 @@ public class EvolveNextGen {
                 }
             }
         }
+        generation++;
         //work needs to be done
     }
 

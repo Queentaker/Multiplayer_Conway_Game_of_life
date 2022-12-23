@@ -28,7 +28,7 @@ public class GridCell {
 
     public Color getGridCellColor(){
         // empty gridcell
-        if (playersSignature==null){
+        if (!isOccupied){
             return Color.WHITE;
         }
         return playersSignature.getPlayerColor();
