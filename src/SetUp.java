@@ -1,23 +1,64 @@
-import exception.IllegalNameOrColorException;
+import enums.Constants;
+import exception.IllegalSetupException;
+import exception.IllegalUserInputException;
 import grid.Grid;
 import player.HumanPlayer;
+import player.Player;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class SetUp {
-    private HumanPlayer playerOne;
-    private HumanPlayer playerTwo;
+    private List<Player> players;
     private Grid board;
-    public void setUp(ArrayList<Color> playerColor, ArrayList<String> playerName, int size ) throws IllegalNameOrColorException {
-        if (playerColor.get(0).equals(playerColor.get(1)) || playerName.get(0).equals(playerName.get(1))){
 
-            throw new IllegalNameOrColorException("You can't have the same name or the same color");
+    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width ) throws  IllegalSetupException {
+        assert playerColors.size()==playerNames.size();
+        if (!uniqueColors(playerColors)){
+            throw new IllegalSetupException("You can't have same colors");
         }
-        else{
-            playerOne = new HumanPlayer(playerName.get(0),playerColor.get(0));
-            playerTwo = new HumanPlayer(playerName.get(1), playerColor.get(1));
-            board = new Grid(size);
+        if (!uniqueNames(playerNames)){
+            throw new IllegalSetupException("You can't have the same names");
         }
+        if (!isGridSizeValid(height,width)){
+            throw new IllegalSetupException("Grid doesn't meet limits");
+        }
+        int i=0;
+        while (i<playerColors.size()){
+            Player player=new HumanPlayer(playerNames.get(i),playerColors.get(i));
+            players.add(player);
+            i++;
+        }
+
+
     }
+    private boolean isGridSizeValid(int height, int width){
+        return height>= Constants.minHeight.constant & height<=Constants.maxHeight.constant & width>=Constants.minWidth.constant & width<=Constants.maxWidth.constant;
+    }
+
+    private boolean uniqueColors(List<Color> playerColor){
+        for (int i=0;i< playerColor.size()-1;i++){
+            Color color=playerColor.get(i);
+            for (int j=0;j< playerColor.size();j++){
+                if (i!=j & color==playerColor.get(j)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean uniqueNames(List<String> playerNames){
+        for (int i=0;i< playerNames.size()-1;i++){
+            String name=playerNames.get(i);
+            for (int j=0;j< playerNames.size();j++){
+                if (i!=j & name.equals(playerNames.get(j))){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
 }

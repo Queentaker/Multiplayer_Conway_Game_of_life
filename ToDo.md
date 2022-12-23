@@ -1,6 +1,6 @@
 ### Softcon_Assignment-3
 here is a list of what needs to be done apart from testing
-
+##### make sure you write scalable code 
 
 - Make sure to look at crc cards for further information and to see what needs to be implemented 😁
 
