@@ -43,4 +43,11 @@ public class EvolveNextGenTest {
         evolveNextGen.evolve(grid);
         Assertions.assertEquals(grid.getGridCell(1,1).getPlayersSignature(),signatureAnna);
     }
+    @Test
+    public void evolveTest3(){
+        grid.setGridCell(0,0,new GridCell(signatureAnna));
+        grid.setGridCell(0,2,new GridCell(signatureBob));
+        evolveNextGen.evolve(grid);
+        Assertions.assertFalse(grid.getGridCell(1, 1).isOccupied());
+    }
 }
