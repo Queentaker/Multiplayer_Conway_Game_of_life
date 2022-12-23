@@ -9,7 +9,7 @@ import java.awt.*;
 import java.lang.reflect.Field;
 
 public class GridTest {
-    Grid grid=new Grid(8);
+    Grid grid=new Grid(8,8);
     PlayersSignature Signature1=new HumanPlayer("bob", Color.BLUE);
     @Test
     public void copyGridTest(){
