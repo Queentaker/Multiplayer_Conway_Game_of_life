@@ -9,36 +9,41 @@ import java.util.List;
 public class Grid implements AddRemoveGridCell {
     //fleightweight still needs to be implemented
     private final List<ArrayList<GridCell>> grid;
-    private final int gridSize;
+    private final int gridHeight;
+    private final int gridWidth;
     private final GridCellFactory cellFactory =GridCellFactory.getInstance();
     private void createGrid (){
-        for (int i=0;i<gridSize;i++){
+        for (int i=0;i<gridHeight;i++){
             ArrayList<GridCell> row=new ArrayList<GridCell>();
-            for (int j=0;j<gridSize;j++){
+            for (int j=0;j<gridWidth;j++){
                 row.add(cellFactory.getEmptyGridCell());
             }
             grid.add(row);
         }
     }
 
-    public Grid(int gridSize){
-        assert gridSize>0;
+    public Grid(int height, int width){
+        assert height>0;
+        assert width>0;
         this.grid= new ArrayList<>();
-        this.gridSize=gridSize;
+        this.gridHeight=height;
+        this.gridWidth=width;
         createGrid();
     }
     //grid constructer so that one can easily create a copy of the grid;
     public Grid(Grid anotherGrid){
         assert anotherGrid!=null;
-        this.gridSize=anotherGrid.gridSize;
+        this.gridHeight=anotherGrid.gridHeight;
+        this.gridWidth=anotherGrid.gridWidth;
         this.grid=copyGrid(anotherGrid);
     }
     private List<ArrayList<GridCell>> copyGrid(Grid anotherGrid){
-        assert gridSize== anotherGrid.gridSize;
+        assert gridHeight== anotherGrid.gridHeight;
+        assert gridWidth==anotherGrid.gridWidth;
         List<ArrayList<GridCell>> copy=new ArrayList<>();
-        for (int x=0;x<gridSize;x++){
+        for (int x=0;x<gridHeight;x++){
             ArrayList<GridCell> row=new ArrayList<GridCell>();
-            for (int y=0;y<gridSize;y++){
+            for (int y=0;y<gridWidth;y++){
                 row.add(anotherGrid.getGridCell(x,y));
             }
             copy.add(row);
@@ -54,15 +59,18 @@ public class Grid implements AddRemoveGridCell {
         return grid.get(x).get(y);
     }
 
-    public int getGridSize() {
-        return gridSize;
+    public int getGridHeight() {
+        return gridHeight;
     }
 
+    public int getGridWidth() {
+        return gridWidth;
+    }
 
     @Override
-    public void addGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException {
-        assert x>=0 && x<gridSize;
-        assert y>=0 && y<gridSize;
+    public void placeGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException {
+        assert x>=0 && x<gridHeight;
+        assert y>=0 && y<gridHeight;
         if (getGridCell(x,y).isOccupied()){
             throw new IllegalUserInputException("You can't add a cell to an already occupied one");
         }
@@ -72,8 +80,8 @@ public class Grid implements AddRemoveGridCell {
 
     @Override
     public void removeGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException{
-        assert x>=0 && x<gridSize;
-        assert y>=0 && y<gridSize;
+        assert x>=0 && x<gridHeight;
+        assert y>=0 && y<gridHeight;
         if (!getGridCell(x,y).isOccupied()){
             throw new IllegalUserInputException("you can't remove your an empty cell");
         }

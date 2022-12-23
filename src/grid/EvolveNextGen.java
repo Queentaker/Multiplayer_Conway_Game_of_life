@@ -6,17 +6,19 @@ import java.util.*;
 
 public class EvolveNextGen {
     private Grid beforeEvolution;
-    private int upperBoundary;
+    private int upperBoundaryRow;
+    private int upperBoundaryColum;
     private int lowerBoundary = 0;
     private final GridCellFactory factory = GridCellFactory.getInstance();
     private int generation=0;
 
     public void evolve(Grid grid) {
         beforeEvolution = new Grid(grid);
-        upperBoundary = beforeEvolution.getGridSize();
+        upperBoundaryRow = beforeEvolution.getGridHeight();
+        upperBoundaryColum= beforeEvolution.getGridWidth();
 
-        for (int x = 0; x < upperBoundary; x++) {
-            for (int y = 0; y < upperBoundary; y++) {
+        for (int x = 0; x < upperBoundaryRow; x++) {
+            for (int y = 0; y < upperBoundaryColum; y++) {
                 Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(x, y);
                 if (!doesGridCellSurvive(aliveNeighborsMap)){
                     grid.setGridCell(x,y, factory.getEmptyGridCell());
@@ -47,7 +49,7 @@ public class EvolveNextGen {
     }
 
     private boolean doesCoordinateExist(int row, int colum) {
-        return row >= lowerBoundary && colum >= lowerBoundary && row < upperBoundary && colum < upperBoundary;
+        return row >= lowerBoundary && colum >= lowerBoundary && row < upperBoundaryRow && colum < upperBoundaryColum;
     }
 
     private void updateHashTable(int row, int colum, Map<PlayersSignature, NumNeighbors> neighborCountMap) {

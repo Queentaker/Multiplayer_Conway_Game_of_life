@@ -6,19 +6,19 @@ import java.awt.*;
 
 public class GridCell {
 
-    private final boolean isOccupied;
+    private final boolean occupied;
     private PlayersSignature playersSignature;
 
     public GridCell(){
-        isOccupied=false;
+        occupied=false;
     }
     public GridCell(PlayersSignature playersSignature){
         this.playersSignature = playersSignature;
-        isOccupied=true;
+        occupied=true;
     }
 
     public boolean isOccupied() {
-        return isOccupied;
+        return occupied;
     }
     //needs a better name but with function one can get the playersID
     public PlayersSignature getPlayersSignature(){
@@ -27,8 +27,8 @@ public class GridCell {
     }
 
     public Color getGridCellColor(){
-        // empty gridcell
-        if (!isOccupied){
+        // empty gridCell
+        if (!isOccupied()){
             return Color.WHITE;
         }
         return playersSignature.getPlayerColor();
