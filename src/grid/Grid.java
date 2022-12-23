@@ -68,7 +68,7 @@ public class Grid implements AddRemoveGridCell {
     }
 
     @Override
-    public void addGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException {
+    public void placeGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException {
         assert x>=0 && x<gridHeight;
         assert y>=0 && y<gridHeight;
         if (getGridCell(x,y).isOccupied()){
