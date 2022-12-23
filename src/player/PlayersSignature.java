@@ -1,6 +1,9 @@
 package player;
 
+import java.awt.*;
+
 public interface PlayersSignature {
     public String getPlayerId();
-    public String getPlayerSymbol();
+    public Color getPlayerColor();
+    //public get PlayersColor
 }

@@ -1,13 +1,9 @@
 import GUI.Frame;
-import player.HumanPlayer;
-import player.PlayersSignature;
 
 public class Main {
+    //what needs to be done
+    //todo keep track of generations
     public static void main(String[] args) {
         new Frame();
-        System.out.println("welcome");
-        HumanPlayer humanPlayer=new HumanPlayer("bob","#");
-        PlayersSignature playersSignature=humanPlayer;
-        System.out.println(playersSignature.getPlayerId());
     }
 }

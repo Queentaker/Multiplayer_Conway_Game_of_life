@@ -2,13 +2,12 @@ package grid;
 
 import player.PlayersSignature;
 
+import java.awt.*;
+
 public class GridCell {
 
     private final boolean isOccupied;
     private PlayersSignature playersSignature;
-    //todo flyweight
-
-
 
     public GridCell(){
         isOccupied=false;
@@ -22,16 +21,17 @@ public class GridCell {
         return isOccupied;
     }
     //needs a better name but with function one can get the playersID
-    public String getPlayersSignatureId(){
+    public PlayersSignature getPlayersSignature(){
         assert playersSignature !=null;
-        return playersSignature.getPlayerId();
+        return playersSignature;
     }
-    public String displayGrid(){
+
+    public Color getGridCellColor(){
         // empty gridcell
-        if (playersSignature==null){
-            return "";
+        if (!isOccupied){
+            return Color.WHITE;
         }
-        return playersSignature.getPlayerSymbol();
+        return playersSignature.getPlayerColor();
     }
     /*public void place(String playerId){
         isOccupied=true;
