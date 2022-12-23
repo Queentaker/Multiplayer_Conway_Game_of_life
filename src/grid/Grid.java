@@ -28,7 +28,6 @@ public class Grid implements AddRemoveGridCell {
         createGrid();
     }
     //grid constructer so that one can easily create a copy of the grid;
-    //todo does not work
     public Grid(Grid anotherGrid){
         assert anotherGrid!=null;
         this.gridSize=anotherGrid.gridSize;

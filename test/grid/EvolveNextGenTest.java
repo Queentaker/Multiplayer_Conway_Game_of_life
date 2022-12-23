@@ -28,6 +28,19 @@ public class EvolveNextGenTest {
                 Assertions.assertEquals(grid.getGridCell(x,y).getPlayersSignature(),signatureAnna);
             }
         }
+        Assertions.assertFalse(grid.getGridCell(1, 1).isOccupied());
+        Assertions.assertFalse(grid.getGridCell(0,1).isOccupied());
 
+    }
+    @Test
+    public void evolveTest2(){
+        grid.setGridCell(0,0,new GridCell(signatureAnna));
+        grid.setGridCell(0,1,new GridCell(signatureAnna));
+        grid.setGridCell(0,2,new GridCell(signatureBob));
+        grid.setGridCell(1,2,new GridCell(signatureBob));
+        grid.setGridCell(2,2,new GridCell(signatureBob));
+        grid.setGridCell(2,1,new GridCell(signatureBob));
+        evolveNextGen.evolve(grid);
+        Assertions.assertEquals(grid.getGridCell(1,1).getPlayersSignature(),signatureAnna);
     }
 }
