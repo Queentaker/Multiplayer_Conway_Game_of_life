@@ -17,7 +17,7 @@ public class SetUp {
         else{
             playerOne = new HumanPlayer(playerName.get(0),playerColor.get(0));
             playerTwo = new HumanPlayer(playerName.get(1), playerColor.get(1));
-            board = new Grid(size);
+            board = new Grid(size,size);
         }
     }
 }
