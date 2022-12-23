@@ -15,7 +15,7 @@ here is a list of what needs to be done apart from testing
 
 ## Gameflow
 
-- [ ] create setup that checks input and then creates the players and the grid with wished size
+- [x] create setup that checks input and then creates the players and the grid with wished size // works only with squares as input sizes
 - [ ] in order to do that make grid 
 - [ ] turnflow meaning switch turn after player has removed and then added cell
 - [ ] make gamemanger singleton
