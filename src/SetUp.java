@@ -1,6 +1,7 @@
 import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
+import gameFlow.GameManager;
 import grid.Grid;
 import player.HumanPlayer;
 import player.Player;
@@ -11,6 +12,7 @@ import java.util.List;
 public class SetUp {
     private List<Player> players;
     private Grid board;
+    private GameManager gameManager;
 
     public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width ) throws  IllegalSetupException {
         assert playerColors.size()==playerNames.size();
@@ -29,6 +31,7 @@ public class SetUp {
             players.add(player);
             i++;
         }
+        gameManager = new GameManager(players);
 
 
     }

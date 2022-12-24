@@ -5,4 +5,5 @@ public class Main {
     public static void main(String[] args) {
         new Frame();
     }
+    // in the gameManager is currently an endless loop...
 }
