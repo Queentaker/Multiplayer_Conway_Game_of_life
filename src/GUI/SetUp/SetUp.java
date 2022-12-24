@@ -37,7 +37,7 @@ public class SetUp {
         }
         StartingTemplate template=TemplatesEnum.getTemplate(startingTemplate);
         gameManager = GameManager.getInstance(players);
-        gameManager.startGame(players, height, width);
+        gameManager.startGame(players, height, width,template);
         gameManager.manageGame();
 
     }
