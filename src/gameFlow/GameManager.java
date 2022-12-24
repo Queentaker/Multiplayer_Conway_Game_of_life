@@ -20,12 +20,12 @@ public class GameManager {
         return uniqueInstance;
     }
 
-    private GameManager(List<Player> players){
+    GameManager(List<Player> players){
         assert players != null;
         this.players = players;
         currentIndex = 0;
     }
-    private void nextPlayersTurn(){
+    public void nextPlayersTurn(){
         if (currentIndex++==players.size()){
             currentIndex=0;
         }

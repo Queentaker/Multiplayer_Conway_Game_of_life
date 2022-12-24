@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.List;
 
 public class SetUp {
-    private List<Player> players;
+    public List<Player> players; //must be again private
     private GameManager gameManager;
 
     public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, List<CoordinatesTuple> startConfiguration) throws IllegalSetupException, IllegalUserInputException {
