@@ -1,3 +1,5 @@
+package GUI.SetUp;
+
 import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;

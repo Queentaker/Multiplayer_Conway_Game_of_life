@@ -44,8 +44,8 @@ public class GameManager {
         }
 
     }
-    public void startGame(List<CoordinatesTuple> startConfiguration, List<Player> players, int height, int with){
+    public void startGame(List<CoordinatesTuple> startConfiguration, List<Player> players, int height, int width){
         turn = new Turn(players.get(currentIndex));
-        turn.configurateStart(startConfiguration, players, height, with);
+        turn.configurateStart(startConfiguration, players, height, width);
     }
 }

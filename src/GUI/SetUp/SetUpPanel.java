@@ -2,15 +2,18 @@ package GUI.SetUp;
 
 import GUI.Frame;
 
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class SetUpPane extends JPanel implements ActionListener, ChangeListener {
-    SliderPanel lengthSlider;
+
+public class SetUpPanel extends JPanel implements ActionListener, ChangeListener {
+    SliderPanel widthSlider;
     SliderPanel heightSlider;
     JButton startButton;
     JTextField player1Name;
@@ -20,7 +23,9 @@ public class SetUpPane extends JPanel implements ActionListener, ChangeListener 
     //delete after we can call it from model
     Frame frame;
 
-    public SetUpPane(Frame frame) {
+
+
+    public SetUpPanel(Frame frame) {
         this.frame = frame;
 
         this.setLayout(new FlowLayout());
@@ -42,8 +47,8 @@ public class SetUpPane extends JPanel implements ActionListener, ChangeListener 
         player2Color.addActionListener(this);
         this.add(player2Color);
 
-        lengthSlider = new SliderPanel(50,100, 75);
-        this.add(lengthSlider);
+        widthSlider = new SliderPanel(50,100, 75);
+        this.add(widthSlider);
         heightSlider = new SliderPanel(50,100, 75);
         this.add(heightSlider);
 
@@ -65,12 +70,20 @@ public class SetUpPane extends JPanel implements ActionListener, ChangeListener 
             //call method with
             player1Color.getBackground();
             player2Color.getBackground();
-            player1Color.getName();
+            player1Name.getText();
             player2Name.getText();
-            int length = lengthSlider.getValue();
+            int width = widthSlider.getValue();
             int height = heightSlider.getValue();
             //should be called from Model
-            frame.setUpFinished(height, length);
+            java.util.List<Color> playersColors = new ArrayList<Color>();
+            java.util.List<String> playersNames = new ArrayList<String>();
+            playersColors.add(player1Color.getBackground());
+            playersColors.add(player2Color.getBackground());
+            playersNames.add(player1Name.getText());
+            playersNames.add(player2Name.getText());
+
+
+            frame.setUpFinished(playersColors,playersNames,width, height);
         } else {
             if (e.getSource().getClass() == JButton.class) {
                 JButton currentButton = (JButton) e.getSource();

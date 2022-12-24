@@ -1,7 +1,8 @@
 package GUI;
 
 import GUI.Grid.Grid;
-import GUI.SetUp.SetUpPane;
+import GUI.SetUp.SetUp;
+import GUI.SetUp.SetUpPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,9 @@ public class Frame extends JFrame {
     JPanel stats;
     JPanel information;
     JPanel aGrid;
-    SetUpPane setUpPane;
+    SetUpPanel setUpPanel;
+
+    SetUp setUp;
 
 
     public Frame() {
@@ -22,15 +25,16 @@ public class Frame extends JFrame {
         this.getContentPane().setBackground(Color.ORANGE);
         GUI_Utility.changeIcon(this, "ownLogo");
 
-        setUpPane = new SetUpPane(this);
+        setUpPanel = new SetUpPanel(this);
 
-        this.add(setUpPane, BorderLayout.CENTER);
+        this.add(setUpPanel, BorderLayout.CENTER);
         this.setVisible(true);
+
     }
 
-    public void setUpFinished(int length, int height) {
-        setUpPane.setVisible(false);
-        this.remove(setUpPane);
+    public void setUpFinished(java.util.List<Color> playerColors, java.util.List<String> playerNames,int width, int height) {
+        setUpPanel.setVisible(false);
+        this.remove(setUpPanel);
 
         title = new JPanel();
         title.setBackground(Color.BLUE);
@@ -82,7 +86,7 @@ public class Frame extends JFrame {
         information.setPreferredSize(new Dimension(100,100));
         this.add(information, BorderLayout.SOUTH);
 
-        aGrid = new Grid(length, height);
+        aGrid = new Grid(width, height);
         this.add(aGrid, BorderLayout.CENTER);
     }
 }

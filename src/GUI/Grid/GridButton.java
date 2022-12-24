@@ -2,6 +2,7 @@ package GUI.Grid;
 
 import GUI.Enums.ColorScheme;
 import GUI.Enums.Grid.GridColors;
+import gameFlow.CoordinatesTuple;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -17,6 +18,7 @@ public class GridButton extends JButton implements ActionListener {
 
     private final int xCoordinate;
     private final int yCoordinate;
+
 
     public GridButton (int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
@@ -45,5 +47,6 @@ public class GridButton extends JButton implements ActionListener {
         //Call method with (this.xCoordinate, this.yCoordinate)
         System.out.println("X-Coordinate: " + xCoordinate);
         System.out.println("Y-Coordinate: " + yCoordinate);
+        CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
     }
 }
