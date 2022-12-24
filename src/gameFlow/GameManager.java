@@ -6,15 +6,23 @@ import player.Player;
 import java.util.List;
 
 public class GameManager {
+
+    private static GameManager uniqueInstance;
+
     private final List<Player> players;
-
     private int currentIndex;
-
     private Turn turn;
 
-    public GameManager(List<Player> player){
-        assert player != null;
-        this.players = player;
+    public static synchronized GameManager getInstance(List<Player> players){
+        if(uniqueInstance==null){
+            uniqueInstance = new GameManager(players);
+        }
+        return uniqueInstance;
+    }
+
+    private GameManager(List<Player> players){
+        assert players != null;
+        this.players = players;
         currentIndex = 0;
     }
     private void nextPlayersTurn(){

@@ -31,7 +31,7 @@ public class SetUp {
             players.add(player);
             i++;
         }
-        gameManager = new GameManager(players);
+        gameManager = GameManager.getInstance(players);
 
 
     }
