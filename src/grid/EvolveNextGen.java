@@ -7,7 +7,7 @@ import java.util.*;
 public class EvolveNextGen {
     private Grid beforeEvolution;
     private int upperBoundaryRow;
-    private int upperBoundaryColum;
+    private int upperBoundaryColumn;
     private int lowerBoundary = 0;
     private final GridCellFactory factory = GridCellFactory.getInstance();
     private int generation=0;
@@ -15,10 +15,10 @@ public class EvolveNextGen {
     public void evolve(Grid grid) {
         beforeEvolution = new Grid(grid);
         upperBoundaryRow = beforeEvolution.getGridHeight();
-        upperBoundaryColum= beforeEvolution.getGridWidth();
+        upperBoundaryColumn = beforeEvolution.getGridWidth();
 
         for (int x = 0; x < upperBoundaryRow; x++) {
-            for (int y = 0; y < upperBoundaryColum; y++) {
+            for (int y = 0; y < upperBoundaryColumn; y++) {
                 Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(x, y);
                 if (!doesGridCellSurvive(aliveNeighborsMap)){
                     grid.setGridCell(x,y, factory.getEmptyGridCell());
@@ -48,8 +48,8 @@ public class EvolveNextGen {
         return neighborCountMap;
     }
 
-    private boolean doesCoordinateExist(int row, int colum) {
-        return row >= lowerBoundary && colum >= lowerBoundary && row < upperBoundaryRow && colum < upperBoundaryColum;
+    private boolean doesCoordinateExist(int row, int column) {
+        return row >= lowerBoundary && column >= lowerBoundary && row < upperBoundaryRow && column < upperBoundaryColumn;
     }
 
     private void updateHashTable(int row, int colum, Map<PlayersSignature, NumNeighbors> neighborCountMap) {
@@ -88,7 +88,7 @@ public class EvolveNextGen {
         assert survivingPlayersSignatures.size()>0;
         return randomValidPlayer(survivingPlayersSignatures);
     }
-    //this needs to be done for the scenario that a player a has 2 neigbhoring and player 3 b to the cell x
+    //this needs to be done for the scenario that a player a has 2 neighboring and player 3 b to the cell x
     //randomly a playerSignature is going to be selected
     private PlayersSignature randomValidPlayer(List<PlayersSignature> survivingPlayersSignatures){
         int length=survivingPlayersSignatures.size();

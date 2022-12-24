@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grid implements AddRemoveGridCell {
-    //fleightweight still needs to be implemented
+    //flyweight still needs to be implemented
     private final List<ArrayList<GridCell>> grid;
     private final int gridHeight;
     private final int gridWidth;
