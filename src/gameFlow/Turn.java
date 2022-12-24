@@ -1,7 +1,9 @@
 package gameFlow;
 
 import exception.IllegalUserInputException;
+import grid.EvolveNextGen;
 import grid.Grid;
+import grid.GridCellFactory;
 import player.Player;
 import player.PlayersSignature;
 
@@ -14,6 +16,7 @@ public class Turn {
     private  Player currentPlayer;
     private Grid grid;
     private CoordinatesTuple coordinates;
+    private EvolveNextGen evolveNextGen;
 
     public Turn(Player currentPlayer) {
         assert currentPlayer != null;
@@ -24,18 +27,19 @@ public class Turn {
 
         coordinates = getCoordinates();
         if(!grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getPlayersSignature().equals(getCurrentPlayersSignature())&& !grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor().equals(Color.WHITE)){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, currentPlayer);//I want to set a currents player cell
+            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getEmptyGridCell());//I want to set a white player cell
         }
         else{
             throw new IllegalUserInputException("You must choose an opponents cell");
         }
         coordinates = getCoordinates();
         if (grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor()==Color.WHITE){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, currentPlayer); // I want to set a curretns player cell
+            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getGridCell(currentPlayer)); // I want to set a curretns player cell
         }
         else{
             throw new IllegalUserInputException("You must choose an empty cell");
         }
+        evolveNextGen.evolve(grid);
     }
 
     private CoordinatesTuple getCoordinates(){
@@ -49,6 +53,14 @@ public class Turn {
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
+    }
+    public void configurateStart(List<CoordinatesTuple>startConfiguration, List<Player> players, int heigth, int with){
+        grid = new Grid(heigth,with);
+        for (int i = 0; i< players.size()-1; i++){
+            for (int j = 0; j< startConfiguration.size()-1; j++){
+                grid.setGridCell(startConfiguration.get(j).xCoordinate, startConfiguration.get(j).yCoordinate, GridCellFactory.getInstance().getGridCell(players.get(i)));
+            }
+        }
     }
 
 }

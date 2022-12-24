@@ -1,6 +1,7 @@
 import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
+import gameFlow.CoordinatesTuple;
 import gameFlow.GameManager;
 import grid.Grid;
 import player.HumanPlayer;
@@ -11,10 +12,9 @@ import java.util.List;
 
 public class SetUp {
     private List<Player> players;
-    private Grid board;
     private GameManager gameManager;
 
-    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width ) throws  IllegalSetupException {
+    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, List<CoordinatesTuple> startConfiguration) throws IllegalSetupException, IllegalUserInputException {
         assert playerColors.size()==playerNames.size();
         if (!uniqueColors(playerColors)){
             throw new IllegalSetupException("You can't have same colors");
@@ -31,8 +31,10 @@ public class SetUp {
             players.add(player);
             i++;
         }
-        gameManager = GameManager.getInstance(players);
 
+        gameManager = GameManager.getInstance(players);
+        gameManager.startGame(startConfiguration,players, height, width);
+        gameManager.manageGame();
 
     }
     private boolean isGridSizeValid(int height, int width){

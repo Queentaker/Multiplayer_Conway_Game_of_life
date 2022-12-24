@@ -1,6 +1,7 @@
 import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
+import gameFlow.CoordinatesTuple;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -21,7 +22,9 @@ public class SetUpTest {
         List<Color> playerColor = new ArrayList<>();
         playerColor.add(Color.BLUE);
         playerColor.add(Color.WHITE);
-        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth);});
+        List<CoordinatesTuple> startingPosition = new ArrayList<>();
+        startingPosition.add(new CoordinatesTuple(1,1));
+        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,startingPosition);});
 
     }
 }
