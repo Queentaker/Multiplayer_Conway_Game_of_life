@@ -13,7 +13,7 @@ import java.util.List;
 public class Turn {
 
 
-    private  Player currentPlayer;
+    private Player currentPlayer;
     private Grid grid;
     private CoordinatesTuple coordinates;
     private EvolveNextGen evolveNextGen;

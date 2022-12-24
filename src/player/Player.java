@@ -20,8 +20,8 @@ public abstract class Player implements PlayersSignature{
     public Color getPlayerColor() {
         return playersColor;
     }
-
-    public String getName() {
+    @Override
+    public String getPlayerName() {
         return name;
     }
 }
