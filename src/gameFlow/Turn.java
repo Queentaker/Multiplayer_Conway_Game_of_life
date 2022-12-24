@@ -62,5 +62,8 @@ public class Turn {
             }
         }
     }
+    public String getName(){
+        return currentPlayer.getPlayerName();
+    }
 
 }
