@@ -18,7 +18,7 @@ here is a list of what needs to be done apart from testing
 - [x] create setup that checks input and then creates the players and the grid with wished size
 - [ ] in order to do that make grid 
 - [ ] turnflow meaning switch turn after player has removed and then added cell
-- [ ] make gamemanger singleton
+- [x] make gamemanger singleton
 - [ ] manage players turn
 - [ ] have turn ask player which cells he wants to remove and then add
 - [ ] not much has been implemented of gamemanger look at crc card is in whatsapp chat
