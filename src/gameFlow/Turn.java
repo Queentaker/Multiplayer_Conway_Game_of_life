@@ -21,6 +21,7 @@ public class Turn {
     }
 
     public void playerTurn() throws IllegalUserInputException {
+
         coordinates = getCoordinates();
         if(!grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getPlayersSignature().equals(getCurrentPlayersSignature())&& !grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor().equals(Color.WHITE)){
             grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, currentPlayer);//I want to set a currents player cell
@@ -38,7 +39,7 @@ public class Turn {
     }
 
     private CoordinatesTuple getCoordinates(){
-        //This lines represent the input from the GUI until I recive the real one...
+        //This lines represent the input from the GUI until I receive the real one...
         int xCoordinate = 1;
         int yCoordinate = 1;
         //I assume, that it only can be called with valid coordinates...

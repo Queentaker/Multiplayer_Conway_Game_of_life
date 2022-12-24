@@ -33,9 +33,9 @@ public class GameManager {
             currentIndex++;
         }
     }
-    //would it be smarter to have an empty Turn-construcotr and give the instance of player to the playerTurn??
+    //would it be smarter to have an empty Turn-constructor and give the instance of player to the playerTurn??
     private void manageGame() throws IllegalUserInputException {
-        while(true){ // Be aware of the endless looop!!!
+        while(true){ // Be aware of the endless loop!!!
             turn = new Turn(players.get(currentIndex));
             turn.playerTurn();
             nextPlayersTurn();
