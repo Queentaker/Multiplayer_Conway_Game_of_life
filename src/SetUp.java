@@ -43,7 +43,7 @@ public class SetUp {
         for (int i=0;i< playerColor.size()-1;i++){
             Color color=playerColor.get(i);
             for (int j=0;j< playerColor.size();j++){
-                if (i!=j & color==playerColor.get(j)){
+                if (i!=j && color==playerColor.get(j)){
                     return false;
                 }
             }

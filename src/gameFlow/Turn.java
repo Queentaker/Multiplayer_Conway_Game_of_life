@@ -2,6 +2,7 @@ package gameFlow;
 
 import exception.IllegalUserInputException;
 import grid.Grid;
+import grid.GridCell;
 import player.Player;
 import player.PlayersSignature;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class Turn {
 
 
-    private  Player currentPlayer;
+    private Player currentPlayer;
     private Grid grid;
     private CoordinatesTuple coordinates;
 
@@ -24,14 +25,14 @@ public class Turn {
 
         coordinates = getCoordinates();
         if(!grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getPlayersSignature().equals(getCurrentPlayersSignature())&& !grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor().equals(Color.WHITE)){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, currentPlayer);//I want to set a currents player cell
+            grid.placeGridCell(currentPlayer, coordinates.xCoordinate, coordinates.yCoordinate);//I want to set a currents player cell
         }
         else{
             throw new IllegalUserInputException("You must choose an opponents cell");
         }
         coordinates = getCoordinates();
         if (grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor()==Color.WHITE){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, currentPlayer); // I want to set a curretns player cell
+            grid.placeGridCell(currentPlayer, coordinates.xCoordinate, coordinates.yCoordinate); // I want to set a currents player cell
         }
         else{
             throw new IllegalUserInputException("You must choose an empty cell");
