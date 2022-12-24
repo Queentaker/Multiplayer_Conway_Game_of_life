@@ -14,7 +14,8 @@ public class SetUpTest {
     SetUp setUpper = new SetUp();
     int legalWidth= Constants.minWidth.constant;
     int legalHeight=Constants.minHeight.constant;
-    @Test
+    //
+    /*@Test
     public void SetUpSameNameTest() {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
@@ -54,6 +55,7 @@ public class SetUpTest {
         assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,startingPosition);});
 
     }
+    //
     /*
     @Test
     public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException {

@@ -1,6 +1,7 @@
 package gameFlow;
 
 import exception.IllegalUserInputException;
+import grid.startingTemplates.StartingTemplate;
 import player.Player;
 
 import java.util.List;
@@ -44,8 +45,8 @@ public class GameManager {
         }
 
     }
-    public void startGame(List<CoordinatesTuple> startConfiguration, List<Player> players, int height, int width){
+    public void startGame(List<Player> players, int height, int width, StartingTemplate template) {
         turn = new Turn(players.get(currentIndex));
-        turn.configurateStart(startConfiguration, players, height, width);
+        turn.configurateStart(template,players, height, width);
     }
 }
