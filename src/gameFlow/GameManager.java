@@ -1,6 +1,7 @@
 package gameFlow;
 
 import exception.IllegalUserInputException;
+import grid.Grid;
 import grid.startingTemplates.StartingTemplate;
 import player.Player;
 
@@ -80,7 +81,14 @@ public class GameManager implements Subject {
     }
     public void setMeasurements(){
         //todo here the stats of the Grid should be calculated after each turn
-
+        if(turn.getCurrentPlayersSignature()==players.get(0)){
+            cellsAlivePlayer1 = turn.getCellsAlivePlayer(turn.getCurrentPlayersSignature());
+            generationPlayer1++;
+        }
+        else{
+            cellsAlivePlayer2 = turn.getCellsAlivePlayer(turn.getCurrentPlayersSignature());
+            generationPlayer2++;
+        }
         measurementsChanged();
     }
 }
