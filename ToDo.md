@@ -5,7 +5,7 @@ here is a list of what needs to be done apart from testing
 - Make sure to look at crc cards for further information and to see what needs to be implemented 😁
 
 ## Grid
-- [ ] stats whenever evolved stats need to change and when player adds and removes gridcells: observer necessary
+- [x] stats whenever evolved stats need to change and when player adds and removes gridcells: observer necessary
 - [ ] the stats need to keep track of how many cells each player has and in which gernation we are
 - [ ] create 4-6 template patterns that are legal
 - [ ] make grid and templates work together
