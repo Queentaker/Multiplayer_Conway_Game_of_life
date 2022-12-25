@@ -6,8 +6,13 @@ import player.PlayersSignature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grid implements AddRemoveGridCell {
+public class Grid implements AddRemoveGridCell, Subject {
     //flyweight still needs to be implemented
+    private List<GridObserver> observers;
+    private int cellsAlivePlayer1;
+    private int cellsAlivePlayer2;
+    private int generationPlayer1;
+    private int generationPlayer2;
     private final List<ArrayList<GridCell>> grid;
     private final int gridHeight;
     private final int gridWidth;
@@ -90,4 +95,30 @@ public class Grid implements AddRemoveGridCell {
         }
         setGridCell(x,y, cellFactory.getEmptyGridCell());
     }
+
+    @Override
+    public void registerObserver(GridObserver o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(GridObserver o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(GridObserver observer: observers){
+            observer.update(cellsAlivePlayer1,cellsAlivePlayer2,generationPlayer1,generationPlayer2);
+        }
+    }
+
+    public void measurementsChanged(){
+        notifyObservers();
+    }
+    public void setMeasurements(){
+        //todo here the stats of the Grid should be calculated after each turn
+        measurementsChanged();
+    }
+
 }
