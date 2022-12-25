@@ -1,12 +1,10 @@
-package GUI.Grid;
+package GUI.playing.Grid;
 
 import GUI.Enums.ColorScheme;
-import GUI.Enums.Grid.GridColors;
 import gameFlow.CoordinatesTuple;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -23,7 +21,7 @@ public class GridButton extends JButton implements ActionListener {
     public GridButton (int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
-        this.setBackground(GridColors.DEFAULT_GRID_BUTTON.getColor());
+        this.setBackground(ColorScheme.MEDIUM_COLOR.getColor());
         this.setFocusable(false);
         GridButton.this.setBorder(defaultBorder);
 

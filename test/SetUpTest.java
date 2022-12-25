@@ -1,12 +1,5 @@
-import GUI.SetUp.SetUp;
+import setUp.SetUp;
 import enums.Constants;
-import exception.IllegalSetupException;
-import gameFlow.CoordinatesTuple;
-import org.junit.jupiter.api.Test;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

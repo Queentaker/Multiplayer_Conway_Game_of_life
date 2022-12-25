@@ -27,6 +27,7 @@ public class SetUpPanel extends JPanel implements ActionListener, ChangeListener
 
     public SetUpPanel(Frame frame) {
         this.frame = frame;
+        this.setOpaque(false);
 
         this.setLayout(new FlowLayout());
         startButton = new JButton("Start");
@@ -82,8 +83,9 @@ public class SetUpPanel extends JPanel implements ActionListener, ChangeListener
             playersNames.add(player1Name.getText());
             playersNames.add(player2Name.getText());
 
+            frame.setUpFinished(width, height);
+            //frame.setUpFinished(playersColors,playersNames,width, height);
 
-            frame.setUpFinished(playersColors,playersNames,width, height);
         } else {
             if (e.getSource().getClass() == JButton.class) {
                 JButton currentButton = (JButton) e.getSource();

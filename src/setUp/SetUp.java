@@ -1,4 +1,4 @@
-package GUI.SetUp;
+package setUp;
 
 import enums.Constants;
 import exception.IllegalSetupException;
