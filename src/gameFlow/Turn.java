@@ -20,6 +20,7 @@ public class Turn {
     private Grid grid;
     private CoordinatesTuple coordinates;
     private EvolveNextGen evolveNextGen;
+    private int generation=0;
 
     public Turn(Player currentPlayer) {
         assert currentPlayer != null;
@@ -42,6 +43,7 @@ public class Turn {
         else{
             throw new IllegalUserInputException("You must choose an empty cell");
         }
+        this.generation++;
         evolveNextGen.evolve(grid);
     }
 

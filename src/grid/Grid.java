@@ -6,13 +6,9 @@ import player.PlayersSignature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grid implements AddRemoveGridCell, Subject {
+public class Grid implements AddRemoveGridCell{
     //flyweight still needs to be implemented
-    private List<GridObserver> observers;
-    private int cellsAlivePlayer1;
-    private int cellsAlivePlayer2;
-    private int generationPlayer1;
-    private int generationPlayer2;
+
     private final List<ArrayList<GridCell>> grid;
     private final int gridHeight;
     private final int gridWidth;
@@ -80,7 +76,6 @@ public class Grid implements AddRemoveGridCell, Subject {
             throw new IllegalUserInputException("You can't add a cell to an already occupied one");
         }
         setGridCell(x,y, cellFactory.getGridCell(playersSignature));
-
     }
 
     @Override
@@ -96,29 +91,18 @@ public class Grid implements AddRemoveGridCell, Subject {
         setGridCell(x,y, cellFactory.getEmptyGridCell());
     }
 
-    @Override
-    public void registerObserver(GridObserver o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(GridObserver o) {
-        observers.remove(o);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for(GridObserver observer: observers){
-            observer.update(cellsAlivePlayer1,cellsAlivePlayer2,generationPlayer1,generationPlayer2);
+    //checks for all cells alive from a player
+    public int cellsAlivePlayer(Grid grid, PlayersSignature playersSignature){
+        int cellsAlivePlayer=0;
+        for(int x = 0; x < gridWidth; x++){
+            for(int y = 0; y < gridHeight; y++){
+                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
+                    cellsAlivePlayer++;
+                }
+            }
         }
+        return cellsAlivePlayer;
     }
 
-    public void measurementsChanged(){
-        notifyObservers();
-    }
-    public void setMeasurements(){
-        //todo here the stats of the Grid should be calculated after each turn
-        measurementsChanged();
-    }
 
 }

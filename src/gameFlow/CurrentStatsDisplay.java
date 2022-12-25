@@ -1,6 +1,8 @@
-package grid;
+package gameFlow;
 
-public class CurrentStatsDisplay implements GridObserver,Display{
+import grid.Grid;
+
+public class CurrentStatsDisplay implements GridObserver, Display {
     private int cellsAlivePlayer1;
     private int cellsAlivePlayer2;
     private int generationPlayer1;
