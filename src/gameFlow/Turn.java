@@ -59,6 +59,7 @@ public class Turn {
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
+
     public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
         template.addStartingGridPatterns(grid,getPlayersSignature(players));
@@ -76,11 +77,12 @@ public class Turn {
         return currentPlayer.getPlayerName();
     }
 
+    //checks for all cells alive from a player
     public int getCellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
-        for(int x=0; x < grid.getGridWidth(); x++){
-            for(int y=0; y < grid.getGridHeight(); y++){
-                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==getCurrentPlayersSignature()){
+        for(int x = 0; x < grid.getGridWidth(); x++){
+            for(int y = 0; y < grid.getGridHeight(); y++){
+                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
                     cellsAlivePlayer++;
                 }
             }

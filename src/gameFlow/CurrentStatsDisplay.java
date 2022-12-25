@@ -1,6 +1,5 @@
 package gameFlow;
 
-import grid.Display;
 import grid.Grid;
 
 public class CurrentStatsDisplay implements GridObserver, Display {
