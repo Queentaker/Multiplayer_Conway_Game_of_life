@@ -4,10 +4,13 @@ import exception.IllegalUserInputException;
 import grid.EvolveNextGen;
 import grid.Grid;
 import grid.GridCellFactory;
+import grid.startingTemplates.StartingTemplate;
 import player.Player;
 import player.PlayersSignature;
 
 import java.awt.*;
+import java.security.Signature;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Turn {
@@ -54,13 +57,18 @@ public class Turn {
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
-    public void configurateStart(List<CoordinatesTuple>startConfiguration, List<Player> players, int heigth, int with){
+    public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
-        for (int i = 0; i< players.size()-1; i++){
-            for (int j = 0; j< startConfiguration.size()-1; j++){
-                grid.setGridCell(startConfiguration.get(j).xCoordinate, startConfiguration.get(j).yCoordinate, GridCellFactory.getInstance().getGridCell(players.get(i)));
-            }
+        template.addStartingGridPatterns(grid,getPlayersSignature(players));
+
+
+    }
+    private List<PlayersSignature> getPlayersSignature(List<Player> players){
+        List<PlayersSignature> signatures=new ArrayList<>();
+        for (Player player: players){
+            signatures.add(player);
         }
+        return signatures;
     }
     public String getName(){
         return currentPlayer.getPlayerName();

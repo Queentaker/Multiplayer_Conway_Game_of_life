@@ -6,6 +6,8 @@ import exception.IllegalUserInputException;
 import gameFlow.CoordinatesTuple;
 import gameFlow.GameManager;
 import grid.Grid;
+import grid.startingTemplates.StartingTemplate;
+import grid.startingTemplates.TemplatesEnum;
 import player.HumanPlayer;
 import player.Player;
 
@@ -16,7 +18,7 @@ public class SetUp {
     public List<Player> players; //must be again private
     private GameManager gameManager;
 
-    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, List<CoordinatesTuple> startConfiguration) throws IllegalSetupException, IllegalUserInputException {
+    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate) throws IllegalSetupException, IllegalUserInputException {
         assert playerColors.size()==playerNames.size();
         if (!uniqueColors(playerColors)){
             throw new IllegalSetupException("You can't have same colors");
@@ -33,9 +35,9 @@ public class SetUp {
             players.add(player);
             i++;
         }
-
+        StartingTemplate template=TemplatesEnum.getTemplate(startingTemplate);
         gameManager = GameManager.getInstance(players);
-        gameManager.startGame(startConfiguration,players, height, width);
+        gameManager.startGame(players, height, width,template);
         gameManager.manageGame();
 
     }
