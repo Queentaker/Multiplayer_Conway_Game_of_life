@@ -1,5 +1,7 @@
 package gameFlow;
 
+import GUI.Frame;
+import GUI.playing.playingElements.PlayerInformationPanel;
 import exception.IllegalUserInputException;
 import grid.EvolveNextGen;
 import grid.Grid;
@@ -8,6 +10,7 @@ import grid.startingTemplates.StartingTemplate;
 import player.Player;
 import player.PlayersSignature;
 
+import javax.swing.*;
 import java.awt.*;
 import java.security.Signature;
 import java.util.ArrayList;
@@ -47,13 +50,14 @@ public class Turn {
         evolveNextGen.evolve(grid);
     }
 
-    private CoordinatesTuple getCoordinates(){
+    public CoordinatesTuple getCoordinates(){
         //This lines represent the input from the GUI until I receive the real one...
-        int xCoordinate = 1;
-        int yCoordinate = 1;
         //I assume, that it only can be called with valid coordinates...
         //Here the input from the GUI comes in...
-        return new CoordinatesTuple(xCoordinate, yCoordinate);
+
+        int x_coordinate =1;
+        int y_coordinate =1;
+        return new CoordinatesTuple(x_coordinate,y_coordinate);
     }
 
     public PlayersSignature getCurrentPlayersSignature() {

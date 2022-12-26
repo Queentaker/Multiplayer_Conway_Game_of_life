@@ -47,6 +47,5 @@ public class GridButton extends JButton implements ActionListener {
         System.out.println("X-Coordinate: " + xCoordinate);
         System.out.println("Y-Coordinate: " + yCoordinate);
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
-
     }
 }
