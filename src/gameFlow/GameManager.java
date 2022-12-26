@@ -27,6 +27,11 @@ public class GameManager implements Subject {
         return uniqueInstance;
     }
 
+    public static GameManager getInstance(){
+        assert uniqueInstance!=null;
+        return uniqueInstance;
+    }
+
     GameManager(List<Player> players){
         assert players != null;
         this.players = players;

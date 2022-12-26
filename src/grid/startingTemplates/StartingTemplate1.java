@@ -8,5 +8,6 @@ import java.util.List;
 public class StartingTemplate1 implements StartingTemplate {
     @Override
     public void addStartingGridPatterns(Grid grid, List<PlayersSignature> players) {
+
     }
 }
