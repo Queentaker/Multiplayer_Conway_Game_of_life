@@ -34,14 +34,14 @@ public class Turn {
 
         coordinates = getCoordinates();
         if(!grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getPlayersSignature().equals(getCurrentPlayersSignature())&& !grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor().equals(Color.WHITE)){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getEmptyGridCell());//I want to set a white player cell
+            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getEmptyGridCell());
         }
         else{
             throw new IllegalUserInputException("You must choose an opponents cell");
         }
         coordinates = getCoordinates();
         if (grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor()==Color.WHITE){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getGridCell(currentPlayer)); // I want to set a curretns player cell
+            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getGridCell(currentPlayer));
         }
         else{
             throw new IllegalUserInputException("You must choose an empty cell");
@@ -66,7 +66,10 @@ public class Turn {
 
     public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
-        template.addStartingGridPatterns(grid,getPlayersSignature(players));
+        for(Player p: players){
+            template.returnStartingGridPattern(p);
+        }
+
 
 
     }
