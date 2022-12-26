@@ -1,5 +1,6 @@
 package GUI.generalElements;
 
+import GUI.Enums.ColorScheme;
 import GUI.GUI_Utility;
 
 import javax.swing.*;
@@ -14,7 +15,17 @@ public class Title extends JPanel {
         this.setPreferredSize(new Dimension(150,120));
         JLabel leftUpperDecoration = GUI_Utility.ImageNameToLabel("LeftUpperCorner", 240, 120);
         this.add(leftUpperDecoration, BorderLayout.WEST);
-        JLabel logo = GUI_Utility.ImageNameToLabel("ownLogo", 130, 130);
-        this.add(logo, BorderLayout.EAST);
+        JLabel RightUpperDecoration = GUI_Utility.ImageNameToLabel("RightUpperCorner", 240, 120);
+        this.add(RightUpperDecoration, BorderLayout.EAST);
+        JPanel titlePanel = new JPanel();
+        titlePanel.setOpaque(false);
+        titlePanel.setLayout(new BorderLayout());
+        titlePanel.setBounds(new Rectangle(800, 120));
+        JLabel titleLabel = GUI_Utility.ImageNameToLabel("TitleLogo", 740, 100);
+        titleLabel.setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
+        titleLabel.setVerticalAlignment(JLabel.CENTER);
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
+        titlePanel.add(titleLabel);
+        this.add(titleLabel, BorderLayout.CENTER);
     }
 }

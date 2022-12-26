@@ -1,6 +1,7 @@
-package GUI.SetUp;
+package GUI.setUp;
 
 import GUI.Frame;
+import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 
 
 import javax.swing.*;
@@ -48,9 +49,9 @@ public class SetUpPanel extends JPanel implements ActionListener, ChangeListener
         player2Color.addActionListener(this);
         this.add(player2Color);
 
-        widthSlider = new SliderPanel(50,100, 75);
+        widthSlider = new SliderPanel(50,100, 75, "Length");
         this.add(widthSlider);
-        heightSlider = new SliderPanel(50,100, 75);
+        heightSlider = new SliderPanel(50,100, 75, "Height");
         this.add(heightSlider);
 
         player1Name = new JTextField();

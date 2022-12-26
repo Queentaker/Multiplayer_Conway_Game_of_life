@@ -3,7 +3,7 @@ package GUI;
 import GUI.Enums.ColorScheme;
 import GUI.generalElements.Title;
 import GUI.playing.Grid.GridPanel;
-import GUI.SetUp.SetUpPanel;
+import GUI.setUp.SetUpPanel;
 import GUI.playing.playingElements.PlayerInformationPanel;
 import GUI.playing.playingElements.StatesPanel;
 
@@ -23,7 +23,7 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200,800);
         this.getContentPane().setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
-        GUI_Utility.changeIcon(this, "ownLogo");
+        GUI_Utility.changeIcon(this, "ownTaskbarLogo");
 
         title = new Title();
         this.add(title, BorderLayout.NORTH);
