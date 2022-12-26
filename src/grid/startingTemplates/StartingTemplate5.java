@@ -21,4 +21,4 @@ public class StartingTemplate5 implements StartingTemplate {
         return template;
     }
 }
-}
+
