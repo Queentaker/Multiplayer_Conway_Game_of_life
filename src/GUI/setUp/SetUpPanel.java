@@ -1,7 +1,10 @@
 package GUI.setUp;
 
+import GUI.Enums.ColorScheme;
 import GUI.Frame;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
+import GUI.setUp.setUpElements.PlayerSettings.ChooseColor;
+import GUI.setUp.setUpElements.PlayerSettings.ChooseName;
 
 
 import javax.swing.*;
@@ -42,11 +45,7 @@ public class SetUpPanel extends JPanel implements ActionListener, ChangeListener
         player1Color.addActionListener(this);
         this.add(player1Color);
 
-        player2Color = new JButton("Player2 Color");
-        player2Color.setOpaque(true);
-        player2Color.setPreferredSize(new Dimension(200,100));
-        player2Color.setBackground(Color.RED);
-        player2Color.addActionListener(this);
+        player2Color = new ChooseColor(Color.CYAN, "Player2 Colori");
         this.add(player2Color);
 
         widthSlider = new SliderPanel(50,100, 75, "Length");
@@ -55,13 +54,11 @@ public class SetUpPanel extends JPanel implements ActionListener, ChangeListener
         this.add(heightSlider);
 
         player1Name = new JTextField();
-        player1Name.setText("Player1");
+        player1Name.setText("Player 1");
         player1Name.setPreferredSize(new Dimension(200,50));
         this.add(player1Name);
 
-        player2Name = new JTextField();
-        player2Name.setText("Player2");
-        player2Name.setPreferredSize(new Dimension(200,50));
+        player2Name = new ChooseName("Player 2");
         this.add(player2Name);
 
     }
