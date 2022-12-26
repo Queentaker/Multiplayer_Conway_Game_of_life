@@ -18,7 +18,7 @@ public class ChooseColor extends JButton implements ActionListener {
         this.setFocusable(false);
         this.setForeground(ColorScheme.DARK_COLOR.getColor());
         this.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 24));
-        this.setPreferredSize(new Dimension(250,150));
+        this.setPreferredSize(new Dimension(100,80));
         this.setBorder(BorderFactory.createLineBorder(currentColor, 8));
         this.setBackground(ColorScheme.MEDIUM_BRIGHT_COLOR.getColor());
         this.addActionListener(this);

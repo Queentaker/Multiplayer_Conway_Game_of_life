@@ -7,12 +7,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PlayerSettingPanel extends JPanel {
+    ChooseColor colorChoooser;
+    ChooseName nameChooser;
 
     public PlayerSettingPanel(String defaultName, Color defaultColor) {
         this.setOpaque(true);
         this.setLayout(new BorderLayout());
         this.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
-        this.setPreferredSize(new Dimension(300, 300));
+        this.setPreferredSize(new Dimension(300, 200));
+        this.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
 
         JLabel title = new JLabel(defaultName + " Settings");
         title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
@@ -21,8 +24,19 @@ public class PlayerSettingPanel extends JPanel {
         title.setHorizontalAlignment(JLabel.CENTER);
         this.add(title, BorderLayout.NORTH);
 
-        this.add(new ChooseColor(defaultColor,defaultName + " Color"), BorderLayout.SOUTH);
-        this.add(new ChooseName(defaultName + "Name"), BorderLayout.CENTER);
+        colorChoooser = new ChooseColor(defaultColor, defaultName + " Color");
+        this.add(colorChoooser, BorderLayout.SOUTH);
+
+        nameChooser = new ChooseName(defaultName + " Name");
+        this.add(nameChooser, BorderLayout.CENTER);
+    }
+
+    public Color getCurrentColor() {
+        return colorChoooser.getCurrentColor();
+    }
+
+    public String getCurrentName() {
+        return nameChooser.getText();
     }
 
 }
