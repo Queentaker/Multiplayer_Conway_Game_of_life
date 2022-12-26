@@ -3,7 +3,7 @@ package GUI.Enums;
 import java.awt.*;
 
 public enum ColorScheme {
-    BRIGHT_COLOR(new Color(228, 228, 232)),
+    BRIGHT_COLOR(new Color(238, 238, 242)),
     MEDIUM_BRIGHT_COLOR(new Color(217, 217, 250)),
     MEDIUM_COLOR(new Color(140, 140, 242)),
     MEDIUM_DARK_COLOR(new Color(76,76,154)),

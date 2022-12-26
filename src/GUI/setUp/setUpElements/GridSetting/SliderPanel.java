@@ -22,7 +22,7 @@ public class SliderPanel extends JPanel implements ChangeListener {
         title.setOpaque(false);
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setText(Title);
-        title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 24));
+        title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
         title.setForeground(ColorScheme.DARK_COLOR.getColor());
         title.setPreferredSize(new Dimension(30,50));
         this.add(title, BorderLayout.NORTH);

@@ -5,6 +5,7 @@ import GUI.Frame;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.ChooseColor;
 import GUI.setUp.setUpElements.PlayerSettings.ChooseName;
+import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
 
 
 import javax.swing.*;
@@ -45,7 +46,7 @@ public class SetUpPanel extends JPanel implements ActionListener, ChangeListener
         player1Color.addActionListener(this);
         this.add(player1Color);
 
-        player2Color = new ChooseColor(Color.CYAN, "Player2 Colori");
+        player2Color = new ChooseColor(Color.CYAN, "Player2 Color");
         this.add(player2Color);
 
         widthSlider = new SliderPanel(50,100, 75, "Length");
@@ -60,6 +61,8 @@ public class SetUpPanel extends JPanel implements ActionListener, ChangeListener
 
         player2Name = new ChooseName("Player 2");
         this.add(player2Name);
+
+        this.add(new PlayerSettingPanel("Player 3" , Color.GREEN));
 
     }
 
