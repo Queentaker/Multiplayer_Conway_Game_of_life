@@ -66,6 +66,9 @@ public class Turn {
 
     public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
+        int middleHorizont = grid.getGridWidth()/2;
+        int startVert = (grid.getGridHeight()/2)-2;
+
         for(Player p: players){
             template.returnStartingGridPattern(p);
         }
