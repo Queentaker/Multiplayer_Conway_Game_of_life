@@ -1,13 +1,5 @@
+import setUp.SetUp;
 import enums.Constants;
-import exception.IllegalSetupException;
-import exception.IllegalUserInputException;
-import gameFlow.CoordinatesTuple;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -15,7 +7,8 @@ public class SetUpTest {
     SetUp setUpper = new SetUp();
     int legalWidth= Constants.minWidth.constant;
     int legalHeight=Constants.minHeight.constant;
-    @Test
+    //
+    /*@Test
     public void SetUpSameNameTest() {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
@@ -55,6 +48,7 @@ public class SetUpTest {
         assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,startingPosition);});
 
     }
+    //
     /*
     @Test
     public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException {

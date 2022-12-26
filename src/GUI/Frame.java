@@ -1,72 +1,56 @@
 package GUI;
 
-import GUI.Grid.Grid;
-import GUI.SetUp.SetUpPane;
+import GUI.Enums.ColorScheme;
+import GUI.generalElements.Title;
+import GUI.playing.Grid.GridButton;
+import GUI.playing.Grid.GridPanel;
+import GUI.setUp.SetUpPanel;
+import GUI.playing.playingElements.PlayerInformationPanel;
+import GUI.playing.playingElements.StatesPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 
 public class Frame extends JFrame {
     JPanel title;
     JPanel stats;
     JPanel information;
     JPanel aGrid;
-    SetUpPane setUpPane;
+    SetUpPanel setUpPanel;
 
 
     public Frame() {
         this.setTitle("Conway's Game of Life");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200,800);
-        this.getContentPane().setBackground(Color.ORANGE);
-        GUI_Utility.changeIcon(this, "ownLogo");
+        this.getContentPane().setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
+        GUI_Utility.changeIcon(this, "ownTaskbarLogo");
 
-        setUpPane = new SetUpPane(this);
+        title = new Title();
+        this.add(title, BorderLayout.NORTH);
 
-        this.add(setUpPane, BorderLayout.CENTER);
+        information = new PlayerInformationPanel();
+        this.add(information, BorderLayout.SOUTH);
+
+        setUpPanel = new SetUpPanel(this);
+        this.add(setUpPanel, BorderLayout.CENTER);
+
         this.setVisible(true);
     }
 
     public void setUpFinished(int length, int height) {
-        setUpPane.setVisible(false);
-        this.remove(setUpPane);
+        setUpPanel.setVisible(false);
+        this.remove(setUpPanel);
 
-        title = new JPanel();
-        title.setBackground(Color.BLUE);
-        title.setPreferredSize(new Dimension(100,100));
-        JLabel label1 = new JLabel();
-        label1.setText("Title");
-        label1.setFont(new Font("Arial", Font.BOLD, 100));
-        URL imageResource = (GUI_Utility.ImageNameToURL("ownLogo"));
-        Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
-        Image ownIcon = defaultToolkit.getImage(imageResource).getScaledInstance(120, 120,  Image.SCALE_SMOOTH);
-        ImageIcon image = new ImageIcon(ownIcon);
-        label1.setIcon(image);
-        label1.setHorizontalTextPosition(SwingConstants.RIGHT);
-        label1.setVerticalAlignment(SwingConstants.CENTER);
-        title.add(label1);
-        this.add(title, BorderLayout.NORTH);
-
-        stats = new JPanel();
-        JLabel label2 = new JLabel();
-        label2.setText("Stats");
-        label2.setFont(new Font("Arial", Font.PLAIN, 50));
-        stats.add(label2);
-        stats.setBackground(Color.GREEN);
-        stats.setPreferredSize(new Dimension(400,100));
+        stats = new StatesPanel();
         this.add(stats, BorderLayout.EAST);
 
-        information = new JPanel();
-        information.setBackground(Color.CYAN);
-        JLabel label3 = new JLabel();
-        label3.setText("Player guiding");
-        label3.setFont(new Font("Arial", Font.PLAIN, 50));
-        information.add(label3);
-        information.setPreferredSize(new Dimension(100,100));
+        information = new PlayerInformationPanel();
         this.add(information, BorderLayout.SOUTH);
 
-        aGrid = new Grid(length, height);
+        aGrid = new GridPanel(length, height);
         this.add(aGrid, BorderLayout.CENTER);
     }
+
+
 }

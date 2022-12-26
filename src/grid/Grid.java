@@ -6,8 +6,9 @@ import player.PlayersSignature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grid implements AddRemoveGridCell {
+public class Grid implements AddRemoveGridCell{
     //flyweight still needs to be implemented
+
     private final List<ArrayList<GridCell>> grid;
     private final int gridHeight;
     private final int gridWidth;
@@ -75,7 +76,6 @@ public class Grid implements AddRemoveGridCell {
             throw new IllegalUserInputException("You can't add a cell to an already occupied one");
         }
         setGridCell(x,y, cellFactory.getGridCell(playersSignature));
-
     }
 
     @Override
@@ -90,4 +90,19 @@ public class Grid implements AddRemoveGridCell {
         }
         setGridCell(x,y, cellFactory.getEmptyGridCell());
     }
+
+    //checks for all cells alive from a player
+    public int cellsAlivePlayer(Grid grid, PlayersSignature playersSignature){
+        int cellsAlivePlayer=0;
+        for(int x = 0; x < gridWidth; x++){
+            for(int y = 0; y < gridHeight; y++){
+                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
+                    cellsAlivePlayer++;
+                }
+            }
+        }
+        return cellsAlivePlayer;
+    }
+
+
 }

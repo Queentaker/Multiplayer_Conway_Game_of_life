@@ -1,13 +1,19 @@
 package gameFlow;
 
+import GUI.Frame;
+import GUI.playing.playingElements.PlayerInformationPanel;
 import exception.IllegalUserInputException;
 import grid.EvolveNextGen;
 import grid.Grid;
 import grid.GridCellFactory;
+import grid.startingTemplates.StartingTemplate;
 import player.Player;
 import player.PlayersSignature;
 
+import javax.swing.*;
 import java.awt.*;
+import java.security.Signature;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Turn {
@@ -17,6 +23,7 @@ public class Turn {
     private Grid grid;
     private CoordinatesTuple coordinates;
     private EvolveNextGen evolveNextGen;
+    private int generation=0;
 
     public Turn(Player currentPlayer) {
         assert currentPlayer != null;
@@ -39,31 +46,52 @@ public class Turn {
         else{
             throw new IllegalUserInputException("You must choose an empty cell");
         }
+        this.generation++;
         evolveNextGen.evolve(grid);
     }
 
-    private CoordinatesTuple getCoordinates(){
+    public CoordinatesTuple getCoordinates(){
         //This lines represent the input from the GUI until I receive the real one...
-        int xCoordinate = 1;
-        int yCoordinate = 1;
         //I assume, that it only can be called with valid coordinates...
         //Here the input from the GUI comes in...
-        return new CoordinatesTuple(xCoordinate, yCoordinate);
+
+        int x_coordinate =1;
+        int y_coordinate =1;
+        return new CoordinatesTuple(x_coordinate,y_coordinate);
     }
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
-    public void configurateStart(List<CoordinatesTuple>startConfiguration, List<Player> players, int heigth, int with){
+
+    public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
-        for (int i = 0; i< players.size()-1; i++){
-            for (int j = 0; j< startConfiguration.size()-1; j++){
-                grid.setGridCell(startConfiguration.get(j).xCoordinate, startConfiguration.get(j).yCoordinate, GridCellFactory.getInstance().getGridCell(players.get(i)));
-            }
+        template.addStartingGridPatterns(grid,getPlayersSignature(players));
+
+
+    }
+    private List<PlayersSignature> getPlayersSignature(List<Player> players){
+        List<PlayersSignature> signatures=new ArrayList<>();
+        for (Player player: players){
+            signatures.add(player);
         }
+        return signatures;
     }
     public String getName(){
         return currentPlayer.getPlayerName();
+    }
+
+    //checks for all cells alive from a player
+    public int getCellsAlivePlayer(PlayersSignature playersSignature){
+        int cellsAlivePlayer=0;
+        for(int x = 0; x < grid.getGridWidth(); x++){
+            for(int y = 0; y < grid.getGridHeight(); y++){
+                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
+                    cellsAlivePlayer++;
+                }
+            }
+        }
+        return cellsAlivePlayer;
     }
 
 }

@@ -3,11 +3,16 @@ package GUI.Enums;
 import java.awt.*;
 
 public enum ColorScheme {
-    LIGHT_COLOR(new Color(0x999999)),
-    MEDIUM_COLOR(new Color(0x555555)),
+    BRIGHT_COLOR(new Color(238, 238, 242)),
+    MEDIUM_BRIGHT_COLOR(new Color(217, 217, 250)),
+    MEDIUM_COLOR(new Color(140, 140, 242)),
+    MEDIUM_DARK_COLOR(new Color(76,76,154)),
+    DARK_COLOR(new Color(79,77,73)),
+    BACKGROUND_COLOR(new Color(255,255,255)),
+
+    /// ???
     BLUE_COLOR(Color.BLUE),
-    GREEN_COLOR(new Color(1020000)),
-    DARK_COLOR(new Color(0x000000));
+    GREEN_COLOR(new Color(1020000));
 
     private final Color color;
 
