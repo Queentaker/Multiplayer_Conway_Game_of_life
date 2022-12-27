@@ -1,6 +1,7 @@
 package GUI;
 
 import GUI.Enums.ColorScheme;
+import GUI.generalElements.PlayerInformationPanel;
 import GUI.generalElements.Title;
 import GUI.playing.Grid.GridButton;
 import GUI.playing.Grid.GridPanel;
@@ -12,7 +13,7 @@ import GUI.playing.playingElements.StatesPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class Frame extends JFrame {
+public class Frame extends JFrame implements FrameObserver {
     JPanel title;
     PlayerInformationPanel information;
     PlayingPanel playingPanel;
@@ -46,4 +47,8 @@ public class Frame extends JFrame {
     }
 
 
+    @Override
+    public void update(int cellsAlivePlayer1, int cellsAlivePlayer2, int generationPlayer1, int generationPlayer2) {
+
+    }
 }
