@@ -51,9 +51,9 @@ public class GameManager implements Subject {
 
         while(true){ // Be aware of the endless loop!!!
 
-            turn.playerTurn();
+            //turn.playerTurn();
             nextPlayersTurn();
-
+            System.out.println("Hello");
         }
 
     }
@@ -62,8 +62,8 @@ public class GameManager implements Subject {
         turn.configurateStart(template,players, height, width);
     }
 
-    public void sendCoordinates(CoordinatesTuple coordinatesTuple){
-        turn.getCoordinates();
+    public void sendCoordinates(CoordinatesTuple coordinatesTuple) throws IllegalUserInputException {
+        turn.playerTurn(coordinatesTuple);
     }
 
 

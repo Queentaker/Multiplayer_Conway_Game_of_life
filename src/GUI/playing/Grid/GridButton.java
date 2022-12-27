@@ -1,11 +1,13 @@
 package GUI.playing.Grid;
 
 import GUI.Enums.ColorScheme;
+import exception.IllegalUserInputException;
 import gameFlow.CoordinatesTuple;
 import gameFlow.GameManager;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -46,6 +48,12 @@ public class GridButton extends JButton implements ActionListener {
         //Call method with (this.xCoordinate, this.yCoordinate)
         System.out.println("X-Coordinate: " + xCoordinate);
         System.out.println("Y-Coordinate: " + yCoordinate);
+        this.setBackground(Color.CYAN);
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
+        try {
+            GameManager.getInstance().sendCoordinates(coordinatesTuple);
+        } catch (IllegalUserInputException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

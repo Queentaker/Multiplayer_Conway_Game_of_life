@@ -30,16 +30,16 @@ public class Turn {
         this.currentPlayer = currentPlayer;
     }
 
-    public void playerTurn() throws IllegalUserInputException {
+    public void playerTurn(CoordinatesTuple coordinatesTuple) throws IllegalUserInputException {
 
-        coordinates = getCoordinates();
+
+        this.coordinates = coordinatesTuple;
         if(!grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getPlayersSignature().equals(getCurrentPlayersSignature())&& !grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor().equals(Color.WHITE)){
             grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getEmptyGridCell());
         }
         else{
             throw new IllegalUserInputException("You must choose an opponents cell");
         }
-        coordinates = getCoordinates();
         if (grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor()==Color.WHITE){
             grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getGridCell(currentPlayer));
         }
@@ -50,15 +50,7 @@ public class Turn {
         evolveNextGen.evolve(grid);
     }
 
-    public CoordinatesTuple getCoordinates(){
-        //This lines represent the input from the GUI until I receive the real one...
-        //I assume, that it only can be called with valid coordinates...
-        //Here the input from the GUI comes in...
 
-        int x_coordinate =1;
-        int y_coordinate =1;
-        return new CoordinatesTuple(x_coordinate,y_coordinate);
-    }
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
