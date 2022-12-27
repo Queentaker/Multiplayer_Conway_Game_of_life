@@ -24,7 +24,7 @@ public class GridButton extends JButton implements ActionListener {
     public GridButton (int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
-        this.setBackground(ColorScheme.MEDIUM_COLOR.getColor());
+        this.setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
         this.setFocusable(false);
         this.setOpaque(true);
         GridButton.this.setBorder(defaultBorder);
