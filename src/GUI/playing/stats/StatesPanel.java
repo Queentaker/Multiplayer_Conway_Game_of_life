@@ -6,13 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StatesPanel extends JPanel {
+    StatsProgressBar progressBar;
 
-    public StatesPanel() {
+    public StatesPanel(Color player1Color, Color player2Color) {
         this.setOpaque(false);
-        JLabel label2 = new JLabel();
-        label2.setText("Stats");
-        label2.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 50));
-        this.add(label2);
+        this.setLayout(new BorderLayout());
+        progressBar = new StatsProgressBar(player1Color, player2Color);
+        this.add(progressBar, BorderLayout.CENTER);
+
         this.setBackground(Color.WHITE);
         this.setPreferredSize(new Dimension(400,150));
     }
