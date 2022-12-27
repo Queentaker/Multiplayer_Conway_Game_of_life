@@ -2,6 +2,7 @@ package GUI;
 
 import GUI.Enums.ColorScheme;
 import GUI.generalElements.Title;
+import GUI.playing.Grid.GridButton;
 import GUI.playing.Grid.GridPanel;
 import GUI.setUp.SetUpPanel;
 import GUI.playing.playingElements.PlayerInformationPanel;
@@ -47,4 +48,6 @@ public class Frame extends JFrame {
         aGrid = new GridPanel(length, height);
         this.add(aGrid, BorderLayout.CENTER);
     }
+
+
 }

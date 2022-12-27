@@ -1,5 +1,7 @@
 package gameFlow;
 
+import GUI.Frame;
+import GUI.playing.playingElements.PlayerInformationPanel;
 import exception.IllegalUserInputException;
 import grid.EvolveNextGen;
 import grid.Grid;
@@ -8,6 +10,7 @@ import grid.startingTemplates.StartingTemplate;
 import player.Player;
 import player.PlayersSignature;
 
+import javax.swing.*;
 import java.awt.*;
 import java.security.Signature;
 import java.util.ArrayList;
@@ -31,14 +34,14 @@ public class Turn {
 
         coordinates = getCoordinates();
         if(!grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getPlayersSignature().equals(getCurrentPlayersSignature())&& !grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor().equals(Color.WHITE)){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getEmptyGridCell());//I want to set a white player cell
+            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getEmptyGridCell());
         }
         else{
             throw new IllegalUserInputException("You must choose an opponents cell");
         }
         coordinates = getCoordinates();
         if (grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor()==Color.WHITE){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getGridCell(currentPlayer)); // I want to set a curretns player cell
+            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getGridCell(currentPlayer));
         }
         else{
             throw new IllegalUserInputException("You must choose an empty cell");
@@ -47,13 +50,14 @@ public class Turn {
         evolveNextGen.evolve(grid);
     }
 
-    private CoordinatesTuple getCoordinates(){
+    public CoordinatesTuple getCoordinates(){
         //This lines represent the input from the GUI until I receive the real one...
-        int xCoordinate = 1;
-        int yCoordinate = 1;
         //I assume, that it only can be called with valid coordinates...
         //Here the input from the GUI comes in...
-        return new CoordinatesTuple(xCoordinate, yCoordinate);
+
+        int x_coordinate =1;
+        int y_coordinate =1;
+        return new CoordinatesTuple(x_coordinate,y_coordinate);
     }
 
     public PlayersSignature getCurrentPlayersSignature() {
@@ -62,7 +66,13 @@ public class Turn {
 
     public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
-        template.addStartingGridPatterns(grid,getPlayersSignature(players));
+        int middleHorizont = grid.getGridWidth()/2;
+        int startVert = (grid.getGridHeight()/2)-2;
+
+        for(Player p: players){
+            template.returnStartingGridPattern(p);
+        }
+
 
 
     }

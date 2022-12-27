@@ -1,5 +1,6 @@
 package gameFlow;
 
+import GUI.Frame;
 import exception.IllegalUserInputException;
 import grid.Grid;
 import grid.startingTemplates.StartingTemplate;
@@ -59,6 +60,10 @@ public class GameManager implements Subject {
     public void startGame(List<Player> players, int height, int width, StartingTemplate template) {
         turn = new Turn(players.get(currentIndex));
         turn.configurateStart(template,players, height, width);
+    }
+
+    public void sendCoordinates(CoordinatesTuple coordinatesTuple){
+        turn.getCoordinates();
     }
 
 
