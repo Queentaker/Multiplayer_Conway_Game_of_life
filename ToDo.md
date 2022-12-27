@@ -11,7 +11,8 @@ here is a list of what needs to be done apart from testing
 - [ ] make grid and templates work together
 - [ ] not necessary create grititerator that returns list of neighbors
 - [x] if done so change grid to be flexibale to recantangle
-- [ ] nextgen needs to count the cells when evolving 
+- [ ] nextgen needs to count the cells when evolving
+- [ ] GridButton JButton self implement to show color on Mac
 
 ## Gameflow
 
@@ -23,11 +24,13 @@ here is a list of what needs to be done apart from testing
 - [ ] have turn ask player which cells he wants to remove and then add
 - [x] not much has been implemented of gamemanger look at crc card is in whatsapp chat
 - [x] turn should be able to give the name of the current player
-- [x] make the desion choice if setup passes its information to the gamemanger or the gamemanger has an instance of setup. 
+- [x] make the desion choice if setup passes its information to the gamemanger or the gamemanger has an instance of setup.
+- [ ] add Frame as Observer
 
 ### Player
 - [ ] human player get input from gui and pass it 
 - [ ] abstract player has place and delete cell function, human player implements these
+
 
 
   
