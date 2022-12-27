@@ -11,7 +11,7 @@ public class StartingTemplate3 implements StartingTemplate{
         template = new Grid(5,5);
         for(int i = 1; i<6; i++){
             for(int j = 1; j<6; i++){
-                if((j == i || j == 6-i){
+                if(j == i || j == 6-i){
                     template.setGridCell(i,j, GridCellFactory.getInstance().getGridCell(player));
                 }else{
                     template.setGridCell(i,j,GridCellFactory.getInstance().getEmptyGridCell());

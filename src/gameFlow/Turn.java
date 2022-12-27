@@ -1,6 +1,8 @@
 package gameFlow;
 
 import exception.IllegalUserInputException;
+import gameFlow.states.RemoveCell;
+import gameFlow.states.TurnState;
 import grid.EvolveNextGen;
 import grid.Grid;
 import grid.GridCellFactory;
@@ -15,39 +17,29 @@ import java.util.List;
 public class Turn {
 
 
+
     private Player currentPlayer;
     private Grid grid;
     private CoordinatesTuple coordinates;
     private EvolveNextGen evolveNextGen;
     private int generation=0;
-
+    private TurnState currentState = new RemoveCell(this, grid);
+    public void setCurrentState(TurnState currentState){
+        this.currentState=currentState;
+        this.grid = grid;
+    }
     public Turn(Player currentPlayer) {
         assert currentPlayer != null;
         this.currentPlayer = currentPlayer;
     }
+    public void execute() throws IllegalUserInputException {currentState.next();}
 
-    public void playerTurn(CoordinatesTuple coordinatesTuple) throws IllegalUserInputException {
-
-
-        this.coordinates = coordinatesTuple;
-        if(!grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getPlayersSignature().equals(getCurrentPlayersSignature())&& !grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor().equals(Color.WHITE)){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getEmptyGridCell());
-        }
-        else{
-            throw new IllegalUserInputException("You must choose an opponents cell");
-        }
-        if (grid.getGridCell(coordinates.xCoordinate, coordinates.yCoordinate).getGridCellColor()==Color.WHITE){
-            grid.setGridCell(coordinates.xCoordinate, coordinates.yCoordinate, GridCellFactory.getInstance().getGridCell(currentPlayer));
-        }
-        else{
-            throw new IllegalUserInputException("You must choose an empty cell");
-        }
+    public void addGeneration(){
         this.generation++;
-        evolveNextGen.evolve(grid);
-        GameManager.getInstance().setMeasurements();
     }
-
-
+    public void setEvolveNextGen(){
+        evolveNextGen.evolve(grid);
+    }
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
@@ -75,7 +67,7 @@ public class Turn {
     public String getName(){
         return currentPlayer.getPlayerName();
     }
-
+    public CoordinatesTuple getCoordinates(){return coordinates;}
     //checks for all cells alive from a player
     public int getCellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
@@ -88,5 +80,6 @@ public class Turn {
         }
         return cellsAlivePlayer;
     }
+
 
 }
