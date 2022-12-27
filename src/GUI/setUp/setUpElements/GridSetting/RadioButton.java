@@ -1,9 +1,13 @@
 package GUI.setUp.setUpElements.GridSetting;
 
+import GUI.GUI_Utility;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static GUI.GUI_Utility.ImageNameToImageIcon;
 
 public class RadioButton extends JRadioButton implements ActionListener {
 
@@ -13,7 +17,7 @@ public class RadioButton extends JRadioButton implements ActionListener {
     public RadioButton(String imageName){
 
         radioButton = new JRadioButton();
-        patternIcon = new ImageIcon(imageName);
+        patternIcon = ImageNameToImageIcon(imageName,1080,1080);
         radioButton.setIcon(patternIcon);
     }
 

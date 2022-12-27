@@ -73,7 +73,18 @@ public class SetUpPanel extends JPanel implements ActionListener {
         JPanel gameSettings = new JPanel();
         gameSettings.setLayout(new FlowLayout());
         gameSettings.setOpaque(false);
-
+        radioButton1 = new RadioButton("StartLayouts/RadioButton1");
+        radioButton2 = new RadioButton("StartLayouts/RadioButton2");
+        radioButton3 = new RadioButton("StartLayouts/RadioButton3");
+        radioButton4 = new RadioButton("StartLayouts/RadioButton4");
+        radioButton5 = new RadioButton("StartLayouts/RadioButton5");
+        JPanel radioButtonPanel = new JPanel();
+        radioButtonPanel.add(radioButton1);
+        radioButtonPanel.add(radioButton2);
+        radioButtonPanel.add(radioButton3);
+        radioButtonPanel.add(radioButton4);
+        radioButtonPanel.add(radioButton5);
+        gameSettings.add(radioButtonPanel);
         widthSlider = new SliderPanel(20,60, 60, "Length");
         gameSettings.add(widthSlider);
         heightSlider = new SliderPanel(20,40, 25, "Height");
