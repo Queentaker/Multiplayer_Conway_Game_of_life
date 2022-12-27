@@ -5,12 +5,10 @@ import gameFlow.states.RemoveCell;
 import gameFlow.states.TurnState;
 import grid.EvolveNextGen;
 import grid.Grid;
-import grid.GridCellFactory;
-import grid.startingTemplates.StartingTemplate;
+import grid.startingTemplates.Template;
 import player.Player;
 import player.PlayersSignature;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,14 +44,12 @@ public class Turn {
         return currentPlayer;
     }
 
-    public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
+    public void configurateStart(Template template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
         int middleHorizont = grid.getGridWidth()/2;
         int startVert = (grid.getGridHeight()/2)-2;
+        template.addTemplate(grid,getPlayersSignature(players));
 
-        for(Player p: players){
-            template.returnStartingGridPattern(p);
-        }
 
     }
     private List<PlayersSignature> getPlayersSignature(List<Player> players){

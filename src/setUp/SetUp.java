@@ -3,10 +3,8 @@ package setUp;
 import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
-import gameFlow.CoordinatesTuple;
 import gameFlow.GameManager;
-import grid.Grid;
-import grid.startingTemplates.StartingTemplate;
+import grid.startingTemplates.Template;
 import grid.startingTemplates.TemplatesEnum;
 import player.HumanPlayer;
 import player.Player;
@@ -37,7 +35,7 @@ public class SetUp {
             players.add(player);
             i++;
         }
-        StartingTemplate template=TemplatesEnum.getTemplate(startingTemplate);
+        Template template=TemplatesEnum.getTemplate(startingTemplate);
         gameManager = GameManager.getInstance(players);
         gameManager.startGame(players, height, width,template);
     }
