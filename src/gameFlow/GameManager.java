@@ -51,14 +51,12 @@ public class GameManager implements Subject {
 
     public void startGame(List<Player> players, int height, int width, Template template) {
         turn = new Turn(players.get(currentIndex));
-        turn.configurateStart(template,players, height, width);
+        //turn.configurateStart(template,players, height, width);
     }
 
     public void sendCoordinates(CoordinatesTuple coordinatesTuple) throws IllegalUserInputException {
         turn.setCoordinates(coordinatesTuple);
     }
-
-
 
 
     @Override

@@ -39,19 +39,18 @@ public class Turn {
         evolveNextGen.evolve(grid);
     }
     public void setCoordinates(CoordinatesTuple coordinates){this.coordinates = coordinates;}
+    public CoordinatesTuple getCoordinates(){return coordinates;}
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
-
+/*
     public void configurateStart(Template template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
         int middleHorizont = grid.getGridWidth()/2;
         int startVert = (grid.getGridHeight()/2)-2;
         template.addTemplate(grid,getPlayersSignature(players));
-
-
-    }
+    }*/
     private List<PlayersSignature> getPlayersSignature(List<Player> players){
         List<PlayersSignature> signatures=new ArrayList<>();
         for (Player player: players){
@@ -62,7 +61,7 @@ public class Turn {
     public String getName(){
         return currentPlayer.getPlayerName();
     }
-    public CoordinatesTuple getCoordinates(){return coordinates;}
+
     //checks for all cells alive from a player
     public int getCellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;

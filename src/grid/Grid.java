@@ -96,9 +96,9 @@ public class Grid implements AddRemoveGridCell{
     //shouldnt it be x in range gridHeight and y in range grid
     public int cellsAlivePlayer(Grid grid, PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
-        for(int x = 0; x < gridWidth; x++){
-            for(int y = 0; y < gridHeight; y++){
-                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
+        for(int x = 0; x < gridHeight; x++){
+            for(int y = 0; y < gridWidth; y++){
+                if(/*grid.getGridCell(x,y).isOccupied() &&*/ grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
                     cellsAlivePlayer++;
                 }
             }

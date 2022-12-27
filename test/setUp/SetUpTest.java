@@ -56,7 +56,7 @@ public class SetUpTest {
         assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,1);});
 
     }
-/*raises error...
+
     @Test
     public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException {
         List<String> playerNames = new ArrayList<>();
@@ -69,6 +69,6 @@ public class SetUpTest {
         setUpper.setUp(playerColor,playerNames,50,50,1);
         Assertions.assertEquals("bob", "bob"); // other test
     }
-*/
+
 
 }
