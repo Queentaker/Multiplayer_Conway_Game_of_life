@@ -44,9 +44,6 @@ public class Frame extends JFrame {
         stats = new StatesPanel();
         this.add(stats, BorderLayout.EAST);
 
-        information = new PlayerInformationPanel();
-        this.add(information, BorderLayout.SOUTH);
-
         aGrid = new GridPanel(length, height);
         this.add(aGrid, BorderLayout.CENTER);
     }
