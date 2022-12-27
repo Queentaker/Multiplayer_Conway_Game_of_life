@@ -37,7 +37,8 @@ public class Frame extends JFrame implements FrameObserver {
         this.setVisible(true);
     }
 
-    public void setUpFinished(int length, int height, Color player1Color, Color player2Color) {
+    public void setUpFinished(int length, int height, Color player1Color, String player1Name, Color player2Color,
+                              String player2Name, int livingCells) {
         setUpPanel.setVisible(false);
         this.remove(setUpPanel);
         JPanel borderPanelLeft = new JPanel();
@@ -48,10 +49,9 @@ public class Frame extends JFrame implements FrameObserver {
         borderPanelRight.setOpaque(false);
         borderPanelRight.setPreferredSize(new Dimension(100,50));
         this.add(borderPanelRight, BorderLayout.EAST);
-        playingPanel = new PlayingPanel(length, height, player1Color, player2Color);
+        playingPanel = new PlayingPanel(length, height, player1Color, player1Name, player2Color, player2Name, livingCells);
         this.add(playingPanel);
     }
-
 
     @Override
     public void update(int cellsAlivePlayer1, int cellsAlivePlayer2, int generationPlayer1, int generationPlayer2) {

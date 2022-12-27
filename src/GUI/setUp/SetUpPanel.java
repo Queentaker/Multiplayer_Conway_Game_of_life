@@ -57,7 +57,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
         playerSettings.setLayout(new FlowLayout());
         playerSettings.setPreferredSize(new Dimension(500, 250));
         playerSettings.setOpaque(false);
-        player1Settings = new PlayerSettingPanel("Player 1", ColorScheme.MEDIUM_COLOR.getColor());
+        player1Settings = new PlayerSettingPanel("Player 1", ColorScheme.MEDIUM_DARK_COLOR.getColor());
         playerSettings.add(player1Settings);
         player2Settings = new PlayerSettingPanel("Player 2", ColorScheme.DARK_COLOR.getColor());
         playerSettings.add(player2Settings);
@@ -86,7 +86,8 @@ public class SetUpPanel extends JPanel implements ActionListener {
         playersNames.add(player1Settings.getCurrentName());
         playersNames.add(player2Settings.getCurrentName());
 
-        frame.setUpFinished(width, height, playersColors.get(0), playersColors.get(1));
+        frame.setUpFinished(width, height, playersColors.get(0), playersNames.get(0), playersColors.get(1), playersNames.get(1),
+                3);
         //frame.setUpFinished(playersColors,playersNames,width, height);
         SetUp setUp = new SetUp();
         try {
