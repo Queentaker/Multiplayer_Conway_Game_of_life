@@ -14,5 +14,10 @@ public class PlayerInformationPanel extends JPanel {
         this.add(leftUpperDecoration, BorderLayout.WEST);
         JLabel RightUpperDecoration = GUI_Utility.ImageNameToLabel("Corners/RightLowerCorner", 240, 120);
         this.add(RightUpperDecoration, BorderLayout.EAST);
+
+    }
+
+    public void update() {
+
     }
 }

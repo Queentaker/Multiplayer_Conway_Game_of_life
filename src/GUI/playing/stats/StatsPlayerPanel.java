@@ -26,6 +26,9 @@ public class StatsPlayerPanel extends JPanel {
         stats.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 24));
         stats.setHorizontalAlignment(JLabel.CENTER);
         this.add(stats, BorderLayout.SOUTH);
+    }
 
+    public void update(int newValue) {
+        stats.setText(Integer.toString(newValue));
     }
 }

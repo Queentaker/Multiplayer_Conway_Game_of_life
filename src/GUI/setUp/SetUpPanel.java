@@ -66,9 +66,9 @@ public class SetUpPanel extends JPanel implements ActionListener {
         JPanel gameSettings = new JPanel();
         gameSettings.setLayout(new FlowLayout());
         gameSettings.setOpaque(false);
-        widthSlider = new SliderPanel(20,60, 40, "Length");
+        widthSlider = new SliderPanel(20,60, 60, "Length");
         gameSettings.add(widthSlider);
-        heightSlider = new SliderPanel(20,40, 30, "Height");
+        heightSlider = new SliderPanel(20,40, 25, "Height");
         gameSettings.add(heightSlider);
         this.add(gameSettings, BorderLayout.CENTER);
     }

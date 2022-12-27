@@ -56,7 +56,12 @@ public class Frame extends JFrame implements FrameObserver {
     }
 
     @Override
-    public void update(int cellsAlivePlayer1, int cellsAlivePlayer2, int generationPlayer1, int generationPlayer2) {
+    public void updateGeneral(int cellsAlivePlayer1, int cellsAlivePlayer2, int generationPlayer1, int generationPlayer2) {
 
+    }
+
+    @Override
+    public void updateMessage(String message) {
+        information.update();
     }
 }

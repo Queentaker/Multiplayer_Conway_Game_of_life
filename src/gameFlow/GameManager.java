@@ -5,6 +5,7 @@ import GUI.FrameObserver;
 import exception.IllegalUserInputException;
 import grid.Grid;
 import grid.startingTemplates.StartingTemplate;
+import jdk.internal.org.jline.utils.Colors;
 import player.Player;
 
 import java.util.List;
@@ -74,7 +75,7 @@ public class GameManager implements Subject {
     @Override
     public void notifyObservers() {
         for(FrameObserver observer: observers){
-            observer.update(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, generationPlayer2);
+            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, generationPlayer2);
         }
     }
 
