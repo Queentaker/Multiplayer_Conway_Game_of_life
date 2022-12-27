@@ -1,4 +1,4 @@
-package gameFlow;
+/*package gameFlow;
 
 import grid.Grid;
 
@@ -15,11 +15,8 @@ public class CurrentStatsDisplay implements GridObserver, Display {
     }
 
     @Override
-    public void update(int cellsAlivePlayer1, int cellsAlivePlayer2, int generationPlayer1, int generationPlayer2) {
-        this.cellsAlivePlayer1 = cellsAlivePlayer1;
-        this.cellsAlivePlayer2 = cellsAlivePlayer2;
-        this.generationPlayer1 = generationPlayer1;
-        this.cellsAlivePlayer2 = generationPlayer2;
+    public void update() {
+
         display();
     }
 }

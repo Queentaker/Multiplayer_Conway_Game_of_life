@@ -7,6 +7,7 @@ import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
+import gameFlow.GameManager;
 import setUp.SetUp;
 
 
@@ -36,6 +37,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
         this.frame = frame;
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
+
 
         JPanel startPanel = new JPanel();
         startPanel.setLayout(new FlowLayout());
@@ -84,7 +86,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
         playersNames.add(player1Settings.getCurrentName());
         playersNames.add(player2Settings.getCurrentName());
 
-        frame.setUpFinished(width, height);
+        frame.setUpFinished(player1Settings.getCurrentColor(), player2Settings.getCurrentColor(), width, height);
         //frame.setUpFinished(playersColors,playersNames,width, height);
         SetUp setUp = new SetUp();
         try {

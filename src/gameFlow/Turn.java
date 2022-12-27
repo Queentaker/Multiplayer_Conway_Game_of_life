@@ -44,6 +44,7 @@ public class Turn {
         }
         this.generation++;
         evolveNextGen.evolve(grid);
+        GameManager.getInstance().setMeasurements();
     }
 
 

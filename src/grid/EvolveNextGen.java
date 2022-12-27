@@ -1,5 +1,6 @@
 package grid;
 
+import gameFlow.GameManager;
 import player.PlayersSignature;
 
 import java.util.*;
@@ -29,6 +30,7 @@ public class EvolveNextGen {
         }
         //todo calculate stats after each evolution
         //work needs to be done
+
     }
 
     private Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(int x, int y) {

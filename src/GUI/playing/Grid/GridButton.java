@@ -1,5 +1,6 @@
 package GUI.playing.Grid;
 
+import GUI.Frame;
 import GUI.Enums.ColorScheme;
 import exception.IllegalUserInputException;
 import gameFlow.CoordinatesTuple;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 public class GridButton extends JButton implements ActionListener {
     private static final Border defaultBorder = BorderFactory.createLineBorder(ColorScheme.MEDIUM_COLOR.getColor(),2);
@@ -19,6 +21,10 @@ public class GridButton extends JButton implements ActionListener {
 
     private final int xCoordinate;
     private final int yCoordinate;
+
+    boolean player1_turn=false;
+    boolean player2_turn=false;
+    Random random;
 
 
     public GridButton (int xCoordinate, int yCoordinate) {
@@ -49,6 +55,9 @@ public class GridButton extends JButton implements ActionListener {
         //Call method with (this.xCoordinate, this.yCoordinate)
         System.out.println("X-Coordinate: " + xCoordinate);
         System.out.println("Y-Coordinate: " + yCoordinate);
+        if(random.nextInt(2)==0){
+            player1_turn=true;
+        }
         this.setBackground(Color.CYAN);
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
         try {
@@ -56,5 +65,7 @@ public class GridButton extends JButton implements ActionListener {
         } catch (IllegalUserInputException ex) {
             throw new RuntimeException(ex);
         }
+
+
     }
 }

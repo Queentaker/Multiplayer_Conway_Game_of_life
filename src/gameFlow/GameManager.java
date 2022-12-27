@@ -1,6 +1,7 @@
 package gameFlow;
 
 import GUI.Frame;
+import GUI.FrameObserver;
 import exception.IllegalUserInputException;
 import grid.Grid;
 import grid.startingTemplates.StartingTemplate;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class GameManager implements Subject {
 
-    private List<GridObserver> observers;
+    private List<FrameObserver> observers;
     private int cellsAlivePlayer1;
     private int cellsAlivePlayer2;
     private int generationPlayer1;
@@ -47,16 +48,7 @@ public class GameManager implements Subject {
         }
     }
     //would it be smarter to have an empty Turn-constructor and give the instance of player to the playerTurn??
-    public void manageGame() throws IllegalUserInputException {
 
-        while(true){ // Be aware of the endless loop!!!
-
-            //turn.playerTurn();
-            nextPlayersTurn();
-            System.out.println("Hello");
-        }
-
-    }
     public void startGame(List<Player> players, int height, int width, StartingTemplate template) {
         turn = new Turn(players.get(currentIndex));
         turn.configurateStart(template,players, height, width);
@@ -70,19 +62,19 @@ public class GameManager implements Subject {
 
 
     @Override
-    public void registerObserver(GridObserver o) {
+    public void registerObserver(FrameObserver o) {
         observers.add(o);
     }
 
     @Override
-    public void removeObserver(GridObserver o) {
+    public void removeObserver(FrameObserver o) {
         observers.remove(o);
     }
 
     @Override
     public void notifyObservers() {
-        for(GridObserver observer: observers){
-            observer.update(cellsAlivePlayer1,cellsAlivePlayer2,generationPlayer1,generationPlayer2);
+        for(FrameObserver observer: observers){
+            observer.update(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, generationPlayer2);
         }
     }
 

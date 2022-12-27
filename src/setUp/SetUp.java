@@ -38,8 +38,6 @@ public class SetUp {
         StartingTemplate template=TemplatesEnum.getTemplate(startingTemplate);
         gameManager = GameManager.getInstance(players);
         gameManager.startGame(players, height, width,template);
-        gameManager.manageGame();
-
     }
     private boolean isGridSizeValid(int height, int width){
         return height>= Constants.minHeight.constant & height<=Constants.maxHeight.constant & width>=Constants.minWidth.constant & width<=Constants.maxWidth.constant;
