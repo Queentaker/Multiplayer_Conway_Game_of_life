@@ -7,8 +7,6 @@ import GUI.playing.Grid.GridButton;
 import GUI.playing.Grid.GridPanel;
 import GUI.playing.PlayingPanel;
 import GUI.setUp.SetUpPanel;
-import GUI.playing.playingElements.PlayerInformationPanel;
-import GUI.playing.playingElements.StatesPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +21,7 @@ public class Frame extends JFrame implements FrameObserver {
     public Frame() {
         this.setTitle("Conway's Game of Life");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1200,800);
+        this.setSize(1200,1000);
         this.getContentPane().setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
         GUI_Utility.changeIcon(this, "ownTaskbarLogo");
 
@@ -39,10 +37,18 @@ public class Frame extends JFrame implements FrameObserver {
         this.setVisible(true);
     }
 
-    public void setUpFinished(int length, int height) {
+    public void setUpFinished(int length, int height, Color player1Color, Color player2Color) {
         setUpPanel.setVisible(false);
         this.remove(setUpPanel);
-        playingPanel = new PlayingPanel(length, height);
+        JPanel borderPanelLeft = new JPanel();
+        borderPanelLeft.setOpaque(false);
+        borderPanelLeft.setPreferredSize(new Dimension(100,50));
+        this.add(borderPanelLeft, BorderLayout.WEST);
+        JPanel borderPanelRight = new JPanel();
+        borderPanelRight.setOpaque(false);
+        borderPanelRight.setPreferredSize(new Dimension(100,50));
+        this.add(borderPanelRight, BorderLayout.EAST);
+        playingPanel = new PlayingPanel(length, height, player1Color, player2Color);
         this.add(playingPanel);
     }
 

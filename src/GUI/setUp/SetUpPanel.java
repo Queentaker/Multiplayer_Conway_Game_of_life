@@ -86,7 +86,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
         playersNames.add(player1Settings.getCurrentName());
         playersNames.add(player2Settings.getCurrentName());
 
-        frame.setUpFinished(width, height);
+        frame.setUpFinished(width, height, playersColors.get(0), playersColors.get(1));
         //frame.setUpFinished(playersColors,playersNames,width, height);
         SetUp setUp = new SetUp();
         try {
