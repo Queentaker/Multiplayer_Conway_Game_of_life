@@ -16,4 +16,8 @@ public class GridPanel extends JPanel {
             }
         }
     }
+
+    public void update() {
+
+    }
 }

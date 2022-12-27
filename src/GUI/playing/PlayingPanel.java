@@ -24,7 +24,8 @@ public class PlayingPanel extends JPanel {
         this.add(stats, BorderLayout.SOUTH);
     }
 
-    public void update(int player1Value, int player2Value) {
-
+    public void update(int player1Value, int player2Value, int generation) {
+        stats.update(player1Value, player2Value, generation);
+        grid.update();
     }
 }

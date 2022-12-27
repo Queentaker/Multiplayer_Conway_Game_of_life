@@ -36,7 +36,10 @@ public class StatesPanel extends JPanel {
         this.setPreferredSize(new Dimension(400,100));
     }
 
-    public void update() {
-
+    public void update(int player1Value, int player2Value, int generation) {
+        this.generation.setText(Integer.toString(generation));
+        player1Panel.update(player1Value);
+        player2Panel.update(player2Value);
+        progressBar.update(player1Value, player2Value);
     }
 }
