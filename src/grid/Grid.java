@@ -3,6 +3,7 @@ package grid;
 import exception.IllegalUserInputException;
 import player.PlayersSignature;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +93,7 @@ public class Grid implements AddRemoveGridCell{
     }
 
     //checks for all cells alive from a player
+    //shouldnt it be x in range gridHeight and y in range grid
     public int cellsAlivePlayer(Grid grid, PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
         for(int x = 0; x < gridWidth; x++){
@@ -104,5 +106,17 @@ public class Grid implements AddRemoveGridCell{
         return cellsAlivePlayer;
     }
 
-
+    public ArrayList<ArrayList<Color>> getColors(){
+        ArrayList<ArrayList<Color>> colorsArray = new ArrayList<ArrayList<Color>>();
+        for (int x=0;x<gridHeight;x++){
+            ArrayList<Color> row=new ArrayList<Color>();
+            for (int y=0;y<gridWidth;y++){
+                row.add(getGridCell(x,y).getGridCellColor());
+            }
+            colorsArray.add(row);
+        }
+        return colorsArray;
+            }
 }
+
+
