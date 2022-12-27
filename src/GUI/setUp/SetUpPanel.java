@@ -3,6 +3,7 @@ package GUI.setUp;
 import GUI.Enums.ColorScheme;
 import GUI.Enums.FontScheme;
 import GUI.Frame;
+import GUI.setUp.setUpElements.GridSetting.RadioButton;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
 import exception.IllegalSetupException;
@@ -24,6 +25,12 @@ import java.util.ArrayList;
 public class SetUpPanel extends JPanel implements ActionListener {
     SliderPanel widthSlider;
     SliderPanel heightSlider;
+    RadioButton radioButton1;
+    RadioButton radioButton2;
+    RadioButton radioButton3;
+    RadioButton radioButton4;
+    RadioButton radioButton5;
+
     JButton startButton;
     PlayerSettingPanel player1Settings;
     PlayerSettingPanel player2Settings;
@@ -66,6 +73,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
         JPanel gameSettings = new JPanel();
         gameSettings.setLayout(new FlowLayout());
         gameSettings.setOpaque(false);
+
         widthSlider = new SliderPanel(20,60, 60, "Length");
         gameSettings.add(widthSlider);
         heightSlider = new SliderPanel(20,40, 25, "Height");
