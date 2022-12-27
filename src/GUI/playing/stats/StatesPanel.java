@@ -1,4 +1,4 @@
-package GUI.playing.playingElements;
+package GUI.playing.stats;
 
 import GUI.Enums.FontScheme;
 

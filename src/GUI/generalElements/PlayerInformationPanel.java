@@ -1,4 +1,4 @@
-package GUI.playing.playingElements;
+package GUI.generalElements;
 
 import GUI.GUI_Utility;
 

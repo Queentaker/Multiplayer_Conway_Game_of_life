@@ -1,7 +1,5 @@
 package gameFlow;
 
-import GUI.Frame;
-import GUI.playing.playingElements.PlayerInformationPanel;
 import exception.IllegalUserInputException;
 import grid.EvolveNextGen;
 import grid.Grid;
@@ -10,9 +8,7 @@ import grid.startingTemplates.StartingTemplate;
 import player.Player;
 import player.PlayersSignature;
 
-import javax.swing.*;
 import java.awt.*;
-import java.security.Signature;
 import java.util.ArrayList;
 import java.util.List;
 

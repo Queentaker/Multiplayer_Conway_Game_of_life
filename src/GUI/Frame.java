@@ -2,12 +2,9 @@ package GUI;
 
 import GUI.Enums.ColorScheme;
 import GUI.generalElements.Title;
-import GUI.playing.Grid.GridButton;
-import GUI.playing.Grid.GridPanel;
 import GUI.playing.PlayingPanel;
 import GUI.setUp.SetUpPanel;
-import GUI.playing.playingElements.PlayerInformationPanel;
-import GUI.playing.playingElements.StatesPanel;
+import GUI.generalElements.PlayerInformationPanel;
 
 import javax.swing.*;
 import java.awt.*;

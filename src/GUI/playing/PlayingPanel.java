@@ -1,7 +1,7 @@
 package GUI.playing;
 
 import GUI.playing.Grid.GridPanel;
-import GUI.playing.playingElements.StatesPanel;
+import GUI.playing.stats.StatesPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,5 +18,4 @@ public class PlayingPanel extends JPanel {
         stats = new StatesPanel();
         this.add(stats, BorderLayout.SOUTH);
     }
-
 }
