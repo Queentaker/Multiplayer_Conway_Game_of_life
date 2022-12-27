@@ -8,6 +8,8 @@ import grid.startingTemplates.StartingTemplate;
 import jdk.internal.org.jline.utils.Colors;
 import player.Player;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager implements Subject {
@@ -75,7 +77,8 @@ public class GameManager implements Subject {
     @Override
     public void notifyObservers() {
         for(FrameObserver observer: observers){
-            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, generationPlayer2);
+            ArrayList<ArrayList<Color>> colors = new ArrayList<>();
+            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, "I'm a Message", colors);
         }
     }
 

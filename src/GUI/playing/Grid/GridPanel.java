@@ -17,7 +17,7 @@ public class GridPanel extends JPanel {
         }
     }
 
-    public void update() {
+    public void update(ArrayList<ArrayList<Color>> gridColors) {
 
     }
 }

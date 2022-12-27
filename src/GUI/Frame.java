@@ -10,6 +10,7 @@ import GUI.setUp.SetUpPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Frame extends JFrame implements FrameObserver {
     JPanel title;
@@ -56,8 +57,10 @@ public class Frame extends JFrame implements FrameObserver {
     }
 
     @Override
-    public void updateGeneral(int cellsAlivePlayer1, int cellsAlivePlayer2, int generationPlayer1, int generationPlayer2) {
-
+    public void updateGeneral(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
+                              ArrayList<ArrayList<Color>> gridColors) {
+        updateMessage(message);
+        playingPanel.update(cellsAlivePlayer1, cellsAlivePlayer2, generation, gridColors);
     }
     @Override
     public void updateMessage(String message) {

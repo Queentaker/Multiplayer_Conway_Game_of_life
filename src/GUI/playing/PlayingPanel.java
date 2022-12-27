@@ -5,6 +5,7 @@ import GUI.playing.stats.StatesPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class PlayingPanel extends JPanel {
     GridPanel grid;
@@ -24,8 +25,8 @@ public class PlayingPanel extends JPanel {
         this.add(stats, BorderLayout.SOUTH);
     }
 
-    public void update(int player1Value, int player2Value, int generation) {
+    public void update(int player1Value, int player2Value, int generation, ArrayList<ArrayList<Color>> gridColors) {
         stats.update(player1Value, player2Value, generation);
-        grid.update();
+        grid.update(gridColors);
     }
 }
