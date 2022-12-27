@@ -12,6 +12,7 @@ import player.HumanPlayer;
 import player.Player;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
@@ -30,6 +31,7 @@ public class SetUp {
             throw new IllegalSetupException("Grid doesn't meet limits");
         }
         int i=0;
+        players = new ArrayList<>();
         while (i<playerColors.size()){
             Player player=new HumanPlayer(playerNames.get(i),playerColors.get(i));
             players.add(player);
