@@ -1,12 +1,12 @@
 package gameFlow;
 
-import GUI.Frame;
 import GUI.FrameObserver;
 import exception.IllegalUserInputException;
-import grid.Grid;
-import grid.startingTemplates.StartingTemplate;
+import grid.startingTemplates.Template;
 import player.Player;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager implements Subject {
@@ -49,7 +49,7 @@ public class GameManager implements Subject {
     }
     //would it be smarter to have an empty Turn-constructor and give the instance of player to the playerTurn??
 
-    public void startGame(List<Player> players, int height, int width, StartingTemplate template) {
+    public void startGame(List<Player> players, int height, int width, Template template) {
         turn = new Turn(players.get(currentIndex));
         turn.configurateStart(template,players, height, width);
     }
@@ -74,7 +74,8 @@ public class GameManager implements Subject {
     @Override
     public void notifyObservers() {
         for(FrameObserver observer: observers){
-            observer.update(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, generationPlayer2);
+            ArrayList<ArrayList<Color>> colors = new ArrayList<>();
+            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, "I'm a Message", colors);
         }
     }
 

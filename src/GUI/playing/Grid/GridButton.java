@@ -65,7 +65,9 @@ public class GridButton extends JButton implements ActionListener {
         } catch (IllegalUserInputException ex) {
             throw new RuntimeException(ex);
         }
+    }
 
-
+    public void changeColor(Color newColor) {
+        this.setBackground(newColor);
     }
 }

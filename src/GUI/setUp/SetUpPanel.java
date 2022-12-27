@@ -3,6 +3,7 @@ package GUI.setUp;
 import GUI.Enums.ColorScheme;
 import GUI.Enums.FontScheme;
 import GUI.Frame;
+import GUI.setUp.setUpElements.GridSetting.RadioButton;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
 import exception.IllegalSetupException;
@@ -24,6 +25,12 @@ import java.util.ArrayList;
 public class SetUpPanel extends JPanel implements ActionListener {
     SliderPanel widthSlider;
     SliderPanel heightSlider;
+    RadioButton radioButton1;
+    RadioButton radioButton2;
+    RadioButton radioButton3;
+    RadioButton radioButton4;
+    RadioButton radioButton5;
+
     JButton startButton;
     PlayerSettingPanel player1Settings;
     PlayerSettingPanel player2Settings;
@@ -66,9 +73,21 @@ public class SetUpPanel extends JPanel implements ActionListener {
         JPanel gameSettings = new JPanel();
         gameSettings.setLayout(new FlowLayout());
         gameSettings.setOpaque(false);
-        widthSlider = new SliderPanel(40,80, 60, "Length");
+        radioButton1 = new RadioButton("StartLayouts/RadioButton1");
+        radioButton2 = new RadioButton("StartLayouts/RadioButton2");
+        radioButton3 = new RadioButton("StartLayouts/RadioButton3");
+        radioButton4 = new RadioButton("StartLayouts/RadioButton4");
+        radioButton5 = new RadioButton("StartLayouts/RadioButton5");
+        JPanel radioButtonPanel = new JPanel();
+        radioButtonPanel.add(radioButton1);
+        radioButtonPanel.add(radioButton2);
+        radioButtonPanel.add(radioButton3);
+        radioButtonPanel.add(radioButton4);
+        radioButtonPanel.add(radioButton5);
+        gameSettings.add(radioButtonPanel);
+        widthSlider = new SliderPanel(20,60, 60, "Length");
         gameSettings.add(widthSlider);
-        heightSlider = new SliderPanel(30,60, 45, "Height");
+        heightSlider = new SliderPanel(20,40, 25, "Height");
         gameSettings.add(heightSlider);
         this.add(gameSettings, BorderLayout.CENTER);
     }

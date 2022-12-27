@@ -21,7 +21,7 @@ public class Title extends JPanel {
         titlePanel.setOpaque(false);
         titlePanel.setLayout(new BorderLayout());
         titlePanel.setBounds(new Rectangle(800, 120));
-        JLabel titleLabel = GUI_Utility.ImageNameToLabel("TitleLogo", 740, 100);
+        JLabel titleLabel = GUI_Utility.ImageNameToLabel("TitleLogo", 740, 95);
         titleLabel.setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
         titleLabel.setVerticalAlignment(JLabel.CENTER);
         titleLabel.setHorizontalAlignment(JLabel.CENTER);

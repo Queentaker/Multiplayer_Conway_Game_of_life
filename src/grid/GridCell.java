@@ -1,5 +1,6 @@
 package grid;
 
+import enums.GameColor;
 import player.PlayersSignature;
 
 import java.awt.*;
@@ -8,12 +9,15 @@ public class GridCell {
 
     private final boolean occupied;
     private PlayersSignature playersSignature;
+    private final Color color;
 
     public GridCell(){
+        this.color= GameColor.EmptyColor.color;
         occupied=false;
     }
     public GridCell(PlayersSignature playersSignature){
         this.playersSignature = playersSignature;
+        this.color=playersSignature.getPlayerColor();
         occupied=true;
     }
 
@@ -27,11 +31,7 @@ public class GridCell {
     }
 
     public Color getGridCellColor(){
-        // empty gridCell
-        if (!isOccupied()){
-            return Color.WHITE;
-        }
-        return playersSignature.getPlayerColor();
+        return color;
     }
     /*public void place(String playerId){
         isOccupied=true;
