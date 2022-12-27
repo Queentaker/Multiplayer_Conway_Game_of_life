@@ -40,6 +40,7 @@ public class Turn {
     public void setEvolveNextGen(){
         evolveNextGen.evolve(grid);
     }
+    public void setCoordinates(CoordinatesTuple coordinates){this.coordinates = coordinates;}
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
@@ -53,8 +54,6 @@ public class Turn {
         for(Player p: players){
             template.returnStartingGridPattern(p);
         }
-
-
 
     }
     private List<PlayersSignature> getPlayersSignature(List<Player> players){

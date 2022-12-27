@@ -55,7 +55,7 @@ public class GameManager implements Subject {
     }
 
     public void sendCoordinates(CoordinatesTuple coordinatesTuple) throws IllegalUserInputException {
-        turn.playerTurn(coordinatesTuple);
+        turn.setCoordinates(coordinatesTuple);
     }
 
 
