@@ -13,9 +13,9 @@ public class Title extends JPanel {
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(150,120));
-        JLabel leftUpperDecoration = GUI_Utility.ImageNameToLabel("LeftUpperCorner", 240, 120);
+        JLabel leftUpperDecoration = GUI_Utility.ImageNameToLabel("Corners/LeftUpperCorner", 240, 120);
         this.add(leftUpperDecoration, BorderLayout.WEST);
-        JLabel RightUpperDecoration = GUI_Utility.ImageNameToLabel("RightUpperCorner", 240, 120);
+        JLabel RightUpperDecoration = GUI_Utility.ImageNameToLabel("Corners/RightUpperCorner", 240, 120);
         this.add(RightUpperDecoration, BorderLayout.EAST);
         JPanel titlePanel = new JPanel();
         titlePanel.setOpaque(false);
