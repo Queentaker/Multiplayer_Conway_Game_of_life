@@ -18,10 +18,10 @@ public class GridPanel extends JPanel {
 
         this.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
         this.setLayout(new GridLayout(height, length,0,0));
-        for(int y = 0; y < height; y++) {
+        for(int a = 0; a < height; a++) {
             ArrayList<GridButton> row = new ArrayList<>();
-            for(int x = 0; x < length; x++) {
-                GridButton aGridButton = new GridButton(x,y);
+            for(int b = 0; b < length; b++) {
+                GridButton aGridButton = new GridButton(a,b);
                 row.add(aGridButton);
                 this.add(aGridButton);
             }
@@ -29,9 +29,9 @@ public class GridPanel extends JPanel {
         }
     }
     public void update(ArrayList<ArrayList<Color>> gridColors) {
-        for(int y = 0; y < height; y++) {
-            for (int x = 0; x < length; x++) {
-                grid.get(y).get(x).changeColor(gridColors.get(y).get(x));
+        for(int a = 0; a < height; a++) {
+            for (int b = 0; b < length; b++) {
+                grid.get(a).get(b).changeColor(gridColors.get(a).get(b));
             }
         }
     }

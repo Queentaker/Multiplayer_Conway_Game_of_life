@@ -31,8 +31,8 @@ public abstract class Template {
         int i=0;
         while (i<signatures.size()){
             TemplatePosition position=positions.get(i);
-            int x=position.XPosition+getXStartingPosition(grid);
-            int y=position.YPosition+getYStartingPosition(grid);
+            int x=position.ARow+getXStartingPosition(grid);
+            int y=position.BColum+getYStartingPosition(grid);
             addCustomTemplate(x,y,grid,signatures.get(i));
             i++;
         }

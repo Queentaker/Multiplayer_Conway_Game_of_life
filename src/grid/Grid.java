@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grid implements AddRemoveGridCell{
-    //flyweight still needs to be implemented
+
+    private final EvolveNextGen evolveNextGen=new EvolveNextGen();
 
     private final List<ArrayList<GridCell>> grid;
     private final int gridHeight;
@@ -51,6 +52,10 @@ public class Grid implements AddRemoveGridCell{
             copy.add(row);
         }
         return copy;
+    }
+
+    public void evolve(){
+        evolveNextGen.evolve(this);
     }
 
     public void setGridCell(int x,int y, GridCell gridCell){

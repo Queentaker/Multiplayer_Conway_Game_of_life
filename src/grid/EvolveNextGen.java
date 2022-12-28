@@ -28,7 +28,7 @@ public class EvolveNextGen {
                 }
             }
         }
-        //todo calculate stats after each evolution
+
         //work needs to be done
 
     }

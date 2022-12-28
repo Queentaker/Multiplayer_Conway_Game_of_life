@@ -6,7 +6,7 @@ public enum Constants {
     maxHeight(40),
     minWidth(30),
 
-    dist(6),
+    dist(4),
     maxWidth(60);
 
     public final int constant;
