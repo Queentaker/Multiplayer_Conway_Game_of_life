@@ -7,6 +7,7 @@ public enum Constants {
     minWidth(30),
 
     dist(4),
+    allowedPlayers(2),
     maxWidth(60);
 
     public final int constant;

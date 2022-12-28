@@ -37,9 +37,9 @@ public class GridPanel extends JPanel {
     }
 
     public void disableButtons() {
-        for(int y = 0; y < height; y++) {
-            for (int x = 0; x < length; x++) {
-                grid.get(y).get(x).disableButton();
+        for(int a = 0; a < height; a++) {
+            for (int b = 0; b < length; b++) {
+                grid.get(a).get(b).disableButton();
             }
         }
     }

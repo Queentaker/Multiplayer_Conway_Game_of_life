@@ -33,13 +33,13 @@ public abstract class Template {
             TemplatePosition position=positions.get(i);
             int x=position.ARow+getXStartingPosition(grid);
             int y=position.BColum+getYStartingPosition(grid);
+            System.out.println(x);
+            System.out.println(y);
             addCustomTemplate(x,y,grid,signatures.get(i));
             i++;
         }
 
     }
     protected abstract void addCustomTemplate(int x,int y,Grid grid, PlayersSignature signature);
-    //todo implement class that creates the starting grid pattern for the players maybe this can be function instead
-    //todo use strategy
     //make sure that it is the same and fair
 }

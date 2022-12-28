@@ -6,6 +6,7 @@ import player.PlayersSignature;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Grid implements AddRemoveGridCell{
 
@@ -56,6 +57,8 @@ public class Grid implements AddRemoveGridCell{
 
     public void evolve(){
         evolveNextGen.evolve(this);
+
+
     }
 
     public void setGridCell(int x,int y, GridCell gridCell){
@@ -110,6 +113,7 @@ public class Grid implements AddRemoveGridCell{
         }
         return cellsAlivePlayer;
     }
+    //todo private Map<PlayersSignature,Integer> getPlayersAliveCell {}
 
     public ArrayList<ArrayList<Color>> getColors(){
         ArrayList<ArrayList<Color>> colorsArray = new ArrayList<ArrayList<Color>>();
