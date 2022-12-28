@@ -2,12 +2,12 @@ package enums;
 
 public enum Constants {
     minAllowedPlayers(2),
-    minHeight(30),
-    maxHeight(60),
-    minWidth(40),
+    minHeight(20),
+    maxHeight(40),
+    minWidth(30),
 
     dist(6),
-    maxWidth(70);
+    maxWidth(60);
 
     public final int constant;
     Constants(Integer definedConstant){

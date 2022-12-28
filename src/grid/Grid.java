@@ -94,11 +94,11 @@ public class Grid implements AddRemoveGridCell{
 
     //checks for all cells alive from a player
     //shouldnt it be x in range gridHeight and y in range grid
-    public int cellsAlivePlayer(Grid grid, PlayersSignature playersSignature){
+    public int cellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
         for(int x = 0; x < gridHeight; x++){
             for(int y = 0; y < gridWidth; y++){
-                if(/*grid.getGridCell(x,y).isOccupied() &&*/ grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
+                if(/*grid.getGridCell(x,y).isOccupied() &&*/ this.getGridCell(x,y).getPlayersSignature()==playersSignature){
                     cellsAlivePlayer++;
                 }
             }

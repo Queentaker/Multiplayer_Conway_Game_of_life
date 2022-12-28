@@ -41,10 +41,6 @@ public class GridButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Call method with (this.xCoordinate, this.yCoordinate)
-        System.out.println("X-Coordinate: " + xCoordinate);
-        System.out.println("Y-Coordinate: " + yCoordinate);
-        this.setBackground(Color.CYAN);
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
         GameManager.getInstance().sendCoordinates(coordinatesTuple);
     }
