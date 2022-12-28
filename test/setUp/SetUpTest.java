@@ -1,5 +1,7 @@
 package setUp;
 
+import GUI.GameFrame;
+import GUI.setUp.SetUpPanel;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
 import gameFlow.CoordinatesTuple;
@@ -9,6 +11,7 @@ import setUp.SetUp;
 import enums.Constants;
 
 import java.awt.*;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SetUpTest {
     SetUp setUpper = new SetUp();
+    GameFrame gameFrame = new GameFrame();
+
     int legalWidth= Constants.minWidth.constant;
     int legalHeight=Constants.minHeight.constant;
 
@@ -28,7 +33,7 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         playerColor.add(Color.WHITE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1);});
+        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1, gameFrame);});
 
     }
     @Test
@@ -40,7 +45,7 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         playerColor.add(Color.BLUE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1);});
+        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1, gameFrame);});
 
     }
 
@@ -53,7 +58,7 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         playerColor.add(Color.WHITE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,1);});
+        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,1, gameFrame);});
 
     }
 
@@ -66,7 +71,7 @@ public class SetUpTest {
         playerColor.add(Color.RED);
         playerColor.add(Color.BLUE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        setUpper.setUp(playerColor,playerNames,50,50,1);
+        setUpper.setUp(playerColor,playerNames,50,50,1,gameFrame);
         Assertions.assertEquals("bob", "bob"); // other test
     }
 

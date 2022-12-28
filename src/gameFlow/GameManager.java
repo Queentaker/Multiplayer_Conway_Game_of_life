@@ -40,6 +40,7 @@ public class GameManager implements Subject {
         currentIndex = 0;
         turn = new Turn(players.get(currentIndex), grid);
         this.frame = frame;
+
     }
     public void nextPlayersTurn(){
         if (currentIndex++==players.size()){
@@ -53,6 +54,7 @@ public class GameManager implements Subject {
 
     public void sendCoordinates(CoordinatesTuple coordinatesTuple) {
         turn.setCoordinates(coordinatesTuple);
+
     }
 
 

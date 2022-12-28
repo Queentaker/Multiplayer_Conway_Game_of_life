@@ -16,9 +16,10 @@ import java.util.List;
 public class TurnTest {
 
     HumanPlayer testPlayer = new HumanPlayer("bob", Color.CYAN);
-    Turn testTurn = new Turn(testPlayer);
+
     Grid testGrid =new Grid(3,3);
     CoordinatesTuple coordinatesTupleTest = new CoordinatesTuple(1,1);
+    Turn testTurn = new Turn(testPlayer,testGrid);
     @Test
     public void playerSignatureTest(){
         PlayersSignature returnValue = testTurn.getCurrentPlayersSignature();

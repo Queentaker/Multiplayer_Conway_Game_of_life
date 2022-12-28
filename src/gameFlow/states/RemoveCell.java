@@ -17,12 +17,12 @@ public class RemoveCell implements TurnState{
     public RemoveCell(Turn aTurn, Grid aGrid){
         this.aTurn = aTurn;
         this.aGrid = aGrid;
+
     }
     @Override
     public void next() throws IllegalUserInputException {
         coordinatesTuple =aTurn.getCoordinates();
         aGrid.removeGridCell(aTurn.getCurrentPlayersSignature(), coordinatesTuple.xCoordinate, coordinatesTuple.yCoordinate);
-
         aTurn.addGeneration();
         aTurn.setEvolveNextGen();
         GameManager.getInstance().setMeasurements();
