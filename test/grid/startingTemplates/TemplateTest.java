@@ -18,7 +18,7 @@ public class TemplateTest {
         }
     };
     @Test
-    public void Template1(){
+    public void Template(){
         ArrayList<PlayersSignature> players = new ArrayList<PlayersSignature>();
         players.add(bobSignature);
         players.add(annaSignature);
