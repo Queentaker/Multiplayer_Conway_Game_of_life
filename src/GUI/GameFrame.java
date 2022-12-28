@@ -20,7 +20,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     public GameFrame() {
         this.setTitle("Conway's Game of Life");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1200,900);
+        this.setSize(1280,900);
         this.getContentPane().setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
         GUI_Utility.changeIcon(this, "ownTaskbarLogo");
 
@@ -63,5 +63,12 @@ public class GameFrame extends JFrame implements FrameObserver {
     @Override
     public void updateMessage(String message) {
         information.update(message);
+    }
+
+    public void declareWinner(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
+                              ArrayList<ArrayList<Color>> gridColors) {
+
+        updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generation, message, gridColors);
+        playingPanel.declareWinner();
     }
 }
