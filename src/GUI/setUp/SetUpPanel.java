@@ -6,6 +6,7 @@ import GUI.GameFrame;
 import GUI.setUp.setUpElements.GridSetting.RadioButtonPanel;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
+import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
 import setUp.SetUp;
@@ -71,9 +72,11 @@ public class SetUpPanel extends JPanel implements ActionListener {
         JPanel dimensionsSettings = new JPanel();
         dimensionsSettings.setLayout(new FlowLayout());
         dimensionsSettings.setOpaque(false);
-        widthSlider = new SliderPanel(20,60, 60, "Length");
+        widthSlider = new SliderPanel(Constants.minWidth.constant,Constants.maxWidth.constant,
+                (Constants.minWidth.constant + Constants.maxWidth.constant) / 2 , "Length");
         dimensionsSettings.add(widthSlider);
-        heightSlider = new SliderPanel(20,40, 25, "Height");
+        heightSlider = new SliderPanel(Constants.minHeight.constant, Constants.maxHeight.constant,
+                (Constants.minHeight.constant + Constants.maxHeight.constant) / 2, "Height");
         dimensionsSettings.add(heightSlider);
         gameSettings.add(dimensionsSettings, BorderLayout.NORTH);
 
