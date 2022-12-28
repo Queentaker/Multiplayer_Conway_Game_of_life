@@ -39,6 +39,8 @@ public class SliderPanel extends JPanel implements ChangeListener {
         this.add(number, BorderLayout.SOUTH);
 
         slider = new JSlider(min, max, defaultValue);
+        slider.setOpaque(true);
+        slider.setBackground(ColorScheme.MEDIUM_BRIGHT_COLOR.getColor());
         slider.setPreferredSize(new Dimension(300,60));
         slider.setPaintTicks(true);
         slider.setMinorTickSpacing(5);
