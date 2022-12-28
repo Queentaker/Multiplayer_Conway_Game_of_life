@@ -2,12 +2,11 @@ package grid.startingTemplates;
 
 import grid.Grid;
 import grid.GridCellFactory;
-import player.Player;
 import player.PlayersSignature;
 
-public class Template6 extends Template {
+public class Template5 extends Template {
 
-    public Template6(){
+    public Template5(){
         this.templateSize=6;
     }
 
