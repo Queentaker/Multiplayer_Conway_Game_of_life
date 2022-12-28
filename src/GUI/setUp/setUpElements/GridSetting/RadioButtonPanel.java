@@ -5,13 +5,10 @@ import GUI.Enums.FontScheme;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Enumeration;
 
 public class RadioButtonPanel extends JPanel {
-    RadioButton radioButton1;
-    RadioButton radioButton2;
-    RadioButton radioButton3;
-    RadioButton radioButton4;
-    RadioButton radioButton5;
+    ButtonGroup aButtonGroup;
 
     public RadioButtonPanel() {
         this.setOpaque(true);
@@ -32,12 +29,12 @@ public class RadioButtonPanel extends JPanel {
         JPanel buttonContainer = new JPanel();
         buttonContainer.setOpaque(false);
         buttonContainer.setLayout(new FlowLayout());
-        radioButton1 = new RadioButton("RadioButton1");
-        radioButton2 = new RadioButton("RadioButton2");
-        radioButton3 = new RadioButton("RadioButton3");
-        radioButton4 = new RadioButton("RadioButton4");
-        radioButton5 = new RadioButton("RadioButton5");
-        ButtonGroup aButtonGroup = new ButtonGroup();
+        RadioButton radioButton1 = new RadioButton("RadioButton1", 1);
+        RadioButton radioButton2 = new RadioButton("RadioButton2", 2);
+        RadioButton radioButton3 = new RadioButton("RadioButton3", 3);
+        RadioButton radioButton4 = new RadioButton("RadioButton4", 4);
+        RadioButton radioButton5 = new RadioButton("RadioButton5", 5);
+        aButtonGroup = new ButtonGroup();
         aButtonGroup.add(radioButton1);
         aButtonGroup.add(radioButton2);
         aButtonGroup.add(radioButton3);
@@ -54,6 +51,15 @@ public class RadioButtonPanel extends JPanel {
     }
 
     public int getSelectedValue() {
-        return 1;
+        for(Enumeration<AbstractButton> buttons = aButtonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton aButton = buttons.nextElement();
+            if (aButton.isSelected()) {
+                if (aButton.getClass() == RadioButton.class) {
+                    RadioButton button = (RadioButton) aButton;
+                    return button.getValue();
+                }
+            }
+        }
+        return -1;
     }
 }

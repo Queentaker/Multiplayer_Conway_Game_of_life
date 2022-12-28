@@ -101,7 +101,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
                 3);
         SetUp setUp = new SetUp();
         try {
-            setUp.setUp(playersColors,playersNames,height,width,1, frame);
+            setUp.setUp(playersColors,playersNames,height,width,radioButtonPanel.getSelectedValue(), frame);
         } catch (IllegalSetupException ex) {
             throw new RuntimeException(ex);
         } catch (IllegalUserInputException ex) {
