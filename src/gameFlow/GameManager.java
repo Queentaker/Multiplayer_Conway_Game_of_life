@@ -57,7 +57,6 @@ public class GameManager implements Subject {
 
     }
 
-
     @Override
     public void registerObserver(FrameObserver o) {
         observers.add(o);

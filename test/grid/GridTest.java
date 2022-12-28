@@ -26,7 +26,7 @@ public class GridTest {
         Field fSignatureGrid = testCell.getClass().getDeclaredField("playersSignature");
         fSignatureGrid.setAccessible(true);
         fSignatureGrid.set(testCell,bobSignature);
-        Assertions.assertEquals(1,grid3.cellsAlivePlayer(grid3,bobSignature));
+        Assertions.assertEquals(1,grid3.cellsAlivePlayer(bobSignature));
     }
 
     @Test
