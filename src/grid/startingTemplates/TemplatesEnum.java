@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum TemplatesEnum {
-    template1(1,new StartingTemplate1()),
-    template2(2,new StartingTemplate2());
+    template1(1,new Template1()),
+    template2(2,new Template2());
 
 
-    public final StartingTemplate template;
+    public final Template template;
     private final int index;
     private static final Map<Integer, TemplatesEnum> map=new HashMap<>();
-    TemplatesEnum(int index,StartingTemplate template){
+    TemplatesEnum(int index, Template template){
         this.template=template;
         this.index=index;
     }
@@ -20,7 +20,7 @@ public enum TemplatesEnum {
             map.put(template.index,template);
         }
     }
-    public static StartingTemplate getTemplate(int index){
+    public static Template getTemplate(int index){
         return map.get(index).template;
     }
 

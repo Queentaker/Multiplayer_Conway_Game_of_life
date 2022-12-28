@@ -1,11 +1,8 @@
 package gameFlow;
 
-import GUI.Frame;
 import GUI.FrameObserver;
 import exception.IllegalUserInputException;
-import grid.Grid;
-import grid.startingTemplates.StartingTemplate;
-import jdk.internal.org.jline.utils.Colors;
+import grid.startingTemplates.Template;
 import player.Player;
 
 import java.awt.*;
@@ -52,16 +49,14 @@ public class GameManager implements Subject {
     }
     //would it be smarter to have an empty Turn-constructor and give the instance of player to the playerTurn??
 
-    public void startGame(List<Player> players, int height, int width, StartingTemplate template) {
+    public void startGame(List<Player> players, int height, int width, Template template) {
         turn = new Turn(players.get(currentIndex));
-        turn.configurateStart(template,players, height, width);
+        //turn.configurateStart(template,players, height, width);
     }
 
     public void sendCoordinates(CoordinatesTuple coordinatesTuple) throws IllegalUserInputException {
         turn.setCoordinates(coordinatesTuple);
     }
-
-
 
 
     @Override

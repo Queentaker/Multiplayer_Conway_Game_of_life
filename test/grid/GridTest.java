@@ -7,13 +7,40 @@ import player.HumanPlayer;
 import player.PlayersSignature;
 
 import java.awt.*;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GridTest {
     Grid grid=new Grid(60,50);
+    Grid grid2 = new Grid (3,3);
+    Grid grid3 = new Grid(1,1);
     PlayersSignature bobSignature =new HumanPlayer("bob", Color.BLUE);
     PlayersSignature annaSignature= new HumanPlayer("anna", Color.RED);
+    GridCell testCell;
+    @Test
+    public void cellsAlivePlayerTest() throws IllegalUserInputException, NoSuchFieldException, IllegalAccessException {
+        testCell = new GridCell();
+        grid3.placeGridCell(bobSignature,0,0);
+        Field fSignatureGrid = testCell.getClass().getDeclaredField("playersSignature");
+        fSignatureGrid.setAccessible(true);
+        fSignatureGrid.set(testCell,bobSignature);
+        Assertions.assertEquals(1,grid3.cellsAlivePlayer(grid3,bobSignature));
+    }
+
+    @Test
+    public void getColorsTest(){
+        ArrayList<ArrayList<Color>> testColors = new ArrayList<ArrayList<Color>>();
+        for(int i = 0; i < 3; i++){
+            ArrayList<Color> row = new ArrayList<Color>();
+            for( int j = 0; j<3; j++){
+                row.add(Color.WHITE);
+            }
+            testColors.add(row);
+        }
+        Assertions.assertEquals(testColors,grid2.getColors());
+    }
     @Test
     public void copyGridTest(){
         Grid copyGrid= new Grid(grid);
