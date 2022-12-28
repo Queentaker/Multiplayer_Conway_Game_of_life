@@ -18,7 +18,7 @@ public class AddCell implements TurnState {
     @Override
     public void next() throws IllegalUserInputException {
         coordinatesTuple =aTurn.getCoordinates();
-        aGrid.placeGridCell(aTurn.getCurrentPlayersSignature(), coordinatesTuple.xCoordinate, coordinatesTuple.yCoordinate);
+        aGrid.placeGridCell(coordinatesTuple.aCoordinate, coordinatesTuple.bCoordinate, aTurn.getCurrentPlayersSignature());
         aTurn.addGeneration();
         aTurn.setEvolveNextGen();
         GameManager.getInstance().setMeasurements();

@@ -1,11 +1,11 @@
 package grid;
 
 public class CoordinatesTuple {
-    final public int xCoordinate;
-    final public int yCoordinate;
+    final public int aCoordinate;
+    final public int bCoordinate;
 
-    public CoordinatesTuple(int xCoordinate, int yCoordinate) {
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
+    public CoordinatesTuple(int aCoordinate, int bCoordinate) {
+        this.aCoordinate = aCoordinate;
+        this.bCoordinate = bCoordinate;
     }
 }

@@ -31,8 +31,8 @@ public class TurnTest {
     }
     @Test
     public void getCellsAlivePlayerTest() throws NoSuchFieldException, IllegalAccessException, IllegalUserInputException {
-        testGrid.placeGridCell(testPlayer,1,1);
-        testGrid.placeGridCell(testPlayer,0,1);
+        testGrid.placeGridCell(1, 1, testPlayer);
+        testGrid.placeGridCell(0, 1, testPlayer);
         Field fgrid = testTurn.getClass().getDeclaredField("grid");
         fgrid.setAccessible(true);
         fgrid.set(testTurn,testGrid);

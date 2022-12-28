@@ -22,7 +22,7 @@ public class GridTest {
     @Test
     public void cellsAlivePlayerTest() throws IllegalUserInputException, NoSuchFieldException, IllegalAccessException {
         testCell = new GridCell();
-        grid3.placeGridCell(bobSignature,0,0);
+        grid3.placeGridCell(0, 0, bobSignature);
         Field fSignatureGrid = testCell.getClass().getDeclaredField("playersSignature");
         fSignatureGrid.setAccessible(true);
         fSignatureGrid.set(testCell,bobSignature);
@@ -63,27 +63,27 @@ public class GridTest {
     }
     @Test
     public void placeGridCellfreeCellTest() throws IllegalUserInputException {
-        grid.placeGridCell(bobSignature,49,3);
+        grid.placeGridCell(49, 3, bobSignature);
         Assertions.assertEquals(bobSignature,grid.getGridCell(49,3).getPlayersSignature());
     }
     @Test
     public void placeGridCellOccupiedTest() {
         grid.setGridCell(5,10,new GridCell(bobSignature));
-        assertThrows(IllegalUserInputException.class,() ->{grid.placeGridCell(bobSignature,5,10);});
+        assertThrows(IllegalUserInputException.class,() ->{grid.placeGridCell(5, 10, bobSignature);});
     }
     @Test
     public void removeEmptyCellTest(){
-        assertThrows(IllegalUserInputException.class,() ->{grid.removeGridCell(bobSignature,5,10);});
+        assertThrows(IllegalUserInputException.class,() ->{grid.removeGridCell(5, 10, bobSignature);});
     }
     @Test
     public void removeOwnCellTest(){
         grid.setGridCell(5,10,new GridCell(bobSignature));
-        assertThrows(IllegalUserInputException.class,() ->{grid.removeGridCell(bobSignature,5,10);});
+        assertThrows(IllegalUserInputException.class,() ->{grid.removeGridCell(5, 10, bobSignature);});
     }
     @Test
     public void removeOpponentsCellTest() throws IllegalUserInputException{
         grid.setGridCell(5,10,new GridCell(annaSignature));
-        grid.removeGridCell(bobSignature,5,10);
+        grid.removeGridCell(5, 10, bobSignature);
         Assertions.assertFalse(grid.getGridCell(5,10).isOccupied());
     }
 }

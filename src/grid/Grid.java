@@ -6,7 +6,6 @@ import player.PlayersSignature;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Grid implements AddRemoveGridCell{
 
@@ -61,12 +60,12 @@ public class Grid implements AddRemoveGridCell{
 
     }
 
-    public void setGridCell(int x,int y, GridCell gridCell){
-        List<GridCell> row=grid.get(x);
-        row.set(y,gridCell);
+    public void setGridCell(int a,int b, GridCell gridCell){
+        List<GridCell> row=grid.get(a);
+        row.set(b,gridCell);
     }
-    public GridCell getGridCell(int x,int y){
-        return grid.get(x).get(y);
+    public GridCell getGridCell(int a,int b){
+        return grid.get(a).get(b);
     }
 
     public int getGridHeight() {
@@ -78,35 +77,35 @@ public class Grid implements AddRemoveGridCell{
     }
 
     @Override
-    public void placeGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException {
-        assert x>=0 && x<gridHeight;
-        assert y>=0 && y<gridHeight;
-        if (getGridCell(x,y).isOccupied()){
+    public void placeGridCell(int a, int b, PlayersSignature playersSignature) throws IllegalUserInputException {
+        assert a>=0 && a<gridHeight;
+        assert b>=0 && b<gridWidth;
+        if (getGridCell(a,b).isOccupied()){
             throw new IllegalUserInputException("You can't add a cell to an already occupied one");
         }
-        setGridCell(x,y, cellFactory.getGridCell(playersSignature));
+        setGridCell(a,b, cellFactory.getGridCell(playersSignature));
     }
 
     @Override
-    public void removeGridCell(PlayersSignature playersSignature, int x, int y) throws IllegalUserInputException{
-        assert x>=0 && x<gridHeight;
-        assert y>=0 && y<gridHeight;
-        if (!getGridCell(x,y).isOccupied()){
+    public void removeGridCell(int a, int b, PlayersSignature playersSignature) throws IllegalUserInputException{
+        assert a>=0 && a<gridHeight;
+        assert b>=0 && b<gridWidth;
+        if (!getGridCell(a,b).isOccupied()){
             throw new IllegalUserInputException("you can't remove your an empty cell");
         }
-        if (getGridCell(x, y).getPlayersSignature().getPlayerId().equals(playersSignature.getPlayerId())){
+        if (getGridCell(a, b).getPlayersSignature().getPlayerId().equals(playersSignature.getPlayerId())){
             throw new IllegalUserInputException("You can't remove your own cell");
         }
-        setGridCell(x,y, cellFactory.getEmptyGridCell());
+        setGridCell(a,b, cellFactory.getEmptyGridCell());
     }
 
     //checks for all cells alive from a player
     //shouldnt it be x in range gridHeight and y in range grid
     public int cellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
-        for(int x = 0; x < gridHeight; x++){
-            for(int y = 0; y < gridWidth; y++){
-                if(/*grid.getGridCell(x,y).isOccupied() &&*/ this.getGridCell(x,y).getPlayersSignature()==playersSignature){
+        for(int a = 0; a < gridHeight; a++){
+            for(int b = 0; b < gridWidth; b++){
+                if(/*grid.getGridCell(a,y).isOccupied() &&*/ this.getGridCell(a,b).getPlayersSignature()==playersSignature){
                     cellsAlivePlayer++;
                 }
             }
@@ -117,10 +116,10 @@ public class Grid implements AddRemoveGridCell{
 
     public ArrayList<ArrayList<Color>> getColors(){
         ArrayList<ArrayList<Color>> colorsArray = new ArrayList<ArrayList<Color>>();
-        for (int x=0;x<gridHeight;x++){
+        for (int a=0;a<gridHeight;a++){
             ArrayList<Color> row=new ArrayList<Color>();
-            for (int y=0;y<gridWidth;y++){
-                row.add(getGridCell(x,y).getGridCellColor());
+            for (int b=0;b<gridWidth;b++){
+                row.add(getGridCell(a,b).getGridCellColor());
             }
             colorsArray.add(row);
         }
