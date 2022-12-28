@@ -1,8 +1,8 @@
 package gameFlow;
 
-import GUI.GameFrame;
 import GUI.FrameObserver;
 import exception.IllegalUserInputException;
+import grid.CoordinatesTuple;
 import grid.Grid;
 import player.Player;
 
@@ -51,7 +51,8 @@ public class GameManager implements Subject {
         }
     }
 
-    public void sendCoordinates(CoordinatesTuple coordinatesTuple) {
+    public void receiveCoordinates(CoordinatesTuple coordinatesTuple) {
+        System.out.println("made it here2");
         String message = "I can tell the Player what to do, huiuiuiuiui...";
         turn.setCoordinates(coordinatesTuple);
         try {

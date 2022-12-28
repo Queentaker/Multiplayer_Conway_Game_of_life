@@ -1,17 +1,14 @@
 package setUp;
 
 import GUI.GameFrame;
-import GUI.setUp.SetUpPanel;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
-import gameFlow.CoordinatesTuple;
+import grid.CoordinatesTuple;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import setUp.SetUp;
 import enums.Constants;
 
 import java.awt.*;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 

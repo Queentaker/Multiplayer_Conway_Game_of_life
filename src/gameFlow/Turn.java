@@ -3,9 +3,9 @@ package gameFlow;
 import exception.IllegalUserInputException;
 import gameFlow.states.RemoveCell;
 import gameFlow.states.TurnState;
+import grid.CoordinatesTuple;
 import grid.EvolveNextGen;
 import grid.Grid;
-import grid.startingTemplates.Template;
 import player.Player;
 import player.PlayersSignature;
 

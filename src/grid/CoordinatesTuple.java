@@ -1,4 +1,4 @@
-package gameFlow;
+package grid;
 
 public class CoordinatesTuple {
     final public int xCoordinate;

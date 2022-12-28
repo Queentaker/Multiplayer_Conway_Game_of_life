@@ -1,7 +1,7 @@
 package GUI.playing.Grid;
 
 import GUI.Enums.ColorScheme;
-import gameFlow.CoordinatesTuple;
+import grid.CoordinatesTuple;
 import gameFlow.GameManager;
 
 import javax.swing.*;
@@ -42,7 +42,7 @@ public class GridButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
-        GameManager.getInstance().sendCoordinates(coordinatesTuple);
+        GameManager.getInstance().receiveCoordinates(coordinatesTuple);
     }
 
     public void changeColor(Color newColor) {

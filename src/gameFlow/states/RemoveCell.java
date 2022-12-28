@@ -2,7 +2,7 @@ package gameFlow.states;
 
 
 import exception.IllegalUserInputException;
-import gameFlow.CoordinatesTuple;
+import grid.CoordinatesTuple;
 import gameFlow.GameManager;
 import gameFlow.Turn;
 import grid.Grid;

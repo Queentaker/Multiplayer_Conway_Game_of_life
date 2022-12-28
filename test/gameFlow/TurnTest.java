@@ -1,17 +1,15 @@
 package gameFlow;
 
 import exception.IllegalUserInputException;
+import grid.CoordinatesTuple;
 import grid.Grid;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import player.HumanPlayer;
-import player.Player;
 import player.PlayersSignature;
 
 import java.awt.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TurnTest {
 
