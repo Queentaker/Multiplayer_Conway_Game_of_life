@@ -7,12 +7,12 @@ here is a list of what needs to be done apart from testing
 ## Grid
 - [x] stats whenever evolved stats need to change and when player adds and removes gridcells: observer necessary
 - [x] the stats need to keep track of how many cells each player has and in which generation we are
-- [ ] create 4-6 template patterns that are legal
+- [x] create 4-6 template patterns that are legal
 - [ ] make grid and templates work together
 - [ ] not necessary create grititerator that returns list of neighbors
 - [x] if done so change grid to be flexibale to recantangle
-- [ ] nextgen needs to count the cells when evolving
-- [ ] GridButton JButton self implement to show color on Mac
+- [x] nextgen needs to count the cells when evolving
+- [x] GridButton JButton self implement to show color on Mac
 
 ## Gameflow
 
@@ -25,7 +25,7 @@ here is a list of what needs to be done apart from testing
 - [x] not much has been implemented of gamemanger look at crc card is in whatsapp chat
 - [x] turn should be able to give the name of the current player
 - [x] make the desion choice if setup passes its information to the gamemanger or the gamemanger has an instance of setup.
-- [ ] add Frame as Observer
+- [x] add Frame as Observer
 
 ### Player
 - [ ] human player get input from gui and pass it 
