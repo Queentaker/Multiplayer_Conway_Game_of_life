@@ -3,13 +3,13 @@ package setUp;
 import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
-import gameFlow.CoordinatesTuple;
 import gameFlow.GameManager;
 import grid.Grid;
-import grid.startingTemplates.StartingTemplate;
+import grid.startingTemplates.Template;
 import grid.startingTemplates.TemplatesEnum;
 import player.HumanPlayer;
 import player.Player;
+import GUI.GameFrame;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,8 +19,9 @@ public class SetUp {
     public List<Player> players; //must be again private
     private GameManager gameManager;
 
-    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate) throws IllegalSetupException, IllegalUserInputException {
+    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, GameFrame frame) throws IllegalSetupException, IllegalUserInputException {
         assert playerColors.size()==playerNames.size();
+
         if (!uniqueColors(playerColors)){
             throw new IllegalSetupException("You can't have same colors");
         }
@@ -37,9 +38,9 @@ public class SetUp {
             players.add(player);
             i++;
         }
-        StartingTemplate template=TemplatesEnum.getTemplate(startingTemplate);
-        gameManager = GameManager.getInstance(players);
-        gameManager.startGame(players, height, width,template);
+        Grid grid = new Grid(height, width);
+        Template template=TemplatesEnum.getTemplate(startingTemplate);
+        gameManager = GameManager.getInstance(players, grid, frame);
     }
     private boolean isGridSizeValid(int height, int width){
         return height>= Constants.minHeight.constant & height<=Constants.maxHeight.constant & width>=Constants.minWidth.constant & width<=Constants.maxWidth.constant;

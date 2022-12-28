@@ -4,7 +4,7 @@ import java.awt.*;
 
 public enum FontScheme {
 
-    STANDARD_FONT("Baskerville");
+    STANDARD_FONT("Rockwell");
     private final String fontName;
 
     FontScheme(String name) {

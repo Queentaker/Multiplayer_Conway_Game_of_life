@@ -1,5 +1,16 @@
+package setUp;
+
+import exception.IllegalSetupException;
+import exception.IllegalUserInputException;
+import gameFlow.CoordinatesTuple;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import setUp.SetUp;
 import enums.Constants;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -7,8 +18,8 @@ public class SetUpTest {
     SetUp setUpper = new SetUp();
     int legalWidth= Constants.minWidth.constant;
     int legalHeight=Constants.minHeight.constant;
-    //
-    /*@Test
+
+    @Test
     public void SetUpSameNameTest() {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
@@ -17,8 +28,7 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         playerColor.add(Color.WHITE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        startingPosition.add(new CoordinatesTuple(1,1));
-        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,startingPosition);});
+        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1);});
 
     }
     @Test
@@ -30,8 +40,7 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         playerColor.add(Color.BLUE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        startingPosition.add(new CoordinatesTuple(1,1));
-        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,startingPosition);});
+        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1);});
 
     }
 
@@ -44,12 +53,10 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         playerColor.add(Color.WHITE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        startingPosition.add(new CoordinatesTuple(1,1));
-        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,startingPosition);});
+        assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,1);});
 
     }
-    //
-    /*
+
     @Test
     public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException {
         List<String> playerNames = new ArrayList<>();
@@ -59,10 +66,9 @@ public class SetUpTest {
         playerColor.add(Color.RED);
         playerColor.add(Color.BLUE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
-        startingPosition.add(new CoordinatesTuple(1,1));
-        setUpper.setUp(playerColor,playerNames,50,50,startingPosition);
+        setUpper.setUp(playerColor,playerNames,50,50,1);
         Assertions.assertEquals("bob", "bob"); // other test
     }
 
-     */
+
 }

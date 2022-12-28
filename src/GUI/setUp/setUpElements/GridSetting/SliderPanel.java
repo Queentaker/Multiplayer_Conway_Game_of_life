@@ -16,15 +16,17 @@ public class SliderPanel extends JPanel implements ChangeListener {
         this.setLayout(new BorderLayout());
         this.setOpaque(true);
         this.setBackground(ColorScheme.MEDIUM_BRIGHT_COLOR.getColor());
+        this.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
 
         JLabel title = new JLabel();
         title.setOpaque(true);
-        title.setOpaque(false);
         title.setHorizontalAlignment(JLabel.CENTER);
+        title.setVerticalAlignment(JLabel.TOP);
         title.setText(Title);
+        title.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
         title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
         title.setForeground(ColorScheme.DARK_COLOR.getColor());
-        title.setPreferredSize(new Dimension(30,50));
+        title.setPreferredSize(new Dimension(30,30));
         this.add(title, BorderLayout.NORTH);
 
         number = new JLabel();
@@ -39,12 +41,13 @@ public class SliderPanel extends JPanel implements ChangeListener {
         slider = new JSlider(min, max, defaultValue);
         slider.setPreferredSize(new Dimension(300,60));
         slider.setPaintTicks(true);
-        slider.setMinorTickSpacing(10);
+        slider.setMinorTickSpacing(5);
         slider.setPaintTrack(true);
-        slider.setMajorTickSpacing(50);
+        slider.setMajorTickSpacing(10);
         slider.setPaintLabels(true);
         slider.setOrientation(SwingConstants.HORIZONTAL);
         slider.addChangeListener(this);
+        slider.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 10));
         this.add(slider, BorderLayout.CENTER);
     }
 

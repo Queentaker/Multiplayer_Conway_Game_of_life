@@ -5,8 +5,7 @@ import gameFlow.states.RemoveCell;
 import gameFlow.states.TurnState;
 import grid.EvolveNextGen;
 import grid.Grid;
-import grid.GridCellFactory;
-import grid.startingTemplates.StartingTemplate;
+import grid.startingTemplates.Template;
 import player.Player;
 import player.PlayersSignature;
 
@@ -22,15 +21,16 @@ public class Turn {
     private Grid grid;
     private CoordinatesTuple coordinates;
     private EvolveNextGen evolveNextGen;
-    private int generation=0;
+    private int generation;
     private TurnState currentState = new RemoveCell(this, grid);
     public void setCurrentState(TurnState currentState){
         this.currentState=currentState;
-        this.grid = grid;
     }
-    public Turn(Player currentPlayer) {
+    public Turn(Player currentPlayer, Grid grid) {
         assert currentPlayer != null;
         this.currentPlayer = currentPlayer;
+        this.grid = grid;
+        generation = 0;
     }
     public void execute() throws IllegalUserInputException {currentState.next();}
 
@@ -41,21 +41,18 @@ public class Turn {
         evolveNextGen.evolve(grid);
     }
     public void setCoordinates(CoordinatesTuple coordinates){this.coordinates = coordinates;}
+    public CoordinatesTuple getCoordinates(){return coordinates;}
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
-
-    public void configurateStart(StartingTemplate template, List<Player> players, int heigth, int with){
+/*
+    public void configurateStart(Template template, List<Player> players, int heigth, int with){
         grid = new Grid(heigth,with);
         int middleHorizont = grid.getGridWidth()/2;
         int startVert = (grid.getGridHeight()/2)-2;
-
-        for(Player p: players){
-            template.returnStartingGridPattern(p);
-        }
-
-    }
+        template.addTemplate(grid,getPlayersSignature(players));
+    }*/
     private List<PlayersSignature> getPlayersSignature(List<Player> players){
         List<PlayersSignature> signatures=new ArrayList<>();
         for (Player player: players){
@@ -66,7 +63,7 @@ public class Turn {
     public String getName(){
         return currentPlayer.getPlayerName();
     }
-    public CoordinatesTuple getCoordinates(){return coordinates;}
+
     //checks for all cells alive from a player
     public int getCellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
@@ -80,5 +77,8 @@ public class Turn {
         return cellsAlivePlayer;
     }
 
+    public ArrayList<ArrayList<Color>> getColors() {
+        return grid.getColors();
+    }
 
 }

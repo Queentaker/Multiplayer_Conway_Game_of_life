@@ -37,7 +37,7 @@ public class StatesPanel extends JPanel {
     }
 
     public void update(int player1Value, int player2Value, int generation) {
-        this.generation.setText(Integer.toString(generation));
+        this.generation.setText("Generation: " + Integer.toString(generation));
         player1Panel.update(player1Value);
         player2Panel.update(player2Value);
         progressBar.update(player1Value, player2Value);

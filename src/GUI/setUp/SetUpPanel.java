@@ -2,21 +2,17 @@ package GUI.setUp;
 
 import GUI.Enums.ColorScheme;
 import GUI.Enums.FontScheme;
-import GUI.Frame;
-import GUI.setUp.setUpElements.GridSetting.RadioButton;
+import GUI.GameFrame;
+import GUI.setUp.setUpElements.GridSetting.RadioButtonPanel;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
-import gameFlow.GameManager;
 import setUp.SetUp;
 
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.color.ColorSpace;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -25,22 +21,20 @@ import java.util.ArrayList;
 public class SetUpPanel extends JPanel implements ActionListener {
     SliderPanel widthSlider;
     SliderPanel heightSlider;
-    RadioButton radioButton1;
-    RadioButton radioButton2;
-    RadioButton radioButton3;
-    RadioButton radioButton4;
-    RadioButton radioButton5;
 
     JButton startButton;
     PlayerSettingPanel player1Settings;
     PlayerSettingPanel player2Settings;
 
+    RadioButtonPanel radioButtonPanel;
+
     //delete after we can call it from model
-    Frame frame;
+    GameFrame frame;
 
 
 
-    public SetUpPanel(Frame frame) {
+
+    public SetUpPanel(GameFrame frame) {
         this.frame = frame;
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
@@ -71,30 +65,28 @@ public class SetUpPanel extends JPanel implements ActionListener {
         this.add(playerSettings, BorderLayout.NORTH);
 
         JPanel gameSettings = new JPanel();
-        gameSettings.setLayout(new FlowLayout());
         gameSettings.setOpaque(false);
-        radioButton1 = new RadioButton("StartLayouts/RadioButton1");
-        radioButton2 = new RadioButton("StartLayouts/RadioButton2");
-        radioButton3 = new RadioButton("StartLayouts/RadioButton3");
-        radioButton4 = new RadioButton("StartLayouts/RadioButton4");
-        radioButton5 = new RadioButton("StartLayouts/RadioButton5");
-        JPanel radioButtonPanel = new JPanel();
-        radioButtonPanel.add(radioButton1);
-        radioButtonPanel.add(radioButton2);
-        radioButtonPanel.add(radioButton3);
-        radioButtonPanel.add(radioButton4);
-        radioButtonPanel.add(radioButton5);
-        gameSettings.add(radioButtonPanel);
+        gameSettings.setLayout(new BorderLayout());
+
+        JPanel dimensionsSettings = new JPanel();
+        dimensionsSettings.setLayout(new FlowLayout());
+        dimensionsSettings.setOpaque(false);
         widthSlider = new SliderPanel(20,60, 60, "Length");
-        gameSettings.add(widthSlider);
+        dimensionsSettings.add(widthSlider);
         heightSlider = new SliderPanel(20,40, 25, "Height");
-        gameSettings.add(heightSlider);
+        dimensionsSettings.add(heightSlider);
+        gameSettings.add(dimensionsSettings, BorderLayout.NORTH);
+
+        radioButtonPanel = new RadioButtonPanel();
+
+        gameSettings.add(radioButtonPanel, BorderLayout.CENTER);
+
         this.add(gameSettings, BorderLayout.CENTER);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-            //call method with
+        //call method with
         int width = widthSlider.getValue();
         int height = heightSlider.getValue();
         //should be called from Model
@@ -107,10 +99,9 @@ public class SetUpPanel extends JPanel implements ActionListener {
 
         frame.setUpFinished(width, height, playersColors.get(0), playersNames.get(0), playersColors.get(1), playersNames.get(1),
                 3);
-        //frame.setUpFinished(playersColors,playersNames,width, height);
         SetUp setUp = new SetUp();
         try {
-            setUp.setUp(playersColors,playersNames,height,width,1);
+            setUp.setUp(playersColors,playersNames,height,width,1, frame);
         } catch (IllegalSetupException ex) {
             throw new RuntimeException(ex);
         } catch (IllegalUserInputException ex) {

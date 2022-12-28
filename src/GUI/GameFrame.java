@@ -3,8 +3,6 @@ package GUI;
 import GUI.Enums.ColorScheme;
 import GUI.generalElements.PlayerInformationPanel;
 import GUI.generalElements.Title;
-import GUI.playing.Grid.GridButton;
-import GUI.playing.Grid.GridPanel;
 import GUI.playing.PlayingPanel;
 import GUI.setUp.SetUpPanel;
 
@@ -12,17 +10,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Frame extends JFrame implements FrameObserver {
+public class GameFrame extends JFrame implements FrameObserver {
     JPanel title;
     PlayerInformationPanel information;
     PlayingPanel playingPanel;
     SetUpPanel setUpPanel;
 
 
-    public Frame() {
+    public GameFrame() {
         this.setTitle("Conway's Game of Life");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1200,1000);
+        this.setSize(1200,900);
         this.getContentPane().setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
         GUI_Utility.changeIcon(this, "ownTaskbarLogo");
 
