@@ -7,10 +7,7 @@ import gameFlow.GameManager;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class GridButton extends JButton implements ActionListener {
     private static final Border defaultBorder = BorderFactory.createLineBorder(ColorScheme.MEDIUM_COLOR.getColor(),2);
@@ -54,5 +51,11 @@ public class GridButton extends JButton implements ActionListener {
 
     public void changeColor(Color newColor) {
         this.setBackground(newColor);
+    }
+
+    public void disableButton() {
+        this.setEnabled(false);
+        MouseListener aListener = this.getMouseListeners()[0];
+        this.removeMouseListener(aListener);
     }
 }

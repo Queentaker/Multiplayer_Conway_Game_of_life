@@ -29,4 +29,8 @@ public class PlayingPanel extends JPanel {
         stats.update(player1Value, player2Value, generation);
         grid.update(gridColors);
     }
+
+    public void declareWinner() {
+        grid.disableButtons();
+    }
 }

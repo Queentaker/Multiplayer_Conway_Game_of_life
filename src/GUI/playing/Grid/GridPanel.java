@@ -28,11 +28,18 @@ public class GridPanel extends JPanel {
             grid.add(row);
         }
     }
-
     public void update(ArrayList<ArrayList<Color>> gridColors) {
         for(int y = 0; y < height; y++) {
             for (int x = 0; x < length; x++) {
                 grid.get(y).get(x).changeColor(gridColors.get(y).get(x));
+            }
+        }
+    }
+
+    public void disableButtons() {
+        for(int y = 0; y < height; y++) {
+            for (int x = 0; x < length; x++) {
+                grid.get(y).get(x).disableButton();
             }
         }
     }
