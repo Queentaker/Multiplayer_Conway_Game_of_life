@@ -45,11 +45,12 @@ public class SetUp {
             Grid grid = new Grid(height, width);
             Template template = TemplatesEnum.getTemplate(startingTemplate);
             template.addTemplate(grid, playersSignature);
-            gameManager = GameManager.getInstance(players, grid, frame);
-            int cellsAlive = grid.cellsAlivePlayer((PlayersSignature) players.get(0));
+            gameManager = GameManager.getInstance(players, grid);
+            int cellsAlive = grid.cellsAlivePlayer(players.get(0));
             frame.setUpFinished(width, height, playerColors.get(0), playerNames.get(0), playerColors.get(1), playerNames.get(1),
                     cellsAlive);
             frame.updateGeneral(cellsAlive, cellsAlive, 0, "", grid.getColors());
+            gameManager.registerObserver(frame);
         }
     }
     private boolean isGridSizeValid(int height, int width){

@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GridButton extends JButton implements ActionListener {
-    private static final Border defaultBorder = BorderFactory.createLineBorder(ColorScheme.MEDIUM_COLOR.getColor(),2);
+    private static final Border defaultBorder = BorderFactory.createLineBorder(ColorScheme.MEDIUM_COLOR.getColor(),1);
     private static final Border hoverBorder = BorderFactory.createLineBorder(ColorScheme.MEDIUM_COLOR.getColor(),4);
 
     private final int xCoordinate;

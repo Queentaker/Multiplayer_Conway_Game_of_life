@@ -2,9 +2,11 @@ package gameFlow;
 
 import GUI.GameFrame;
 import GUI.FrameObserver;
+import exception.IllegalUserInputException;
 import grid.Grid;
 import player.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager implements Subject {
@@ -12,19 +14,17 @@ public class GameManager implements Subject {
     private List<FrameObserver> observers;
     private int cellsAlivePlayer1;
     private int cellsAlivePlayer2;
-    private int generationPlayer1;
-    private int generationPlayer2;
+    private int generation;
     private static GameManager uniqueInstance;
 
     private final List<Player> players;
     private int currentIndex;
     private Turn turn;
 
-    private final GameFrame frame;
 
-    public static synchronized GameManager getInstance(List<Player> players, Grid grid, GameFrame frame){
+    public static synchronized GameManager getInstance(List<Player> players, Grid grid){
         if(uniqueInstance==null){
-            uniqueInstance = new GameManager(players, grid, frame);
+            uniqueInstance = new GameManager(players, grid);
         }
         return uniqueInstance;
     }
@@ -34,14 +34,14 @@ public class GameManager implements Subject {
         return uniqueInstance;
     }
 
-    private GameManager(List<Player> players, Grid grid,  GameFrame frame){
+    private GameManager(List<Player> players, Grid grid){
+        observers = new ArrayList<>();
         assert players != null;
         this.players = players;
         currentIndex = 0;
         turn = new Turn(players.get(currentIndex), grid);
-        this.frame = frame;
-
     }
+
     public void nextPlayersTurn(){
         if (currentIndex++==players.size()){
             currentIndex=0;
@@ -50,11 +50,16 @@ public class GameManager implements Subject {
             currentIndex++;
         }
     }
-    //would it be smarter to have an empty Turn-constructor and give the instance of player to the playerTurn??
 
     public void sendCoordinates(CoordinatesTuple coordinatesTuple) {
+        String message = "I can tell the Player what to do, huiuiuiuiui...";
         turn.setCoordinates(coordinatesTuple);
-
+        try {
+            turn.execute();
+        } catch (IllegalUserInputException e) {
+            notifyObserversMessage(e.getMessage());
+        }
+        notifyObserversGeneral(message);
     }
 
     @Override
@@ -68,33 +73,23 @@ public class GameManager implements Subject {
     }
 
     @Override
-    public void notifyObserversGeneral() {
+    public void notifyObserversGeneral(String message) {
         for(FrameObserver observer: observers){
-            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, "I'm a Message",
+            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generation, message,
                     turn.getColors());
         }
     }
 
     @Override
-    public void notifyObserversMessage() {
+    public void notifyObserversMessage(String message) {
         for(FrameObserver observer: observers){
             observer.updateMessage("I'm another Message");
         }
     }
 
-    public void measurementsChanged(){
-        notifyObserversGeneral();
-    }
     public void setMeasurements(){
-        //todo here the stats of the Grid should be calculated after each turn
-        if(turn.getCurrentPlayersSignature()==players.get(0)){
-            cellsAlivePlayer1 = turn.getCellsAlivePlayer(turn.getCurrentPlayersSignature());
-            generationPlayer1++;
-        }
-        else{
-            cellsAlivePlayer2 = turn.getCellsAlivePlayer(turn.getCurrentPlayersSignature());
-            generationPlayer2++;
-        }
-        measurementsChanged();
+        cellsAlivePlayer1 = turn.getCellsAlivePlayer(players.get(0));
+        cellsAlivePlayer2 = turn.getCellsAlivePlayer(players.get(1));
+        generation = turn.getGeneration();
     }
 }

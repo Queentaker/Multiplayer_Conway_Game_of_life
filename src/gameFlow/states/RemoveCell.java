@@ -17,7 +17,6 @@ public class RemoveCell implements TurnState{
     public RemoveCell(Turn aTurn, Grid aGrid){
         this.aTurn = aTurn;
         this.aGrid = aGrid;
-
     }
     @Override
     public void next() throws IllegalUserInputException {

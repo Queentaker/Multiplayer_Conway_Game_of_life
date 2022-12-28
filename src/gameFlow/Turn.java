@@ -31,6 +31,7 @@ public class Turn {
         this.currentPlayer = currentPlayer;
         this.grid = grid;
         generation = 0;
+        setCurrentState(new RemoveCell(this, grid));
     }
     public void execute() throws IllegalUserInputException {currentState.next();}
 
@@ -46,13 +47,7 @@ public class Turn {
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
-/*
-    public void configurateStart(Template template, List<Player> players, int heigth, int with){
-        grid = new Grid(heigth,with);
-        int middleHorizont = grid.getGridWidth()/2;
-        int startVert = (grid.getGridHeight()/2)-2;
-        template.addTemplate(grid,getPlayersSignature(players));
-    }*/
+
     private List<PlayersSignature> getPlayersSignature(List<Player> players){
         List<PlayersSignature> signatures=new ArrayList<>();
         for (Player player: players){
@@ -81,4 +76,7 @@ public class Turn {
         return grid.getColors();
     }
 
+    public int getGeneration() {
+        return generation;
+    }
 }
