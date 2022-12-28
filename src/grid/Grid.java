@@ -116,7 +116,7 @@ public class Grid implements AddRemoveGridCell{
             colorsArray.add(row);
         }
         return colorsArray;
-            }
+    }
 }
 
 

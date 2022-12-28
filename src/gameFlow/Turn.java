@@ -9,6 +9,7 @@ import grid.startingTemplates.Template;
 import player.Player;
 import player.PlayersSignature;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,5 +76,8 @@ public class Turn {
         return cellsAlivePlayer;
     }
 
+    public ArrayList<ArrayList<Color>> getColors() {
+        return grid.getColors();
+    }
 
 }

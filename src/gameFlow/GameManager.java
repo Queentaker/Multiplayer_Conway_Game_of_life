@@ -2,6 +2,7 @@ package gameFlow;
 
 import GUI.FrameObserver;
 import exception.IllegalUserInputException;
+import grid.Grid;
 import grid.startingTemplates.Template;
 import player.Player;
 
@@ -73,7 +74,8 @@ public class GameManager implements Subject {
     public void notifyObservers() {
         for(FrameObserver observer: observers){
             ArrayList<ArrayList<Color>> colors = new ArrayList<>();
-            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, "I'm a Message", colors);
+            observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, "I'm a Message",
+                    turn.getColors());
         }
     }
 
