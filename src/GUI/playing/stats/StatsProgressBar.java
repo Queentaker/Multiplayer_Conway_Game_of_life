@@ -1,5 +1,6 @@
 package GUI.playing.stats;
 
+import GUI.Enums.ColorScheme;
 import GUI.Enums.FontScheme;
 
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class StatsProgressBar extends JPanel {
 
         percentage = new JLabel("50 %");
         percentage.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 24));
+        percentage.setForeground(ColorScheme.DARK_COLOR.getColor());
         percentage.setOpaque(false);
         percentage.setHorizontalAlignment(JLabel.CENTER);
         this.add(percentage, BorderLayout.SOUTH);
