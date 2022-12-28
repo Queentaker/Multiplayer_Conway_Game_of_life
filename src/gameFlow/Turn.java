@@ -21,15 +21,16 @@ public class Turn {
     private Grid grid;
     private CoordinatesTuple coordinates;
     private EvolveNextGen evolveNextGen;
-    private int generation=0;
+    private int generation;
     private TurnState currentState = new RemoveCell(this, grid);
     public void setCurrentState(TurnState currentState){
         this.currentState=currentState;
-        this.grid = grid;
     }
-    public Turn(Player currentPlayer) {
+    public Turn(Player currentPlayer, Grid grid) {
         assert currentPlayer != null;
         this.currentPlayer = currentPlayer;
+        this.grid = grid;
+        generation = 0;
     }
     public void execute() throws IllegalUserInputException {currentState.next();}
 

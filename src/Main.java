@@ -1,9 +1,9 @@
-import GUI.Frame;
+import GUI.GameFrame;
 
 public class Main {
     //todo keep track of generations
     public static void main(String[] args) {
-        new Frame();
+        new GameFrame();
     }
     // in the gameManager is currently an endless loop...
 

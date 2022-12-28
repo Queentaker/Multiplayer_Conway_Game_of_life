@@ -17,7 +17,7 @@ public class GameManagerTest {
     List<Player> players = new ArrayList<>();
 
     List<CoordinatesTuple> startConfiguration= new ArrayList<>();
-    GameManager gameManager = new GameManager(players);
+    GameManager gameManager = GameManager.getInstance();
     @Test
     public void nextPlayersTurnTest(){
         gameManager.nextPlayersTurn();

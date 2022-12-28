@@ -1,7 +1,8 @@
 package gameFlow;
 
+import GUI.GameFrame;
 import GUI.FrameObserver;
-import grid.startingTemplates.Template;
+import grid.Grid;
 import player.Player;
 
 import java.util.List;
@@ -19,9 +20,11 @@ public class GameManager implements Subject {
     private int currentIndex;
     private Turn turn;
 
-    public static synchronized GameManager getInstance(List<Player> players){
+    private final GameFrame frame;
+
+    public static synchronized GameManager getInstance(List<Player> players, Grid grid, GameFrame frame){
         if(uniqueInstance==null){
-            uniqueInstance = new GameManager(players);
+            uniqueInstance = new GameManager(players, grid, frame);
         }
         return uniqueInstance;
     }
@@ -31,10 +34,12 @@ public class GameManager implements Subject {
         return uniqueInstance;
     }
 
-    GameManager(List<Player> players){
+    private GameManager(List<Player> players, Grid grid,  GameFrame frame){
         assert players != null;
         this.players = players;
         currentIndex = 0;
+        turn = new Turn(players.get(currentIndex), grid);
+        this.frame = frame;
     }
     public void nextPlayersTurn(){
         if (currentIndex++==players.size()){
@@ -45,11 +50,6 @@ public class GameManager implements Subject {
         }
     }
     //would it be smarter to have an empty Turn-constructor and give the instance of player to the playerTurn??
-
-    public void startGame(List<Player> players, int height, int width, Template template) {
-        turn = new Turn(players.get(currentIndex));
-        //turn.configurateStart(template,players, height, width);
-    }
 
     public void sendCoordinates(CoordinatesTuple coordinatesTuple) {
         turn.setCoordinates(coordinatesTuple);

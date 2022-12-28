@@ -9,7 +9,7 @@ public class GUI_Utility {
 
     private static URL ImageNameToURL(String name) {
         String location = "GUI/images/" + name + ".png";
-        return Frame.class.getClassLoader().getResource(location);
+        return GameFrame.class.getClassLoader().getResource(location);
     }
 
     public static Image ImageNameToImage(String name) {
@@ -33,7 +33,7 @@ public class GUI_Utility {
         return aLabel;
     }
 
-    public static void changeIcon(Frame frame, String imageName) {
+    public static void changeIcon(GameFrame frame, String imageName) {
         Taskbar taskBar = Taskbar.getTaskbar();
         Image ownIcon = (ImageNameToImage(imageName));
         //MacOS

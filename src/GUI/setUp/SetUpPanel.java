@@ -2,22 +2,17 @@ package GUI.setUp;
 
 import GUI.Enums.ColorScheme;
 import GUI.Enums.FontScheme;
-import GUI.Frame;
-import GUI.setUp.setUpElements.GridSetting.RadioButton;
+import GUI.GameFrame;
 import GUI.setUp.setUpElements.GridSetting.RadioButtonPanel;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
-import gameFlow.GameManager;
 import setUp.SetUp;
 
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.color.ColorSpace;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -34,12 +29,12 @@ public class SetUpPanel extends JPanel implements ActionListener {
     RadioButtonPanel radioButtonPanel;
 
     //delete after we can call it from model
-    Frame frame;
+    GameFrame frame;
 
 
 
 
-    public SetUpPanel(Frame frame) {
+    public SetUpPanel(GameFrame frame) {
         this.frame = frame;
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
@@ -91,7 +86,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-            //call method with
+        //call method with
         int width = widthSlider.getValue();
         int height = heightSlider.getValue();
         //should be called from Model
@@ -104,10 +99,9 @@ public class SetUpPanel extends JPanel implements ActionListener {
 
         frame.setUpFinished(width, height, playersColors.get(0), playersNames.get(0), playersColors.get(1), playersNames.get(1),
                 3);
-        //frame.setUpFinished(playersColors,playersNames,width, height);
         SetUp setUp = new SetUp();
         try {
-            setUp.setUp(playersColors,playersNames,height,width,1);
+            setUp.setUp(playersColors,playersNames,height,width,1, frame);
         } catch (IllegalSetupException ex) {
             throw new RuntimeException(ex);
         } catch (IllegalUserInputException ex) {
