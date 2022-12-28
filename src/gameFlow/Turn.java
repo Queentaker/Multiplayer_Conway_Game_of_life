@@ -1,33 +1,84 @@
 package gameFlow;
 
+import exception.IllegalUserInputException;
+import gameFlow.states.RemoveCell;
+import gameFlow.states.TurnState;
+import grid.EvolveNextGen;
+import grid.Grid;
+import grid.startingTemplates.Template;
 import player.Player;
 import player.PlayersSignature;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Turn {
-    private final List<Player> players;
-    private int currentIndex;
 
-    public Turn (List<Player> players){
-        assert players!=null;
-        this.players=players;
-        currentIndex=0;
+
+
+    private Player currentPlayer;
+    private Grid grid;
+    private CoordinatesTuple coordinates;
+    private EvolveNextGen evolveNextGen;
+    private int generation;
+    private TurnState currentState = new RemoveCell(this, grid);
+    public void setCurrentState(TurnState currentState){
+        this.currentState=currentState;
     }
-    public PlayersSignature getCurrentPlayersSignature(){
-        return players.get(currentIndex);
+    public Turn(Player currentPlayer, Grid grid) {
+        assert currentPlayer != null;
+        this.currentPlayer = currentPlayer;
+        this.grid = grid;
+        generation = 0;
+    }
+    public void execute() throws IllegalUserInputException {currentState.next();}
+
+    public void addGeneration(){
+        this.generation++;
+    }
+    public void setEvolveNextGen(){
+        evolveNextGen.evolve(grid);
+    }
+    public void setCoordinates(CoordinatesTuple coordinates){this.coordinates = coordinates;}
+    public CoordinatesTuple getCoordinates(){return coordinates;}
+
+    public PlayersSignature getCurrentPlayersSignature() {
+        return currentPlayer;
+    }
+/*
+    public void configurateStart(Template template, List<Player> players, int heigth, int with){
+        grid = new Grid(heigth,with);
+        int middleHorizont = grid.getGridWidth()/2;
+        int startVert = (grid.getGridHeight()/2)-2;
+        template.addTemplate(grid,getPlayersSignature(players));
+    }*/
+    private List<PlayersSignature> getPlayersSignature(List<Player> players){
+        List<PlayersSignature> signatures=new ArrayList<>();
+        for (Player player: players){
+            signatures.add(player);
+        }
+        return signatures;
+    }
+    public String getName(){
+        return currentPlayer.getPlayerName();
     }
 
-    public Player getCurrentPlayer(){
-        return players.get(currentIndex);
+    //checks for all cells alive from a player
+    public int getCellsAlivePlayer(PlayersSignature playersSignature){
+        int cellsAlivePlayer=0;
+        for(int x = 0; x < grid.getGridWidth(); x++){
+            for(int y = 0; y < grid.getGridHeight(); y++){
+                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
+                    cellsAlivePlayer++;
+                }
+            }
+        }
+        return cellsAlivePlayer;
     }
-    public void nextPlayersTurn(){
-        if (currentIndex++==players.size()){
-            currentIndex=0;
-        }
-        else {
-            currentIndex++;
-        }
+
+    public ArrayList<ArrayList<Color>> getColors() {
+        return grid.getColors();
     }
 
 }

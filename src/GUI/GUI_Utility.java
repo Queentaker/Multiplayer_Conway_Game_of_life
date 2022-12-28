@@ -1,19 +1,41 @@
 package GUI;
 
+import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
 public class GUI_Utility {
+    static final private Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
 
-    public static URL ImageNameToURL(String name) {
-        String location = "GUI/Images/" + name + ".png";
-        return Frame.class.getClassLoader().getResource(location);
+    private static URL ImageNameToURL(String name) {
+        String location = "GUI/images/" + name + ".png";
+        return GameFrame.class.getClassLoader().getResource(location);
     }
 
-    public static void changeIcon(Frame frame, String imageName) {
+    public static Image ImageNameToImage(String name) {
+        URL location = ImageNameToURL(name);
+        return defaultToolkit.getImage(location);
+    }
+
+    public static ImageIcon ImageNameToImageIcon(String name, int length, int height) {
+        URL location = ImageNameToURL(name);
+        Image aImage = defaultToolkit.getImage(location).getScaledInstance(length, height,  Image.SCALE_SMOOTH);
+        return new ImageIcon(aImage);
+    }
+
+    public static JLabel ImageNameToLabel(String name, int length, int height) {
+        URL location = ImageNameToURL(name);
+        Image aImage = defaultToolkit.getImage(location).getScaledInstance(length, height,  Image.SCALE_SMOOTH);
+        ImageIcon aImageIcon = new ImageIcon(aImage);
+        JLabel aLabel = new JLabel();
+        aLabel.setOpaque(true);
+        aLabel.setIcon(aImageIcon);
+        return aLabel;
+    }
+
+    public static void changeIcon(GameFrame frame, String imageName) {
         Taskbar taskBar = Taskbar.getTaskbar();
-        Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
-        Image ownIcon = defaultToolkit.getImage(ImageNameToURL(imageName));
+        Image ownIcon = (ImageNameToImage(imageName));
         //MacOS
         try {
             taskBar.setIconImage(ownIcon);

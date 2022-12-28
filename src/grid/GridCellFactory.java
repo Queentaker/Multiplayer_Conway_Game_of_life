@@ -30,19 +30,4 @@ public class GridCellFactory {
         return occupiedGridCells.get(playersSignature);
     }
 
-        /*
-public class FlyweightFactory {
-    private HashMap<String, Flyweight> flyweights = new HashMap<>();
-
-    public Flyweight getFlyweight(String intrinsicState) {
-        if (!flyweights.containsKey(intrinsicState)) {
-            flyweights.put(intrinsicState, new Flyweight(intrinsicState));
-        }
-        return flyweights.get(intrinsicState);
-    }
-}
-
-
-
-     */
 }

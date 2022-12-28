@@ -1,22 +1,24 @@
 package grid;
 
+import gameFlow.GameManager;
 import player.PlayersSignature;
 
 import java.util.*;
 
 public class EvolveNextGen {
     private Grid beforeEvolution;
-    private int upperBoundary;
-    private int lowerBoundary = 0;
+    private int upperBoundaryRow;
+    private int upperBoundaryColumn;
+    private final int lowerBoundary = 0;
     private final GridCellFactory factory = GridCellFactory.getInstance();
-    private int generation=0;
 
     public void evolve(Grid grid) {
         beforeEvolution = new Grid(grid);
-        upperBoundary = beforeEvolution.getGridSize();
+        upperBoundaryRow = beforeEvolution.getGridHeight();
+        upperBoundaryColumn = beforeEvolution.getGridWidth();
 
-        for (int x = 0; x < upperBoundary; x++) {
-            for (int y = 0; y < upperBoundary; y++) {
+        for (int x = 0; x < upperBoundaryRow; x++) {
+            for (int y = 0; y < upperBoundaryColumn; y++) {
                 Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(x, y);
                 if (!doesGridCellSurvive(aliveNeighborsMap)){
                     grid.setGridCell(x,y, factory.getEmptyGridCell());
@@ -26,8 +28,9 @@ public class EvolveNextGen {
                 }
             }
         }
-        generation++;
+        //todo calculate stats after each evolution
         //work needs to be done
+
     }
 
     private Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(int x, int y) {
@@ -46,8 +49,8 @@ public class EvolveNextGen {
         return neighborCountMap;
     }
 
-    private boolean doesCoordinateExist(int row, int colum) {
-        return row >= lowerBoundary && colum >= lowerBoundary && row < upperBoundary && colum < upperBoundary;
+    private boolean doesCoordinateExist(int row, int column) {
+        return row >= lowerBoundary && column >= lowerBoundary && row < upperBoundaryRow && column < upperBoundaryColumn;
     }
 
     private void updateHashTable(int row, int colum, Map<PlayersSignature, NumNeighbors> neighborCountMap) {
@@ -86,7 +89,7 @@ public class EvolveNextGen {
         assert survivingPlayersSignatures.size()>0;
         return randomValidPlayer(survivingPlayersSignatures);
     }
-    //this needs to be done for the scenario that a player a has 2 neigbhoring and player 3 b to the cell x
+    //this needs to be done for the scenario that a player a has 2 neighboring and player 3 b to the cell x
     //randomly a playerSignature is going to be selected
     private PlayersSignature randomValidPlayer(List<PlayersSignature> survivingPlayersSignatures){
         int length=survivingPlayersSignatures.size();

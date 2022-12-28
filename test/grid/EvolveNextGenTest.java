@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class EvolveNextGenTest {
 
-    Grid grid=new Grid(3);
+    Grid grid=new Grid(30,30);
     PlayersSignature signatureBob=new HumanPlayer("bob", Color.BLUE);
     PlayersSignature signatureAnna=new HumanPlayer("anna",Color.GREEN);
     EvolveNextGen evolveNextGen =new EvolveNextGen();
@@ -17,14 +17,14 @@ public class EvolveNextGenTest {
     @Test
     public void evolveTest(){
         // in 3*3 all cells belonging to the same four cells should survive namley the corner ones
-        for (int x=0;x< grid.getGridSize();x++){
-            for (int y=0;y< grid.getGridSize();y++){
+        for (int x=0;x< 3;x++){
+            for (int y=0;y< 3;y++){
                 grid.setGridCell(x,y,new GridCell(signatureAnna));
             }
         }
         evolveNextGen.evolve(grid);
-        for (int x=0;x< grid.getGridSize();x=x+2){
-            for (int y=0;y< grid.getGridSize();y=y+2){
+        for (int x=0;x< 3;x=x+2){
+            for (int y=0;y< 3;y=y+2){
                 Assertions.assertEquals(grid.getGridCell(x,y).getPlayersSignature(),signatureAnna);
             }
         }
@@ -42,5 +42,12 @@ public class EvolveNextGenTest {
         grid.setGridCell(2,1,new GridCell(signatureBob));
         evolveNextGen.evolve(grid);
         Assertions.assertEquals(grid.getGridCell(1,1).getPlayersSignature(),signatureAnna);
+    }
+    @Test
+    public void evolveTest3(){
+        grid.setGridCell(0,0,new GridCell(signatureAnna));
+        grid.setGridCell(0,2,new GridCell(signatureBob));
+        evolveNextGen.evolve(grid);
+        Assertions.assertFalse(grid.getGridCell(1, 1).isOccupied());
     }
 }
