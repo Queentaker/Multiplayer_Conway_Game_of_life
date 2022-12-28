@@ -1,5 +1,6 @@
 package gameFlow;
 
+import GUI.GameFrame;
 import exception.IllegalUserInputException;
 import grid.Grid;
 import org.junit.jupiter.api.Assertions;
@@ -16,8 +17,8 @@ public class GameManagerTest {
     Grid testGrid =new Grid(3,3);
     List<Player> players = new ArrayList<>();
 
-    List<CoordinatesTuple> startConfiguration= new ArrayList<>();
-    GameManager gameManager = GameManager.getInstance();
+    GameFrame gameFrame = new GameFrame();
+    GameManager gameManager = GameManager.getInstance(players, testGrid,gameFrame);
     @Test
     public void nextPlayersTurnTest(){
         gameManager.nextPlayersTurn();

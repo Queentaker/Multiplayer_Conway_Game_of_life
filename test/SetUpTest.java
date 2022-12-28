@@ -13,6 +13,7 @@ public class SetUpTest {
     SetUp setUpper = new SetUp();
     private int gridSize = 5;
     GameFrame gameFrame = new GameFrame();
+
     @Test
     public void SetUpSameName() throws IllegalNameOrColorException {
         List<String> playerNames = new ArrayList<>();
