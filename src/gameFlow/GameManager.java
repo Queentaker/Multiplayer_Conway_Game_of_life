@@ -1,13 +1,9 @@
 package gameFlow;
 
 import GUI.FrameObserver;
-import exception.IllegalUserInputException;
-import grid.Grid;
 import grid.startingTemplates.Template;
 import player.Player;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager implements Subject {
@@ -55,7 +51,7 @@ public class GameManager implements Subject {
         //turn.configurateStart(template,players, height, width);
     }
 
-    public void sendCoordinates(CoordinatesTuple coordinatesTuple) throws IllegalUserInputException {
+    public void sendCoordinates(CoordinatesTuple coordinatesTuple) {
         turn.setCoordinates(coordinatesTuple);
     }
 
@@ -71,16 +67,22 @@ public class GameManager implements Subject {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObserversGeneral() {
         for(FrameObserver observer: observers){
-            ArrayList<ArrayList<Color>> colors = new ArrayList<>();
             observer.updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generationPlayer1, "I'm a Message",
                     turn.getColors());
         }
     }
 
+    @Override
+    public void notifyObserversMessage() {
+        for(FrameObserver observer: observers){
+            observer.updateMessage("I'm another Message");
+        }
+    }
+
     public void measurementsChanged(){
-        notifyObservers();
+        notifyObserversGeneral();
     }
     public void setMeasurements(){
         //todo here the stats of the Grid should be calculated after each turn

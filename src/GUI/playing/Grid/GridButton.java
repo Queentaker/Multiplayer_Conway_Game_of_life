@@ -60,11 +60,7 @@ public class GridButton extends JButton implements ActionListener {
         }
         this.setBackground(Color.CYAN);
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
-        try {
-            GameManager.getInstance().sendCoordinates(coordinatesTuple);
-        } catch (IllegalUserInputException ex) {
-            throw new RuntimeException(ex);
-        }
+        GameManager.getInstance().sendCoordinates(coordinatesTuple);
     }
 
     public void changeColor(Color newColor) {
