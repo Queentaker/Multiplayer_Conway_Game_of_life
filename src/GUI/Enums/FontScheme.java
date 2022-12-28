@@ -3,8 +3,9 @@ package GUI.Enums;
 import java.awt.*;
 
 public enum FontScheme {
+    //Charter, Bodoni 72, TimesRoman, PT Serif
 
-    STANDARD_FONT("Charter");
+    STANDARD_FONT("PT Serif");
     private final String fontName;
 
     FontScheme(String name) {

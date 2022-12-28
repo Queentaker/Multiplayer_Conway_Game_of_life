@@ -48,6 +48,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
         startButton = new JButton("Start");
         startButton.setPreferredSize(new Dimension(100,40));
         startButton.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 24));
+        startButton.setForeground(ColorScheme.DARK_COLOR.getColor());
         startButton.setFocusable(false);
         startButton.addActionListener(this);
         startButton.setOpaque(true);
@@ -57,7 +58,7 @@ public class SetUpPanel extends JPanel implements ActionListener {
 
         JPanel playerSettings = new JPanel();
         playerSettings.setLayout(new FlowLayout());
-        playerSettings.setPreferredSize(new Dimension(500, 250));
+        playerSettings.setPreferredSize(new Dimension(500, 200));
         playerSettings.setOpaque(false);
         player1Settings = new PlayerSettingPanel("Player 1", ColorScheme.MEDIUM_DARK_COLOR.getColor());
         playerSettings.add(player1Settings);

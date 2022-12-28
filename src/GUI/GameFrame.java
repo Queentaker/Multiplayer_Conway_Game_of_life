@@ -20,7 +20,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     public GameFrame() {
         this.setTitle("Conway's Game of Life");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1280,900);
+        this.setSize(1280,850);
         this.getContentPane().setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
         GUI_Utility.changeIcon(this, "ownTaskbarLogo");
 

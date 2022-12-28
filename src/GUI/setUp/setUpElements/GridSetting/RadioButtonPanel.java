@@ -11,18 +11,22 @@ public class RadioButtonPanel extends JPanel {
     ButtonGroup aButtonGroup;
 
     public RadioButtonPanel() {
-        this.setOpaque(true);
-        this.setLayout(new BorderLayout());
-        this.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
-        this.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
-        this.setPreferredSize(new Dimension(500, 200));
+        this.setOpaque(false);
+        this.setLayout(new FlowLayout());
+
+        JPanel container = new JPanel();
+        container.setOpaque(true);
+        container.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
+        container.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
+        container.setLayout(new BorderLayout());
 
         JLabel title = new JLabel("Start Layout");
         title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
         title.setForeground(ColorScheme.DARK_COLOR.getColor());
         title.setOpaque(false);
         title.setHorizontalAlignment(JLabel.CENTER);
-        this.add(title, BorderLayout.NORTH);
+        container.add(title, BorderLayout.NORTH);
+
         JPanel buttonContainer = new JPanel();
         buttonContainer.setOpaque(false);
         buttonContainer.setLayout(new FlowLayout());
@@ -43,7 +47,14 @@ public class RadioButtonPanel extends JPanel {
         buttonContainer.add(radioButton4);
         buttonContainer.add(radioButton5);
         radioButton1.setSelected(true);
-        this.add(buttonContainer, BorderLayout.SOUTH);
+        container.add(buttonContainer, BorderLayout.CENTER);
+        JLabel borderLeft = new JLabel();
+        borderLeft.setPreferredSize(new Dimension(1,1));
+        this.add(borderLeft);
+        this.add(container);
+        JLabel borderRight = new JLabel();
+        borderRight.setPreferredSize(new Dimension(1,1));
+        this.add(borderRight);
     }
 
     public int getSelectedValue() {
