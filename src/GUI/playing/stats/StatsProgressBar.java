@@ -29,12 +29,9 @@ public class StatsProgressBar extends JPanel {
     }
 
     public void update(int player1Value, int player2Value) {
-        if (player1Value == 0) {
-            progressBar.setValue(0);
-            percentage.setText("0 %");
-        } else if (player2Value == 0) {
-            progressBar.setValue(100);
-            percentage.setText("100 %");
+        if (player1Value == 0 && player2Value == 0) {
+            progressBar.setValue(50);
+            percentage.setText("50 %");
         } else {
             float player1Float = (float) player1Value;
             float player2Float = (float) player1Value;
