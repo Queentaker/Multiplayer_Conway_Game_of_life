@@ -11,11 +11,11 @@ import static GUI.GUI_Utility.ImageNameToImageIcon;
 
 public class RadioButton extends JRadioButton implements ActionListener {
 
-    private final ImageIcon patternIcon;
-
     public RadioButton(String imageName){
-        patternIcon = ImageNameToImageIcon( "StartLayouts/" +imageName,75,75);
-        this.setIcon(patternIcon);
+        ImageIcon notSelectedIcon = ImageNameToImageIcon("startLayouts/notSelected/" + imageName, 75, 75);
+        this.setIcon(notSelectedIcon);
+        ImageIcon selectedIcon = ImageNameToImageIcon("startLayouts/selected/" + imageName, 75, 75);
+        this.setSelectedIcon(selectedIcon);
     }
 
 
