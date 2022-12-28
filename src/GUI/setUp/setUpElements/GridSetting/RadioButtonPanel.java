@@ -1,6 +1,10 @@
 package GUI.setUp.setUpElements.GridSetting;
 
+import GUI.Enums.ColorScheme;
+import GUI.Enums.FontScheme;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class RadioButtonPanel extends JPanel {
     RadioButton radioButton1;
@@ -10,24 +14,43 @@ public class RadioButtonPanel extends JPanel {
     RadioButton radioButton5;
 
     public RadioButtonPanel() {
-        radioButton1 = new RadioButton("StartLayouts/RadioButton1");
-        radioButton2 = new RadioButton("StartLayouts/RadioButton2");
-        radioButton3 = new RadioButton("StartLayouts/RadioButton3");
-        radioButton4 = new RadioButton("StartLayouts/RadioButton4");
-        radioButton5 = new RadioButton("StartLayouts/RadioButton5");
-        JPanel radioButtonPanel = new JPanel();
+        this.setOpaque(true);
+        this.setLayout(new FlowLayout());
+        this.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
+        this.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
+
+        JPanel container = new JPanel();
+        container.setLayout(new BorderLayout());
+        container.setOpaque(false);
+
+        JLabel title = new JLabel("Start Layout");
+        title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
+        title.setForeground(ColorScheme.DARK_COLOR.getColor());
+        title.setOpaque(false);
+        title.setHorizontalAlignment(JLabel.CENTER);
+        container.add(title, BorderLayout.NORTH);
+        JPanel buttonContainer = new JPanel();
+        buttonContainer.setOpaque(false);
+        buttonContainer.setLayout(new FlowLayout());
+        radioButton1 = new RadioButton("RadioButton1");
+        radioButton2 = new RadioButton("RadioButton2");
+        radioButton3 = new RadioButton("RadioButton3");
+        radioButton4 = new RadioButton("RadioButton4");
+        radioButton5 = new RadioButton("RadioButton5");
         ButtonGroup aButtonGroup = new ButtonGroup();
         aButtonGroup.add(radioButton1);
         aButtonGroup.add(radioButton2);
         aButtonGroup.add(radioButton3);
         aButtonGroup.add(radioButton4);
         aButtonGroup.add(radioButton5);
-        this.add(radioButton1);
-        this.add(radioButton2);
-        this.add(radioButton3);
-        this.add(radioButton4);
-        this.add(radioButton5);
+        buttonContainer.add(radioButton1);
+        buttonContainer.add(radioButton2);
+        buttonContainer.add(radioButton3);
+        buttonContainer.add(radioButton4);
+        buttonContainer.add(radioButton5);
+        container.add(buttonContainer, BorderLayout.SOUTH);
         radioButton1.setSelected(true);
+        this.add(container);
     }
 
     public int getSelectedValue() {

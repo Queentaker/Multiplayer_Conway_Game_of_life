@@ -31,8 +31,11 @@ public class SetUpPanel extends JPanel implements ActionListener {
     PlayerSettingPanel player1Settings;
     PlayerSettingPanel player2Settings;
 
+    RadioButtonPanel radioButtonPanel;
+
     //delete after we can call it from model
     Frame frame;
+
 
 
 
@@ -67,15 +70,22 @@ public class SetUpPanel extends JPanel implements ActionListener {
         this.add(playerSettings, BorderLayout.NORTH);
 
         JPanel gameSettings = new JPanel();
-        gameSettings.setLayout(new FlowLayout());
         gameSettings.setOpaque(false);
+        gameSettings.setLayout(new BorderLayout());
 
-        RadioButtonPanel radioButtonPanel= new RadioButtonPanel();
-        gameSettings.add(radioButtonPanel);
+        JPanel dimensionsSettings = new JPanel();
+        dimensionsSettings.setLayout(new FlowLayout());
+        dimensionsSettings.setOpaque(false);
         widthSlider = new SliderPanel(20,60, 60, "Length");
-        gameSettings.add(widthSlider);
+        dimensionsSettings.add(widthSlider);
         heightSlider = new SliderPanel(20,40, 25, "Height");
-        gameSettings.add(heightSlider);
+        dimensionsSettings.add(heightSlider);
+        gameSettings.add(dimensionsSettings, BorderLayout.NORTH);
+
+        radioButtonPanel = new RadioButtonPanel();
+
+        gameSettings.add(radioButtonPanel, BorderLayout.CENTER);
+
         this.add(gameSettings, BorderLayout.CENTER);
     }
 
