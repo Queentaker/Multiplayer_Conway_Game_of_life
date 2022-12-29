@@ -49,14 +49,14 @@ public class Turn {
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
-
+/*
     private List<PlayersSignature> getPlayersSignature(List<Player> players){
         List<PlayersSignature> signatures=new ArrayList<>();
         for (Player player: players){
             signatures.add(player);
         }
         return signatures;
-    }
+    }*/
     public String getName(){
         return currentPlayer.getPlayerName();
     }

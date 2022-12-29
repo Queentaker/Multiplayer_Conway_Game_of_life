@@ -5,7 +5,10 @@ import exception.IllegalUserInputException;
 import org.junit.jupiter.api.Test;
 import setUp.SetUp;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class SetUpTest {
     GameFrame gameFrame = new GameFrame();
 
     @Test
-    public void SetUpSameName() throws IllegalNameOrColorException {
+    public void SetUpSameName() throws IllegalNameOrColorException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
         playerNames.add("bob");

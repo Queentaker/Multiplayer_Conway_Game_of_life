@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import enums.Constants;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +66,7 @@ public class SetUpTest {
     }
 */
     @Test
-    public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException {
+    public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
         playerNames.add("boba");
