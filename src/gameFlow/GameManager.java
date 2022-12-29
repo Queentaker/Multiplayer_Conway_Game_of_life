@@ -108,6 +108,7 @@ public class GameManager implements Subject {
         if (cellsAlivePlayer1 == 0 && cellsAlivePlayer2 == 0) {
             notifyObserversWinner("The game ended in a tie, congratulation!");
         } else if(cellsAlivePlayer1 == 0 || cellsAlivePlayer2 == 0) {
+            nextPlayersTurn();
             notifyObserversWinner(turn.getName() + " is the winner!");
         } else {
             notifyObserversGeneral(message);
