@@ -20,6 +20,7 @@ public class GameManager implements Subject {
     private final List<Player> players;
     private int currentIndex;
     private Turn turn;
+    private String message;
 
 
     public static synchronized GameManager getInstance(List<Player> players, Grid grid){
@@ -60,7 +61,6 @@ public class GameManager implements Subject {
         } catch (IllegalUserInputException e) {
             notifyObserversMessage(e.getMessage());
         }
-        notifyObserversGeneral(message);
     }
 
     @Override
@@ -88,9 +88,11 @@ public class GameManager implements Subject {
         }
     }
 
-    public void setMeasurements(){
+    public void setMeasurements(String msg){
+        message = "It's " + turn.getName() + " turn! " + msg + " one cell";
         cellsAlivePlayer1 = turn.getCellsAlivePlayer(players.get(0));
         cellsAlivePlayer2 = turn.getCellsAlivePlayer(players.get(1));
         generation = turn.getGeneration();
+        notifyObserversGeneral(message);
     }
 }

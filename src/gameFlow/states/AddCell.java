@@ -21,6 +21,7 @@ public class AddCell implements TurnState {
         aGrid.placeGridCell(coordinatesTuple.aCoordinate, coordinatesTuple.bCoordinate, aTurn.getCurrentPlayersSignature());
         aTurn.addGeneration();
         aTurn.setEvolveNextGen();
-        GameManager.getInstance().setMeasurements();
+        GameManager.getInstance().nextPlayersTurn();
+        GameManager.getInstance().setMeasurements("remove");
     }
 }

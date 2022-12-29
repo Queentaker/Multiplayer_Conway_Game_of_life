@@ -10,6 +10,7 @@ public class EvolveNextGen {
     private int upperBoundaryRow;
     private int upperBoundaryColumn;
     private final int lowerBoundary = 0;
+    
     private final GridCellFactory factory = GridCellFactory.getInstance();
 
     public void evolve(Grid grid) {

@@ -28,6 +28,7 @@ public class Turn {
     }
     public Turn(Player currentPlayer, Grid grid) {
         assert currentPlayer != null;
+        this.evolveNextGen = new EvolveNextGen();
         this.currentPlayer = currentPlayer;
         this.grid = grid;
         generation = 0;
@@ -62,8 +63,8 @@ public class Turn {
     //checks for all cells alive from a player
     public int getCellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
-        for(int x = 0; x < grid.getGridWidth(); x++){
-            for(int y = 0; y < grid.getGridHeight(); y++){
+        for(int y = 0; y < grid.getGridWidth(); y++){
+            for(int x = 0; x < grid.getGridHeight(); x++){
                 if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
                     cellsAlivePlayer++;
                 }

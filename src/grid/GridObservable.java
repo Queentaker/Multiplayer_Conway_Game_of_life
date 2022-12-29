@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface GridObservable {
     public void addObserver(GameManager gameManager);
-    public void notifyObserver(List<int> aliveCells, ArrayList<ArrayList<Color>> colors);
+    public void notifyObserver(List<Integer> aliveCells, ArrayList<ArrayList<Color>> colors);
 }
