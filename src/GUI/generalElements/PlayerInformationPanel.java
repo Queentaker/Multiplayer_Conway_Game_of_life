@@ -23,7 +23,7 @@ public class PlayerInformationPanel extends JPanel {
         information.setOpaque(false);
         information.setHorizontalAlignment(JLabel.CENTER);
         information.setVerticalAlignment(JLabel.CENTER);
-        information.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 36));
+        information.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
         information.setForeground(ColorScheme.DARK_COLOR.getColor());
         this.add(information, BorderLayout.CENTER);
     }

@@ -39,7 +39,7 @@ public class SetUp {
             while (i < playerColors.size()) {
                 Player player = new HumanPlayer(playerNames.get(i), playerColors.get(i));
                 players.add(player);
-                playersSignature.add((PlayersSignature) player);
+                playersSignature.add(player);
                 i++;
             }
             Grid grid = new Grid(height, width);
@@ -49,8 +49,8 @@ public class SetUp {
             int cellsAlive = grid.cellsAlivePlayer(players.get(0));
             frame.setUpFinished(width, height, playerColors.get(0), playerNames.get(0), playerColors.get(1), playerNames.get(1),
                     cellsAlive);
-            frame.updateGeneral(cellsAlive, cellsAlive, 0, "", grid.getColors());
             gameManager.registerObserver(frame);
+            gameManager.setMeasurements("remove");
         }
     }
     private boolean isGridSizeValid(int height, int width){
