@@ -81,8 +81,9 @@ public class Grid implements AddRemoveGridCell{
     public void placeGridCell(int a, int b, PlayersSignature playersSignature) throws IllegalUserInputException {
         assert a>=0 && a<gridHeight;
         assert b>=0 && b<gridWidth;
+        String currentPlayer = playersSignature.getPlayerName();
         if (getGridCell(a,b).isOccupied()){
-            throw new IllegalUserInputException("You can't add a cell to an already occupied one");
+            throw new IllegalUserInputException(currentPlayer +", you can't add a cell to an already occupied one!");
         }
         setGridCell(a,b, cellFactory.getGridCell(playersSignature));
     }
