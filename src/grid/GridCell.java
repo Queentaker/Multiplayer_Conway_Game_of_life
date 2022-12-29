@@ -33,13 +33,4 @@ public class GridCell {
     public Color getGridCellColor(){
         return color;
     }
-    /*public void place(String playerId){
-        isOccupied=true;
-        this.playerId=playerId;
-    }
-    public void remove (String playerId){
-        isOccupied=false;
-
-    }*/
-
 }
