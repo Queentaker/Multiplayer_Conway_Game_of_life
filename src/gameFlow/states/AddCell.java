@@ -22,7 +22,7 @@ public class AddCell implements TurnState {
         aTurn.addGeneration();
         aTurn.setEvolveNextGen();
         GameManager.getInstance().nextPlayersTurn();
-        GameManager.getInstance().setMeasurements("remove");
+        GameManager.getInstance().setMeasurements("Remove");
         aTurn.setCurrentState(new RemoveCell(aTurn, aGrid));
     }
 }

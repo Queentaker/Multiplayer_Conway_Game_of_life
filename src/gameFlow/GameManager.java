@@ -88,7 +88,7 @@ public class GameManager implements Subject {
     }
 
     public void setMeasurements(String msg){
-        message = "It's " + turn.getName() + " turn! " + msg + " one cell";
+        message = "It's " + turn.getName() + "'s turn! " + msg + " one cell.";
         cellsAlivePlayer1 = turn.getCellsAlivePlayer(players.get(0));
         cellsAlivePlayer2 = turn.getCellsAlivePlayer(players.get(1));
         generation = turn.getGeneration();

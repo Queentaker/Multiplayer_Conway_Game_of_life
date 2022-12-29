@@ -1,6 +1,7 @@
 package grid;
 
 import exception.IllegalUserInputException;
+import gameFlow.GameManager;
 import player.PlayersSignature;
 
 import java.awt.*;
@@ -90,11 +91,12 @@ public class Grid implements AddRemoveGridCell{
     public void removeGridCell(int a, int b, PlayersSignature playersSignature) throws IllegalUserInputException{
         assert a>=0 && a<gridHeight;
         assert b>=0 && b<gridWidth;
+        String currentPlayer = playersSignature.getPlayerName();
         if (!getGridCell(a,b).isOccupied()){
-            throw new IllegalUserInputException("you can't remove your an empty cell");
+            throw new IllegalUserInputException(currentPlayer + ", you can't remove an empty cell!");
         }
         if (getGridCell(a, b).getPlayersSignature().getPlayerId().equals(playersSignature.getPlayerId())){
-            throw new IllegalUserInputException("You can't remove your own cell");
+            throw new IllegalUserInputException(currentPlayer + ", you can't remove your own cell!");
         }
         setGridCell(a,b, cellFactory.getEmptyGridCell());
     }
