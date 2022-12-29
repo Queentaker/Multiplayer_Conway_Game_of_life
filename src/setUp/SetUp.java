@@ -28,10 +28,13 @@ public class SetUp {
         assert playerColors.size()==playerNames.size();
 
         if (isColorToBright(playerColors)){
-            frame.updateMessage("One of the colors is to bright");
+            frame.updateMessage("One of the colors is to bright, make sure your colors aren't to whitish");
         } else if (!uniqueColors(playerColors)){
             frame.updateMessage("You can't have same colors");
-        } else if (!uniqueNames(playerNames)){
+        }else if (colorsToSimialar(playerColors)){
+            frame.updateMessage("Your colors are to similar make sure you choose different colors that have at least an rgb difference of "
+                    + Constants.minimumRGBDistance.constant);
+        }else if (!uniqueNames(playerNames)){
             frame.updateMessage("You can't have the same names");
         } else if (!isGridSizeValid(height,width)){
             frame.updateMessage("Grid doesn't meet limits");
@@ -98,5 +101,26 @@ public class SetUp {
             }
         }
         return true;
+    }
+
+    private boolean colorsToSimialar(List<Color> playerColors){
+        int [] rgbValues=new int[playerColors.size()];
+        int i=0;
+        for (Color color:playerColors){
+            assert color!=null;
+            rgbValues[i]=color.getRGB();
+            i++;
+        }
+        for (int j=0;j<rgbValues.length;j++){
+            for (int k=0;k<rgbValues.length;k++){
+                if (j!=k){
+                    int rgbDifference=rgbValues[j]-rgbValues[k];
+                    if (Math.abs(rgbDifference)<Constants.minimumRGBDistance.constant){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

@@ -110,6 +110,7 @@ public class GameManager implements Subject {
         } else if(cellsAlivePlayer1 == 0 || cellsAlivePlayer2 == 0) {
             nextPlayersTurn();
             notifyObserversWinner(turn.getName() + " is the winner!");
+            //todo needs to be looked at
         } else {
             notifyObserversGeneral(message);
         }
