@@ -9,4 +9,6 @@ public interface Subject {
     public void notifyObserversGeneral(String message);
 
     public void notifyObserversMessage(String message);
+
+    public void notifyObserversWinner(String message);
 }

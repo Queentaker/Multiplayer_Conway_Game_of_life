@@ -10,4 +10,7 @@ public interface FrameObserver {
                               ArrayList<ArrayList<Color>> gridColors);
 
     public void updateMessage(String message);
+
+    public void declareWinner(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
+                              ArrayList<ArrayList<Color>> gridColors);
 }

@@ -15,6 +15,7 @@ public class GridButton extends JButton implements ActionListener {
 
     private final int xCoordinate;
     private final int yCoordinate;
+    private MouseListener aListener;
 
     public GridButton (int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
@@ -24,7 +25,7 @@ public class GridButton extends JButton implements ActionListener {
         this.setOpaque(true);
         GridButton.this.setBorder(defaultBorder);
 
-        this.addMouseListener(new MouseAdapter() {
+        aListener = (new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent entered) {
                 GridButton.this.setBorder(hoverBorder);
@@ -35,6 +36,8 @@ public class GridButton extends JButton implements ActionListener {
                 GridButton.this.setBorder(defaultBorder);
             }
         });
+
+        this.addMouseListener(aListener);
 
         this.addActionListener(this);
     }
@@ -51,7 +54,7 @@ public class GridButton extends JButton implements ActionListener {
 
     public void disableButton() {
         this.setEnabled(false);
-        MouseListener aListener = this.getMouseListeners()[0];
         this.removeMouseListener(aListener);
+        this.setBorder(defaultBorder);
     }
 }

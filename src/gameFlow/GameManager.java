@@ -87,11 +87,25 @@ public class GameManager implements Subject {
         }
     }
 
+    @Override
+    public void notifyObserversWinner(String message) {
+        for(FrameObserver observer: observers){
+            observer.declareWinner(cellsAlivePlayer1, cellsAlivePlayer2, generation, message,
+                    turn.getColors());
+        }
+    }
+
     public void setMeasurements(String msg){
-        message = "It's " + turn.getName() + "'s turn! " + msg + " one cell.";
+        message = "It's " + turn.getName() + "'s turn! Please " + msg + " one cell.";
         cellsAlivePlayer1 = turn.getCellsAlivePlayer(players.get(0));
         cellsAlivePlayer2 = turn.getCellsAlivePlayer(players.get(1));
         generation = turn.getGeneration();
-        notifyObserversGeneral(message);
+        if (cellsAlivePlayer1 == 0 && cellsAlivePlayer2 == 0) {
+            notifyObserversWinner("The game ended in a tie, congratulation!");
+        } else if(cellsAlivePlayer1 == 0 || cellsAlivePlayer2 == 0) {
+            notifyObserversWinner(turn.getName() + " got eliminated!");
+        } else {
+            notifyObserversGeneral(message);
+        }
     }
 }

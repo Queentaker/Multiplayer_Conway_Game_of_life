@@ -1,7 +1,5 @@
 package grid;
 
-import player.PlayersSignature;
-
 import java.util.*;
 
 public class EvolveNextGen2 {
