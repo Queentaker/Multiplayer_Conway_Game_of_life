@@ -2,8 +2,11 @@ package GUI.playing.Grid;
 
 import GUI.Enums.ColorScheme;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GridPanel extends JPanel {
@@ -11,7 +14,7 @@ public class GridPanel extends JPanel {
     private final int length;
     private final int height;
 
-    public GridPanel(int length, int height) {
+    public GridPanel(int length, int height) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.length = length;
         this.height = height;
         grid = new ArrayList<>();

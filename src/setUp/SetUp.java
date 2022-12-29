@@ -12,7 +12,10 @@ import player.Player;
 import GUI.GameFrame;
 import player.PlayersSignature;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class SetUp {
     public List<Player> players; //must be again private
     private GameManager gameManager;
 
-    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, GameFrame frame) {
+    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, GameFrame frame) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assert playerColors.size()==playerNames.size();
 
         if (isColorToBright(playerColors)){
