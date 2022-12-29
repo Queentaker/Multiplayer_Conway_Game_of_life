@@ -22,6 +22,7 @@ import java.util.List;
 public class SetUp {
     public List<Player> players; //must be again private
     private GameManager gameManager;
+    String soundName = "src/GUI/sounds/winnersound.wav";
 
     public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, GameFrame frame) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assert playerColors.size()==playerNames.size();
@@ -53,6 +54,7 @@ public class SetUp {
             frame.setUpFinished(width, height, playerColors.get(0), playerNames.get(0), playerColors.get(1), playerNames.get(1),
                     cellsAlive);
             gameManager.registerObserver(frame);
+            GameManager.getInstance().playSound(soundName);
             gameManager.setMeasurements("remove");
         }
     }
