@@ -129,5 +129,3 @@ public class Grid implements AddRemoveGridCell{
         return colorsArray;
     }
 }
-
-

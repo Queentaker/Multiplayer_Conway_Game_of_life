@@ -21,16 +21,47 @@ public class EvolveNextGen {
         for (int x = 0; x < upperBoundaryRow; x++) {
             for (int y = 0; y < upperBoundaryColumn; y++) {
                 Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(x, y);
-                if (!doesGridCellSurvive(aliveNeighborsMap)){
-                    grid.setGridCell(x,y, factory.getEmptyGridCell());
+                NumNeighbors amountofNeighbors=totalNeighbors(aliveNeighborsMap);
+                boolean alreadyAlive=grid.getGridCell(x,y).isOccupied();
+                if (doesGridCellLive(amountofNeighbors,alreadyAlive)){
+                    if (!alreadyAlive){
+                        grid.setGridCell(x,y,factory.getGridCell(dominantPlayer(aliveNeighborsMap)));
+                    }
+                    //else stays the same
                 }
                 else {
-                    grid.setGridCell(x,y, factory.getGridCell(getSignatureAliveCell(aliveNeighborsMap)));
+                    grid.setGridCell(x, y, factory.getEmptyGridCell());
                 }
+
             }
         }
-
+    }
         //work needs to be done
+
+
+    private NumNeighbors totalNeighbors(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
+        NumNeighbors neighbors=NumNeighbors.Zero;
+        for (Map.Entry<PlayersSignature, NumNeighbors> entry : AliveNeighbors.entrySet()){
+            NumNeighbors numNeighbors=entry.getValue();
+            neighbors=NumNeighbors.getEnum(neighbors.value+numNeighbors.value);
+        }
+        return neighbors;
+
+    }
+    private PlayersSignature dominantPlayer(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
+        NumNeighbors mostNeighbors=NumNeighbors.Zero;
+
+        PlayersSignature signature=null;
+        for (Map.Entry<PlayersSignature, NumNeighbors> entry : AliveNeighbors.entrySet()){
+            PlayersSignature playersSignature= entry.getKey();
+            NumNeighbors numNeighbors=entry.getValue();
+            if (mostNeighbors.value<numNeighbors.value){
+                mostNeighbors=numNeighbors;
+                signature=playersSignature;
+            }
+        }
+        assert signature!=null;
+        return signature;
 
     }
 
@@ -66,35 +97,23 @@ public class EvolveNextGen {
         }
     }
 
-    private boolean doesGridCellSurvive(Map<PlayersSignature, NumNeighbors> numNeighborsMap) {
-        for (NumNeighbors numberOfNeighbors : numNeighborsMap.values()) {
-            if (requiredNeighborsToSurvive(numberOfNeighbors)) {
-                return true;
-            }
+    private boolean doesGridCellLive(NumNeighbors numNeighbors,boolean alreadyAlive) {
+        if (alreadyAlive){
+            return requiredNeighborsToSurvive(numNeighbors);
         }
-        return false;
+        else{
+            return requiredNeighborsCreate(numNeighbors);
+        }
     }
 
     private boolean requiredNeighborsToSurvive(NumNeighbors aliveNeighbors) {
         return aliveNeighbors == NumNeighbors.Two || aliveNeighbors == NumNeighbors.Three;
     }
-    private PlayersSignature getSignatureAliveCell(Map<PlayersSignature, NumNeighbors> numNeighborsMap){
-        List<PlayersSignature> survivingPlayersSignatures=new ArrayList<>();
-        for (Map.Entry<PlayersSignature, NumNeighbors> entry : numNeighborsMap.entrySet()){
-            PlayersSignature playersSignature=entry.getKey();
-            NumNeighbors numNeighbors=entry.getValue();
-            if (requiredNeighborsToSurvive(numNeighbors)){
-                survivingPlayersSignatures.add(playersSignature);
-            }
-        }
-        assert survivingPlayersSignatures.size()>0;
-        return randomValidPlayer(survivingPlayersSignatures);
+    private boolean requiredNeighborsCreate(NumNeighbors aliveNeighbors){
+        return aliveNeighbors==NumNeighbors.Three;
     }
+
     //this needs to be done for the scenario that a player a has 2 neighboring and player 3 b to the cell x
     //randomly a playerSignature is going to be selected
-    private PlayersSignature randomValidPlayer(List<PlayersSignature> survivingPlayersSignatures){
-        int length=survivingPlayersSignatures.size();
-        Random rand= new Random();
-        return survivingPlayersSignatures.get(rand.nextInt(length));
-    }
+
 }

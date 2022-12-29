@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUpTest {
-    SetUp setUpper = new SetUp();
+    /*SetUp setUpper = new SetUp();
     private int gridSize = 5;
     GameFrame gameFrame = new GameFrame();
 
@@ -28,5 +28,5 @@ public class SetUpTest {
 
         }
 
-    }
+    }*/
 }

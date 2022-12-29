@@ -29,6 +29,7 @@ public abstract class Template {
         List<TemplatePosition> positions= List.of(TemplatePosition.values());
         assert signatures.size()<=positions.size();
         int i=0;
+
         while (i<signatures.size()){
             TemplatePosition position=positions.get(i);
             int x=position.ARow+getXStartingPosition(grid);

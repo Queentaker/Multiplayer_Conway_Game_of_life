@@ -18,7 +18,7 @@ public class GameManagerTest {
     List<Player> players = new ArrayList<>();
 
     GameFrame gameFrame = new GameFrame();
-    GameManager gameManager = GameManager.getInstance(players, testGrid,gameFrame);
+    /*GameManager gameManager = GameManager.getInstance(players, testGrid,gameFrame);
     @Test
     public void nextPlayersTurnTest(){
         gameManager.nextPlayersTurn();
