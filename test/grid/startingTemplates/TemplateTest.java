@@ -14,7 +14,7 @@ public class TemplateTest {
     Grid grid = new Grid(10,10);
     Template template = new Template() {
         @Override
-        protected void addCustomTemplate(int x, int y, Grid grid, PlayersSignature signature) {
+        protected void addCustomTemplate(int a, int b, Grid grid, PlayersSignature signature) {
         }
     };
     @Test

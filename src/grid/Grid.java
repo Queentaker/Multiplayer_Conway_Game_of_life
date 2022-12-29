@@ -46,10 +46,10 @@ public class Grid implements AddRemoveGridCell{
         assert gridHeight== anotherGrid.gridHeight;
         assert gridWidth==anotherGrid.gridWidth;
         List<ArrayList<GridCell>> copy=new ArrayList<>();
-        for (int x=0;x<gridHeight;x++){
+        for (int a=0;a<gridHeight;a++){
             ArrayList<GridCell> row=new ArrayList<GridCell>();
-            for (int y=0;y<gridWidth;y++){
-                row.add(anotherGrid.getGridCell(x,y));
+            for (int b=0;b<gridWidth;b++){
+                row.add(anotherGrid.getGridCell(a,b));
             }
             copy.add(row);
         }
@@ -110,7 +110,7 @@ public class Grid implements AddRemoveGridCell{
         int cellsAlivePlayer=0;
         for(int a = 0; a < gridHeight; a++){
             for(int b = 0; b < gridWidth; b++){
-                if(/*grid.getGridCell(a,y).isOccupied() &&*/ this.getGridCell(a,b).getPlayersSignature()==playersSignature){
+                if(getGridCell(a,b).getPlayersSignature()==playersSignature){
                     cellsAlivePlayer++;
                 }
             }

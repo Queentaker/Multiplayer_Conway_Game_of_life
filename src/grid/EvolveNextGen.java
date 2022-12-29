@@ -18,19 +18,19 @@ public class EvolveNextGen {
         upperBoundaryRow = beforeEvolution.getGridHeight();
         upperBoundaryColumn = beforeEvolution.getGridWidth();
 
-        for (int x = 0; x < upperBoundaryRow; x++) {
-            for (int y = 0; y < upperBoundaryColumn; y++) {
-                Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(x, y);
+        for (int row = 0; row < upperBoundaryRow; row++) {
+            for (int colum = 0; colum < upperBoundaryColumn; colum++) {
+                Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(row, colum);
                 NumNeighbors amountofNeighbors=totalNeighbors(aliveNeighborsMap);
-                boolean alreadyAlive=grid.getGridCell(x,y).isOccupied();
+                boolean alreadyAlive=grid.getGridCell(row,colum).isOccupied();
                 if (doesGridCellLive(amountofNeighbors,alreadyAlive)){
                     if (!alreadyAlive){
-                        grid.setGridCell(x,y,factory.getGridCell(dominantPlayer(aliveNeighborsMap)));
+                        grid.setGridCell(row,colum,factory.getGridCell(dominantPlayer(aliveNeighborsMap)));
                     }
                     //else stays the same
                 }
                 else {
-                    grid.setGridCell(x, y, factory.getEmptyGridCell());
+                    grid.setGridCell(row, colum, factory.getEmptyGridCell());
                 }
 
             }
@@ -55,6 +55,7 @@ public class EvolveNextGen {
         for (Map.Entry<PlayersSignature, NumNeighbors> entry : AliveNeighbors.entrySet()){
             PlayersSignature playersSignature= entry.getKey();
             NumNeighbors numNeighbors=entry.getValue();
+
             if (mostNeighbors.value<numNeighbors.value){
                 mostNeighbors=numNeighbors;
                 signature=playersSignature;
@@ -106,10 +107,10 @@ public class EvolveNextGen {
         }
     }
 
-    private boolean requiredNeighborsToSurvive(NumNeighbors aliveNeighbors) {
+    private static boolean requiredNeighborsToSurvive(NumNeighbors aliveNeighbors) {
         return aliveNeighbors == NumNeighbors.Two || aliveNeighbors == NumNeighbors.Three;
     }
-    private boolean requiredNeighborsCreate(NumNeighbors aliveNeighbors){
+    private static boolean requiredNeighborsCreate(NumNeighbors aliveNeighbors){
         return aliveNeighbors==NumNeighbors.Three;
     }
 

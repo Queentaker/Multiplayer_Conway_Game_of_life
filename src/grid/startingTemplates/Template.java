@@ -32,13 +32,13 @@ public abstract class Template {
 
         while (i<signatures.size()){
             TemplatePosition position=positions.get(i);
-            int x=position.ARow+getXStartingPosition(grid);
-            int y=position.BColum+getYStartingPosition(grid);
-            addCustomTemplate(x,y,grid,signatures.get(i));
+            int a=position.ARow+getXStartingPosition(grid);
+            int b=position.BColum+getYStartingPosition(grid);
+            addCustomTemplate(a,b,grid,signatures.get(i));
             i++;
         }
 
     }
-    protected abstract void addCustomTemplate(int x,int y,Grid grid, PlayersSignature signature);
+    protected abstract void addCustomTemplate(int a, int b, Grid grid, PlayersSignature signature);
     //make sure that it is the same and fair
 }
