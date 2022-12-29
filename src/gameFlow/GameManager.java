@@ -53,8 +53,6 @@ public class GameManager implements Subject {
     }
 
     public void receiveCoordinates(CoordinatesTuple coordinatesTuple) {
-        System.out.println("made it here2");
-        String message = "I can tell the Player what to do, huiuiuiuiui...";
         turn.setCoordinates(coordinatesTuple);
         try {
             turn.execute();
@@ -84,7 +82,7 @@ public class GameManager implements Subject {
     @Override
     public void notifyObserversMessage(String message) {
         for(FrameObserver observer: observers){
-            observer.updateMessage("I'm another Message");
+            observer.updateMessage(message);
         }
     }
 
