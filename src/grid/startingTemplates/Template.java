@@ -25,7 +25,7 @@ public abstract class Template {
     }
 
 
-    public void addTemplate( Grid grid,List<PlayersSignature>  signatures){
+    public void addTemplate( Grid grid,List<PlayersSignature> signatures){
         List<TemplatePosition> positions= List.of(TemplatePosition.values());
         assert signatures.size()<=positions.size();
         int i=0;
@@ -34,8 +34,6 @@ public abstract class Template {
             TemplatePosition position=positions.get(i);
             int x=position.ARow+getXStartingPosition(grid);
             int y=position.BColum+getYStartingPosition(grid);
-            System.out.println(x);
-            System.out.println(y);
             addCustomTemplate(x,y,grid,signatures.get(i));
             i++;
         }

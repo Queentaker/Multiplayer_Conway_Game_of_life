@@ -6,15 +6,14 @@ import player.HumanPlayer;
 import player.PlayersSignature;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class TemplatesEnumTest {
     PlayersSignature bobSignature =new HumanPlayer("bob", Color.BLUE);
     PlayersSignature annaSignature= new HumanPlayer("anna", Color.RED);
     Grid grid = new Grid(30,30);
-    Template1 template1 = new Template1();
-    Template2 template2 = new Template2();
-    Template3 template3 = new Template3();
+    Template3 template1 = new Template3();
+    Template1 template2 = new Template1();
+    Template2 template3 = new Template2();
     Template4 template4 = new Template4();
     Template5 template5 = new Template5();
 

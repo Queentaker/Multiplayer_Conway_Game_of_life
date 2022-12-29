@@ -57,8 +57,6 @@ public class Grid implements AddRemoveGridCell{
 
     public void evolve(){
         evolveNextGen.evolve(this);
-
-
     }
 
     public void setGridCell(int a,int b, GridCell gridCell){
