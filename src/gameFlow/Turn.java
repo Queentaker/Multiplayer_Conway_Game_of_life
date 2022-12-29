@@ -81,4 +81,8 @@ public class Turn {
     public int getGeneration() {
         return generation;
     }
+
+    public void nextPlayerTurn(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 }

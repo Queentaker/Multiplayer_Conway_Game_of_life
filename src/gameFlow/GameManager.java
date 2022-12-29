@@ -44,12 +44,13 @@ public class GameManager implements Subject {
     }
 
     public void nextPlayersTurn(){
-        if (currentIndex++==players.size()){
+        if (currentIndex == players.size()-1){
             currentIndex=0;
         }
         else {
             currentIndex++;
         }
+        turn.nextPlayerTurn(players.get(currentIndex));
     }
 
     public void receiveCoordinates(CoordinatesTuple coordinatesTuple) {

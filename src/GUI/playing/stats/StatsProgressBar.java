@@ -34,9 +34,10 @@ public class StatsProgressBar extends JPanel {
         if (player1Value == 0 && player2Value == 0) {
             progressBar.setValue(50);
             percentage.setText("50 %");
+            System.out.println("huiuiuiuiu");
         } else {
             float player1Float = (float) player1Value;
-            float player2Float = (float) player1Value;
+            float player2Float = (float) player2Value;
             float ratio = player1Value / (player1Float + player2Float);
             int value = Math.round(100 * ratio);
             progressBar.setValue(value);
