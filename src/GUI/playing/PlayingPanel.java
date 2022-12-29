@@ -3,8 +3,11 @@ package GUI.playing;
 import GUI.playing.Grid.GridPanel;
 import GUI.playing.stats.StatesPanel;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlayingPanel extends JPanel {
@@ -12,7 +15,7 @@ public class PlayingPanel extends JPanel {
     StatesPanel stats;
 
     public PlayingPanel(int length, int height, Color player1Color, String player1Name, Color player2Color,
-                        String player2Name, int livingCells) {
+                        String player2Name, int livingCells) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
         JPanel borderPanelLeft = new JPanel();

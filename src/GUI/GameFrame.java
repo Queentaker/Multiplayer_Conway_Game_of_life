@@ -6,8 +6,11 @@ import GUI.generalElements.Title;
 import GUI.playing.PlayingPanel;
 import GUI.setUp.SetUpPanel;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameFrame extends JFrame implements FrameObserver {
@@ -15,6 +18,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     PlayerInformationPanel information;
     PlayingPanel playingPanel;
     SetUpPanel setUpPanel;
+    String soundName = "src/GUI/sounds/winnersound.wav";
 
 
     public GameFrame() {
@@ -46,12 +50,26 @@ public class GameFrame extends JFrame implements FrameObserver {
     }
 
     public void setUpFinished(int length, int height, Color player1Color, String player1Name, Color player2Color,
-                              String player2Name, int livingCells) {
+                              String player2Name, int livingCells) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         setUpPanel.setVisible(false);
         this.remove(setUpPanel);
 
         playingPanel = new PlayingPanel(length, height, player1Color, player1Name, player2Color, player2Name, livingCells);
         this.add(playingPanel);
+    }
+    public static synchronized void playSound(String soundName) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Clip clip = AudioSystem.getClip();
+                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                    clip.open(inputStream);
+                    clip.start();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }).start();
     }
 
     @Override
@@ -68,6 +86,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     public void declareWinner(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
                               ArrayList<ArrayList<Color>> gridColors) {
         updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generation, message, gridColors);
+        playSound(soundName);
         playingPanel.declareWinner();
     }
 }

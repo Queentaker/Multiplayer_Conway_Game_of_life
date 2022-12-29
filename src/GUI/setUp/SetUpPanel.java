@@ -12,10 +12,13 @@ import exception.IllegalUserInputException;
 import setUp.SetUp;
 
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -101,6 +104,14 @@ public class SetUpPanel extends JPanel implements ActionListener {
         playersNames.add(player1Settings.getCurrentName());
         playersNames.add(player2Settings.getCurrentName());
         SetUp setUp = new SetUp();
-        setUp.setUp(playersColors,playersNames,height,width,radioButtonPanel.getSelectedValue(), frame);
+        try {
+            setUp.setUp(playersColors,playersNames,height,width,radioButtonPanel.getSelectedValue(), frame);
+        } catch (UnsupportedAudioFileException ex) {
+            throw new RuntimeException(ex);
+        } catch (LineUnavailableException ex) {
+            throw new RuntimeException(ex);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
