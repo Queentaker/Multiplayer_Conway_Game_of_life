@@ -5,6 +5,7 @@ import GUI.generalElements.PlayerInformationPanel;
 import GUI.generalElements.Title;
 import GUI.playing.PlayingPanel;
 import GUI.setUp.SetUpPanel;
+import gameFlow.GameManager;
 
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -57,20 +58,6 @@ public class GameFrame extends JFrame implements FrameObserver {
         playingPanel = new PlayingPanel(length, height, player1Color, player1Name, player2Color, player2Name, livingCells);
         this.add(playingPanel);
     }
-    public static synchronized void playSound(String soundName) {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-            }
-        }).start();
-    }
 
     @Override
     public void updateGeneral(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
@@ -86,7 +73,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     public void declareWinner(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
                               ArrayList<ArrayList<Color>> gridColors) {
         updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generation, message, gridColors);
-        playSound(soundName);
+        GameManager.getInstance().playSound(soundName);
         playingPanel.declareWinner();
     }
 }

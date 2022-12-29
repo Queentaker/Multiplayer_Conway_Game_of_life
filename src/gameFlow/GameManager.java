@@ -6,6 +6,10 @@ import grid.CoordinatesTuple;
 import grid.Grid;
 import player.Player;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,7 @@ public class GameManager implements Subject {
     private int currentIndex;
     private Turn turn;
     private String message;
+
 
 
     public static synchronized GameManager getInstance(List<Player> players, Grid grid){
@@ -107,5 +112,19 @@ public class GameManager implements Subject {
         } else {
             notifyObserversGeneral(message);
         }
+    }
+    public synchronized void playSound(String soundName) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Clip clip = AudioSystem.getClip();
+                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                    clip.open(inputStream);
+                    clip.start();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }).start();
     }
 }

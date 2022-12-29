@@ -22,6 +22,7 @@ public class GridButton extends JButton implements ActionListener {
     private MouseListener aListener;
     String soundName = "src/GUI/sounds/clicksound.wav";
 
+
     public GridButton (int xCoordinate, int yCoordinate) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
@@ -47,24 +48,11 @@ public class GridButton extends JButton implements ActionListener {
 
         this.addActionListener(this);
     }
-    public static synchronized void playSound(String soundName) {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-            }
-        }).start();
-    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
-        playSound(soundName);
+        GameManager.getInstance().playSound(soundName);
         GameManager.getInstance().receiveCoordinates(coordinatesTuple);
     }
 
