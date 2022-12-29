@@ -16,6 +16,7 @@ public class TemplatesEnumTest {
     Template2 template3 = new Template2();
     Template4 template4 = new Template4();
     Template5 template5 = new Template5();
+    Template6 template6 = new Template6();
 
     @Test
     public void Template1(){
@@ -37,7 +38,11 @@ public class TemplatesEnumTest {
         template4.addCustomTemplate(15-3,15-3,grid,bobSignature);
     }
     @Test
-    public void Tempplate5(){
+    public void Template5(){
         template5.addCustomTemplate(15-3,15-3,grid,bobSignature);
+    }
+    @Test
+    public void Template6(){
+        template6.addCustomTemplate(15-3,15-3,grid,bobSignature);
     }
 }

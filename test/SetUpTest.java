@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUpTest {
-    /*SetUp setUpper = new SetUp();
+    SetUp setUpper = new SetUp();
     private int gridSize = 5;
     GameFrame gameFrame = new GameFrame();
 
@@ -22,11 +22,7 @@ public class SetUpTest {
         List<Color> playerColor = new ArrayList<>();
         playerColor.add(Color.BLUE);
         playerColor.add(Color.WHITE);
-        try{
-            setUpper.setUp(playerColor, playerNames, gridSize,gridSize, 1,gameFrame);
-        } catch (IllegalSetupException | IllegalUserInputException e){
+        setUpper.setUp(playerColor, playerNames, gridSize,gridSize, 1,gameFrame);
 
-        }
-
-    }*/
+    }
 }
