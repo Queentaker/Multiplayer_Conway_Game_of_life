@@ -8,7 +8,8 @@ public enum TemplatesEnum {
     template2(2,new Template2()),
     template3(3,new Template3()),
     template4(4,new Template4()),
-    template5(5,new Template5());
+    template5(5,new Template5()),
+    template6(6,new Template6());
 
 
     public final Template template;
