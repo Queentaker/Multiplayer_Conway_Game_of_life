@@ -1,5 +1,6 @@
 package gameFlow;
 
+import GUI.FrameObserver;
 import GUI.GameFrame;
 import exception.IllegalUserInputException;
 import grid.CoordinatesTuple;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import player.HumanPlayer;
 import player.Player;
+import setUp.MockObserver;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class GameManagerTest {
     Grid testGrid =new Grid(3,3);
     List<Player> players = new ArrayList<>();
 
-    GameFrame gameFrame = new GameFrame();
+    MockObserver gameFrame = new MockObserver();
     Turn aTurn = new Turn(testPlayer,testGrid);
 
     /*Untestable??
