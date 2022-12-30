@@ -12,6 +12,10 @@ import player.Player;
 import setUp.MockObserver;
 
 import java.awt.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,36 +24,32 @@ public class GameManagerTest {
     HumanPlayer testPlayer2 = new HumanPlayer("boba", Color.black);
     Grid testGrid =new Grid(3,3);
     List<Player> players = new ArrayList<>();
-
-    MockObserver gameFrame = new MockObserver();
     Turn aTurn = new Turn(testPlayer,testGrid);
 
-    /*Untestable??
-    @Test
-    public void nextPlayersTurnTest(){
-        gameManager.nextPlayersTurn();
-        // how to get the currentIndex
-    }
-
-
-    @Test
-    public void setMeasurementsTest(){
-
-        // what could I get??
-    }*/
-    @Test
-    public void nextPlayersTurn(){
-        players.add(testPlayer);
-        GameManager gameManager = GameManager.getInstance(players,testGrid);
-        gameManager.nextPlayersTurn();
-        Assertions.assertEquals(testPlayer,aTurn.getCurrentPlayersSignature());
+    private GameManager createNewGameManager(List<Player> players, Grid grid, Turn aTurn) throws Exception {
+        Constructor<GameManager> leConstructor = GameManager.class.getDeclaredConstructor(List.class, Grid.class);
+        leConstructor.setAccessible(true);
+        GameManager unConstructor = leConstructor.newInstance(players, grid);
+        Field f = unConstructor.getClass().getDeclaredField("turn");
+        f.setAccessible(true);
+        f.set(unConstructor, aTurn);
+        return unConstructor;
     }
     @Test
-    public void nextPlayersTurn1(){
+    public void nextPlayersTurn() throws Exception {
         players.add(testPlayer);
         players.add(testPlayer2);
-        GameManager gameManager = GameManager.getInstance(players,testGrid);
+        GameManager gameManager = createNewGameManager(players, testGrid, aTurn);
         gameManager.nextPlayersTurn();
-        Assertions.assertEquals(testPlayer,aTurn.getCurrentPlayersSignature());
+        Assertions.assertEquals(testPlayer2 ,aTurn.getCurrentPlayersSignature());
+    }
+    @Test
+    public void nextPlayersTurn1() throws Exception {
+        players.add(testPlayer);
+        players.add(testPlayer2);
+        GameManager gameManager = createNewGameManager(players, testGrid, aTurn);
+        gameManager.nextPlayersTurn();
+        gameManager.nextPlayersTurn();
+        Assertions.assertEquals(testPlayer , aTurn.getCurrentPlayersSignature());
     }
 }

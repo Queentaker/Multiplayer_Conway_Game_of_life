@@ -110,8 +110,11 @@ public class Grid implements AddRemoveGridCell{
         int cellsAlivePlayer=0;
         for(int a = 0; a < gridHeight; a++){
             for(int b = 0; b < gridWidth; b++){
-                if(getGridCell(a,b).getPlayersSignature()==playersSignature){
-                    cellsAlivePlayer++;
+                GridCell currentCell = getGridCell(a, b);
+                if (currentCell.isOccupied()) {
+                    if(getGridCell(a,b).getPlayersSignature()==playersSignature){
+                        cellsAlivePlayer++;
+                    }
                 }
             }
         }
