@@ -1,16 +1,15 @@
 package GUI.playing.Grid;
 
 import GUI.Enums.ColorScheme;
+import GUI.GUI_Utility;
 import grid.CoordinatesTuple;
 import gameFlow.GameManager;
 
-import java.io.File;
 import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 import java.io.IOException;
 
 public class GridButton extends JButton implements ActionListener {
@@ -52,7 +51,7 @@ public class GridButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
-        GameManager.getInstance().playSound(soundName);
+        GUI_Utility.soundNotification(soundName);
         GameManager.getInstance().receiveCoordinates(coordinatesTuple);
     }
 

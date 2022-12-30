@@ -8,8 +8,11 @@ import player.PlayersSignature;
 
 import java.awt.*;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GridTest {
@@ -27,6 +30,12 @@ public class GridTest {
         fSignatureGrid.setAccessible(true);
         fSignatureGrid.set(testCell,bobSignature);
         Assertions.assertEquals(1,grid3.cellsAlivePlayer(bobSignature));
+    }
+
+    @Test
+    public void getGridDimensions(){
+        assertEquals(60, grid.getGridHeight());
+        assertEquals(50, grid.getGridWidth());
     }
 
     @Test
@@ -77,8 +86,10 @@ public class GridTest {
     }
     @Test
     public void removeOwnCellTest(){
-        grid.setGridCell(5,10,new GridCell(bobSignature));
-        assertThrows(IllegalUserInputException.class,() ->{grid.removeGridCell(5, 10, bobSignature);});
+        grid.setGridCell(5,10, new GridCell(bobSignature));
+        Assertions.assertThrows(IllegalUserInputException.class, () -> {
+            grid.removeGridCell(5, 10, bobSignature);
+        });
     }
     @Test
     public void removeOpponentsCellTest() throws IllegalUserInputException{
@@ -86,4 +97,78 @@ public class GridTest {
         grid.removeGridCell(5, 10, bobSignature);
         Assertions.assertFalse(grid.getGridCell(5,10).isOccupied());
     }
+
+    @Test
+    public void preconditionRemoveGridCell() throws IllegalUserInputException{
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.removeGridCell(-1, 1, bobSignature);
+        });
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.removeGridCell(0, -1, bobSignature);
+        });
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.removeGridCell(200, 0, bobSignature);
+        });
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.removeGridCell(0, 200, bobSignature);
+        });
+    }
+
+    @Test
+    public void preconditionPlaceGridCell() throws IllegalUserInputException{
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.placeGridCell(-1, 1, bobSignature);
+        });
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.placeGridCell(0, -1, bobSignature);
+        });
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.placeGridCell(200, 0, bobSignature);
+        });
+        Assertions.assertThrows(AssertionError.class, () -> {
+            grid2.placeGridCell(0, 200, bobSignature);
+        });
+    }
+
+    @Test
+    public void preconditionCopyGrid() throws Exception {
+        Grid grid4 = new Grid(61, 50);
+        Method m = grid4.getClass().getDeclaredMethod("copyGrid", Grid.class);
+        m.setAccessible(true);
+        Assertions.assertThrows(AssertionError.class, () -> {
+            try {
+                m.invoke(grid4, grid);
+            } catch (InvocationTargetException e) {
+                throw e.getCause();
+            }
+        });
+        Grid grid5 = new Grid(60, 51);
+        Assertions.assertThrows(AssertionError.class, () -> {
+            try {
+                m.invoke(grid5, grid);
+            } catch (InvocationTargetException e) {
+                throw e.getCause();
+            }
+        });
+    }
+
+    @Test
+    public void preconditionConstructerOtherGrid() throws Exception {
+        Assertions.assertThrows(AssertionError.class, () -> {
+            Grid grid4 = null;
+            new Grid(grid4);
+        });
+    }
+
+    @Test
+    public void preconditionConstructer() throws Exception {
+        Assertions.assertThrows(AssertionError.class, () -> {
+            new Grid(2, -1);
+        });
+        Assertions.assertThrows(AssertionError.class, () -> {
+            new Grid(-1, 2);
+        });
+    }
 }
+
+

@@ -20,4 +20,16 @@ public class GridCellTest {
     public void getColorOccupiedCellTest(){
         Assertions.assertEquals(bobSignature.getPlayerColor(),bobCells.getGridCellColor());
     }
+    @Test
+    public void preconditionGetPlayerSignature(){
+        Assertions.assertThrows(AssertionError.class, () -> {
+            new GridCell().getPlayersSignature();
+        });
+    }
+
+    @Test
+    public void isOccupiedTest(){
+        Assertions.assertTrue(bobCells.isOccupied());
+        Assertions.assertFalse(emptyCell.isOccupied());
+    }
 }

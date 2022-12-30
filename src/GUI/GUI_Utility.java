@@ -1,7 +1,11 @@
 package GUI;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.net.URL;
 
 public class GUI_Utility {
@@ -46,5 +50,17 @@ public class GUI_Utility {
         }
         //Windows
         frame.setIconImage(ownIcon);
+    }
+    public static synchronized void soundNotification(String soundName) {
+        new Thread(() -> {
+            try {
+                Clip soundClip = AudioSystem.getClip();
+                AudioInputStream input = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                soundClip.open(input);
+                soundClip.start();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+        }).start();
     }
 }
