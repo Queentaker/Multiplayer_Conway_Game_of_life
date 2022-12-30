@@ -23,9 +23,9 @@ public class SetUpTest {
 
     int legalWidth= Constants.minWidth.constant;
     int legalHeight=Constants.minHeight.constant;
-/*
+
     @Test
-    public void SetUpSameNameTest() {
+    public void SetUpSameNameTest() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
         playerNames.add("bob");
@@ -38,7 +38,7 @@ public class SetUpTest {
 
     }
     @Test
-    public void SetUpSameColorTest(){
+    public void SetUpSameColorTest() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
         playerNames.add("boba");
@@ -52,7 +52,7 @@ public class SetUpTest {
     }
 
     @Test
-    public void SetUpToBigTest(){
+    public void SetUpToBigTest() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
         playerNames.add("bob");
@@ -64,7 +64,7 @@ public class SetUpTest {
         //assertThrows(IllegalSetupException.class,() ->{setUpper.setUp(playerColor,playerNames,10000,100000,1, gameFrame);});
 
     }
-*/
+
     @Test
     public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         List<String> playerNames = new ArrayList<>();
