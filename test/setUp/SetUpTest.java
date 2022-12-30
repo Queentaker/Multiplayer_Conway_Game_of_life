@@ -1,8 +1,8 @@
 package setUp;
 
 import GUI.GameFrame;
-import exception.IllegalSetupException;
-import exception.IllegalUserInputException;
+
+
 import grid.CoordinatesTuple;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -90,7 +90,7 @@ public class SetUpTest {
     }
 
     @Test
-    public void SetUpAllFineTest() throws IllegalUserInputException, IllegalSetupException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void SetUpAllFineTest() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         List<String> playerNames = new ArrayList<>();
         playerNames.add("bob");
         playerNames.add("boba");

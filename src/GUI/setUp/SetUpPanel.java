@@ -7,8 +7,6 @@ import GUI.setUp.setUpElements.GridSetting.RadioButtonPanel;
 import GUI.setUp.setUpElements.GridSetting.SliderPanel;
 import GUI.setUp.setUpElements.PlayerSettings.PlayerSettingPanel;
 import enums.Constants;
-import exception.IllegalSetupException;
-import exception.IllegalUserInputException;
 import setUp.SetUp;
 
 
