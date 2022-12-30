@@ -5,12 +5,10 @@ import GUI.generalElements.PlayerInformationPanel;
 import GUI.generalElements.Title;
 import GUI.playing.PlayingPanel;
 import GUI.setUp.SetUpPanel;
-import gameFlow.GameManager;
 
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -73,7 +71,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     public void declareWinner(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
                               ArrayList<ArrayList<Color>> gridColors) {
         updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generation, message, gridColors);
-        GameManager.getInstance().playSound(soundName);
+        GUI_Utility.soundNotification(soundName);
         playingPanel.declareWinner();
     }
 }

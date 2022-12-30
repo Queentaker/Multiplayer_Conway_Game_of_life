@@ -119,18 +119,4 @@ public class GameManager implements Subject {
             notifyObserversGeneral(message);
         }
     }
-    public synchronized void playSound(String soundName) {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-            }
-        }).start();
-    }
 }

@@ -1,16 +1,14 @@
 package setUp;
 
 import GUI.FrameObserver;
+import GUI.GUI_Utility;
 import enums.Constants;
-import exception.IllegalSetupException;
-import exception.IllegalUserInputException;
 import gameFlow.GameManager;
 import grid.Grid;
 import grid.startingTemplates.Template;
 import grid.startingTemplates.TemplatesEnum;
 import player.HumanPlayer;
 import player.Player;
-import GUI.GameFrame;
 import player.PlayersSignature;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -58,7 +56,7 @@ public class SetUp {
             frame.setUpFinished(width, height, playerColors.get(0), playerNames.get(0), playerColors.get(1), playerNames.get(1),
                     cellsAlive);
             gameManager.registerObserver(frame);
-            GameManager.getInstance().playSound(soundName);
+            GUI_Utility.soundNotification(soundName);
             gameManager.setMeasurements("remove");
         }
     }
