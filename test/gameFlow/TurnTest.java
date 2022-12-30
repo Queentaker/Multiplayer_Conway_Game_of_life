@@ -53,4 +53,12 @@ public class TurnTest {
         testTurn.setCoordinates(coordinatesTupleTest);
         Assertions.assertEquals(coordinatesTupleTest,testTurn.getCoordinates());
     }
+
+    @Test
+    public void generationTest(){
+        testTurn.addGeneration();
+        Assertions.assertEquals(1, testTurn.getGeneration());
+        testTurn.addGeneration();
+        Assertions.assertEquals(2, testTurn.getGeneration());
+    }
 }
