@@ -107,11 +107,15 @@ public class GameManager implements Subject {
         generation = turn.getGeneration();
         if (cellsAlivePlayer1 == 0 && cellsAlivePlayer2 == 0) {
             notifyObserversWinner("The game ended in a tie, congratulation!");
-        } else if(cellsAlivePlayer1 == 0 || cellsAlivePlayer2 == 0) {
+        } else if(cellsAlivePlayer1 == 0) {
             nextPlayersTurn();
-            notifyObserversWinner(turn.getName() + " is the winner!");
+            notifyObserversWinner(players.get(1).getPlayerName() + " is the winner!");
             //todo needs to be looked at
-        } else {
+        } else if (cellsAlivePlayer2 == 0){
+            nextPlayersTurn();
+            notifyObserversWinner(players.get(0).getPlayerName() + " is the winner!");
+        }
+        else {
             notifyObserversGeneral(message);
         }
     }

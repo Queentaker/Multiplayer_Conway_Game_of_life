@@ -114,7 +114,5 @@ public class EvolveNextGen {
         return aliveNeighbors==NumNeighbors.Three;
     }
 
-    //this needs to be done for the scenario that a player a has 2 neighboring and player 3 b to the cell x
-    //randomly a playerSignature is going to be selected
 
 }
