@@ -1,5 +1,6 @@
 package setUp;
 
+import GUI.FrameObserver;
 import enums.Constants;
 import exception.IllegalSetupException;
 import exception.IllegalUserInputException;
@@ -24,7 +25,7 @@ public class SetUp {
     private GameManager gameManager;
     String soundName = "src/GUI/sounds/openingguisound.wav";
 
-    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, GameFrame frame) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, FrameObserver frame) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assert playerColors.size()==playerNames.size();
 
         if (isColorToBright(playerColors)){
