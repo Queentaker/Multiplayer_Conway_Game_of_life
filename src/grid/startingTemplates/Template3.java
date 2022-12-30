@@ -14,7 +14,7 @@ public class Template3 extends Template {
     protected void addCustomTemplate(int a, int b, Grid grid, PlayersSignature signature) {
         for (int i=0;i<templateSize; i++){
             for (int j=0;j<templateSize;j++){
-                if (!((i+j)%2==0)){
+                if (((i+j)%2==0)){
                     assert !grid.getGridCell(a +i, b +j).isOccupied();
                     grid.setGridCell(a +i, b +j,factory.getGridCell(signature));
                 }
