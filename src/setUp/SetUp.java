@@ -30,9 +30,11 @@ public class SetUp {
             frame.updateMessage("One of the colors is to bright, make sure your colors aren't to whitish");
         } else if (!uniqueColors(playerColors)){
             frame.updateMessage("You can't have same colors");
-        }else if (colorsToSimialar(playerColors)){
-            frame.updateMessage("Your colors are to similar make sure you choose different colors that have at least an rgb difference of "
-                    + Constants.minimumRGBDistance.constant);
+        }else if (colorsToSimilar(playerColors)){
+            frame.updateMessage("Your colors are to similar");
+        }else if (!nameLengthValid(playerNames)){
+            frame.updateMessage("The names are not between "+ Constants.minNameLen.constant
+            + " and " +Constants.maxNameLen.constant+ " letters long");
         }else if (!uniqueNames(playerNames)){
             frame.updateMessage("You can't have the same names");
         } else if (!isGridSizeValid(height,width)){
@@ -60,11 +62,11 @@ public class SetUp {
             gameManager.setMeasurements("remove");
         }
     }
-    private boolean isGridSizeValid(int height, int width){
+    private static boolean isGridSizeValid(int height, int width){
         return height>= Constants.minHeight.constant & height<=Constants.maxHeight.constant & width>=Constants.minWidth.constant & width<=Constants.maxWidth.constant;
     }
 
-    private boolean uniqueColors(List<Color> playerColor){
+    private static boolean uniqueColors(List<Color> playerColor){
         for (int i=0;i< playerColor.size()-1;i++){
             Color color=playerColor.get(i);
             for (int j=0;j< playerColor.size();j++){
@@ -76,7 +78,7 @@ public class SetUp {
         return true;
     }
 
-    private boolean isColorToBright(List<Color> playerColors) {
+    private static boolean isColorToBright(List<Color> playerColors) {
         for(Color aColor: playerColors) {
             assert aColor!= null;
             int brightnessLevel = 0;
@@ -90,7 +92,7 @@ public class SetUp {
         return false;
     }
 
-    private boolean uniqueNames(List<String> playerNames){
+    private static boolean uniqueNames(List<String> playerNames){
         for (int i=0;i< playerNames.size()-1;i++){
             String name=playerNames.get(i);
             for (int j=0;j< playerNames.size();j++){
@@ -101,8 +103,17 @@ public class SetUp {
         }
         return true;
     }
+    private static boolean nameLengthValid(List <String> playerNames){
+        for (String name:playerNames){
+            int length=name.length();
+            if (length<Constants.minNameLen.constant || length>Constants.maxNameLen.constant){
+                return false;
+            }
+        }
+        return true;
+    }
 
-    private boolean colorsToSimialar(List<Color> playerColors){
+    private static boolean colorsToSimilar(List<Color> playerColors){
         int [] rgbValues=new int[playerColors.size()];
         int i=0;
         for (Color color:playerColors){

@@ -48,8 +48,7 @@ public class SetUpTest {
         playerColor.add(new Color (100,100,99));
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
         setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1, gameFrame);
-        Assertions.assertEquals("Your colors are to similar make sure you choose different colors that have at least an rgb difference of "
-                + Constants.minimumRGBDistance.constant, gameFrame.getMessage());
+        Assertions.assertEquals("Your colors are to similar", gameFrame.getMessage());
     }
 
     @Test

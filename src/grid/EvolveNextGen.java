@@ -1,6 +1,5 @@
 package grid;
 
-import gameFlow.GameManager;
 import player.PlayersSignature;
 
 import java.util.*;
@@ -63,7 +62,6 @@ public class EvolveNextGen {
         }
         assert signature!=null;
         return signature;
-
     }
 
     private Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(int x, int y) {
@@ -98,7 +96,7 @@ public class EvolveNextGen {
         }
     }
 
-    private boolean doesGridCellLive(NumNeighbors numNeighbors,boolean alreadyAlive) {
+    private static boolean doesGridCellLive(NumNeighbors numNeighbors,boolean alreadyAlive) {
         if (alreadyAlive){
             return requiredNeighborsToSurvive(numNeighbors);
         }

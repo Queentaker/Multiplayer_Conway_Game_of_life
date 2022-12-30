@@ -9,6 +9,8 @@ public enum Constants {
     dist(4),
     allowedPlayers(2),
     minimumRGBDistance(10),
+    minNameLen(1),
+    maxNameLen(18),
     maxWidth(60);
 
     public final int constant;
