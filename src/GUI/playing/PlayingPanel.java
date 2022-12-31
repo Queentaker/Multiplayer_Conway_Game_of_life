@@ -1,6 +1,6 @@
 package GUI.playing;
 
-import GUI.playing.Grid.GridPanel;
+import GUI.playing.grid.GridPanel;
 import GUI.playing.stats.StatesPanel;
 
 import javax.sound.sampled.LineUnavailableException;

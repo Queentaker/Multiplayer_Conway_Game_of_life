@@ -1,6 +1,4 @@
-package GUI.Enums;
-
-import java.awt.*;
+package GUI.enums;
 
 public enum FontScheme {
     //Charter, Bodoni 72, TimesRoman, PT Serif

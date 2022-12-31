@@ -1,7 +1,7 @@
 package GUI.setUp.setUpElements.GridSetting;
 
-import GUI.Enums.ColorScheme;
-import GUI.Enums.FontScheme;
+import GUI.enums.ColorScheme;
+import GUI.enums.FontScheme;
 
 import javax.swing.*;
 import java.awt.*;

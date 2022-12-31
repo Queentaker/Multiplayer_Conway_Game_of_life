@@ -1,6 +1,6 @@
 package enums;
 
-import GUI.Enums.ColorScheme;
+import GUI.enums.ColorScheme;
 
 import java.awt.*;
 

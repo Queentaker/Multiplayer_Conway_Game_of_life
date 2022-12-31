@@ -1,6 +1,6 @@
 package GUI;
 
-import GUI.Enums.ColorScheme;
+import GUI.enums.ColorScheme;
 import GUI.generalElements.PlayerInformationPanel;
 import GUI.generalElements.Title;
 import GUI.playing.PlayingPanel;

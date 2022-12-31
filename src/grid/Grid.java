@@ -10,7 +10,6 @@ import java.util.List;
 
 public class Grid implements AddRemoveGridCell{
 
-    private final EvolveNextGen evolveNextGen=new EvolveNextGen();
 
     private final List<ArrayList<GridCell>> grid;
     private final int gridHeight;
@@ -54,10 +53,6 @@ public class Grid implements AddRemoveGridCell{
             copy.add(row);
         }
         return copy;
-    }
-
-    public void evolve(){
-        evolveNextGen.evolve(this);
     }
 
     public void setGridCell(int a,int b, GridCell gridCell){
@@ -120,7 +115,6 @@ public class Grid implements AddRemoveGridCell{
         }
         return cellsAlivePlayer;
     }
-    //todo private Map<PlayersSignature,Integer> getPlayersAliveCell {}
 
     public ArrayList<ArrayList<Color>> getColors(){
         ArrayList<ArrayList<Color>> colorsArray = new ArrayList<ArrayList<Color>>();

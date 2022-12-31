@@ -1,6 +1,6 @@
-package GUI.playing.Grid;
+package GUI.playing.grid;
 
-import GUI.Enums.ColorScheme;
+import GUI.enums.ColorScheme;
 import GUI.GUI_Utility;
 import grid.CoordinatesTuple;
 import gameFlow.GameManager;

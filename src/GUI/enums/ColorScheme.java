@@ -1,4 +1,4 @@
-package GUI.Enums;
+package GUI.enums;
 
 import java.awt.*;
 

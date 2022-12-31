@@ -1,11 +1,10 @@
 package GUI.generalElements;
 
-import GUI.Enums.ColorScheme;
+import GUI.enums.ColorScheme;
 import GUI.GUI_Utility;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 
 public class Title extends JPanel {
 

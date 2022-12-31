@@ -17,10 +17,10 @@ public abstract class Template {
     }
 
 
-    protected int getXStartingPosition(Grid grid){
+    protected int getAStartingPosition(Grid grid){
         return getMiddleRow(grid)-templateSize/2;
     }
-    protected int getYStartingPosition(Grid grid){
+    protected int getBStartingPosition(Grid grid){
         return getMiddleColum(grid)-templateSize/2;
     }
 
@@ -32,8 +32,8 @@ public abstract class Template {
 
         while (i<signatures.size()){
             TemplatePosition position=positions.get(i);
-            int a=position.ARow+getXStartingPosition(grid);
-            int b=position.BColum+getYStartingPosition(grid);
+            int a=position.ARow+ getAStartingPosition(grid);
+            int b=position.BColum+ getBStartingPosition(grid);
             addCustomTemplate(a,b,grid,signatures.get(i));
             i++;
         }

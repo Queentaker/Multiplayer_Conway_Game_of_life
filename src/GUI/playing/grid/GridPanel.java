@@ -1,6 +1,6 @@
-package GUI.playing.Grid;
+package GUI.playing.grid;
 
-import GUI.Enums.ColorScheme;
+import GUI.enums.ColorScheme;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;

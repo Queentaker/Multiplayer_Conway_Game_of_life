@@ -1,7 +1,6 @@
 package GUI.playing.stats;
 
-import GUI.Enums.ColorScheme;
-import GUI.Enums.FontScheme;
+import GUI.enums.FontScheme;
 
 import javax.swing.*;
 import java.awt.*;

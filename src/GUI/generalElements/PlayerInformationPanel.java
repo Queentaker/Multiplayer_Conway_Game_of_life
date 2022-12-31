@@ -1,7 +1,7 @@
 package GUI.generalElements;
 
-import GUI.Enums.ColorScheme;
-import GUI.Enums.FontScheme;
+import GUI.enums.ColorScheme;
+import GUI.enums.FontScheme;
 import GUI.GUI_Utility;
 
 import javax.swing.*;
