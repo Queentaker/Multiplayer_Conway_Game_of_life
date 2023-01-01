@@ -1,7 +1,6 @@
 package GUI.playing.grid;
 
 import GUI.enums.ColorScheme;
-import GUI.GUI_Utility;
 import grid.CoordinatesTuple;
 import gameFlow.GameManager;
 
@@ -19,8 +18,6 @@ public class GridButton extends JButton implements ActionListener {
     private final int xCoordinate;
     private final int yCoordinate;
     private final MouseListener aListener;
-    private static final String soundName = "src/GUI/sounds/clicksound.wav";
-
 
     public GridButton (int xCoordinate, int yCoordinate) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         this.xCoordinate = xCoordinate;
@@ -47,7 +44,6 @@ public class GridButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         CoordinatesTuple coordinatesTuple = new CoordinatesTuple(this.xCoordinate,this.yCoordinate);
-        GUI_Utility.soundNotification(soundName);
         GameManager.getInstance().receiveCoordinates(coordinatesTuple);
     }
 

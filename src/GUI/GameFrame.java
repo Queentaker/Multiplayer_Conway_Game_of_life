@@ -17,7 +17,9 @@ public class GameFrame extends JFrame implements FrameObserver {
     PlayerInformationPanel information;
     PlayingPanel playingPanel;
     SetUpPanel setUpPanel;
-    String soundName = "src/GUI/sounds/winnersound.wav";
+    private static final String winningSoundName = "src/GUI/sounds/winnersound.wav";
+    private static final String errorSoundName = "src/GUI/sounds/clickerrorsound.wav";
+    private static final String successSoundName = "src/GUI/sounds/clicksound.wav";
 
     public GameFrame() {
         this.setTitle("Conway's Game of Life");
@@ -53,18 +55,21 @@ public class GameFrame extends JFrame implements FrameObserver {
     @Override
     public void updateGeneral(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
                               ArrayList<ArrayList<Color>> gridColors) {
+        GUI_Utility.soundNotification(successSoundName);
         information.update(message);
         playingPanel.update(cellsAlivePlayer1, cellsAlivePlayer2, generation, gridColors);
     }
+
     @Override
     public void updateMessage(String message) {
+        GUI_Utility.soundNotification(errorSoundName);
         information.update(message);
     }
 
     public void declareWinner(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
                               ArrayList<ArrayList<Color>> gridColors) {
         updateGeneral(cellsAlivePlayer1, cellsAlivePlayer2, generation, message, gridColors);
-        GUI_Utility.soundNotification(soundName);
+        GUI_Utility.soundNotification(winningSoundName);
         playingPanel.declareWinner();
     }
 }

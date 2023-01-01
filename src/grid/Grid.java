@@ -1,6 +1,5 @@
 package grid;
 
-import GUI.GUI_Utility;
 import exception.IllegalUserInputException;
 import player.PlayersSignature;
 
@@ -14,7 +13,6 @@ public class Grid implements AddRemoveGridCell{
     private final int gridHeight;
     private final int gridWidth;
     private final GridCellFactory cellFactory =GridCellFactory.getInstance();
-    String soundName = "src/GUI/sounds/clickerrorsound.wav";
 
     private void createGrid (){
         for (int i=0;i<gridHeight;i++){
@@ -79,7 +77,6 @@ public class Grid implements AddRemoveGridCell{
         assert b>=0 && b<gridWidth;
         String currentPlayer = playersSignature.getPlayerName();
         if (getGridCell(a,b).isOccupied()){
-            GUI_Utility.soundNotification(soundName);
             throw new IllegalUserInputException(currentPlayer +", you cannot add a cell to an already occupied one!");
         }
         setGridCell(a,b, cellFactory.getGridCell(playersSignature));
@@ -91,11 +88,9 @@ public class Grid implements AddRemoveGridCell{
         assert b>=0 && b<gridWidth;
         String currentPlayer = playersSignature.getPlayerName();
         if (!getGridCell(a,b).isOccupied()){
-            GUI_Utility.soundNotification(soundName);
             throw new IllegalUserInputException(currentPlayer + ", you cannot remove an empty cell!");
         }
         if (getGridCell(a, b).getPlayersSignature().getPlayerId().equals(playersSignature.getPlayerId())){
-            GUI_Utility.soundNotification(soundName);
             throw new IllegalUserInputException(currentPlayer + ", you cannot remove your own cell!");
         }
         setGridCell(a,b, cellFactory.getEmptyGridCell());
