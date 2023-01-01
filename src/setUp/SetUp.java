@@ -27,7 +27,7 @@ public class SetUp {
         assert playerColors.size()==playerNames.size();
 
         if (isColorToBright(playerColors)){
-            frame.updateMessage("One of the colors is to bright, make sure your colors are not too whitish");
+            frame.updateMessage("One of the colors is too bright, make sure your colors are not too whitish");
         } else if (!uniqueColors(playerColors)){
             frame.updateMessage("You cannot have the same colors");
         }else if (colorsToSimilar(playerColors)){

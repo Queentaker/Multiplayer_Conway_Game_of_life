@@ -34,7 +34,7 @@ public class SetUpTest {
         playerColor.add(new Color (255,250,250));
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
         setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1, gameFrame);
-        Assertions.assertEquals("One of the colors is to bright, make sure your colors are not to whitish", gameFrame.getMessage());
+        Assertions.assertEquals("One of the colors is too bright, make sure your colors are not too whitish", gameFrame.getMessage());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class SetUpTest {
         playerColor.add(Color.RED);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
         setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1, gameFrame);
-        Assertions.assertEquals("You can not have the same names", gameFrame.getMessage());
+        Assertions.assertEquals("You cannot have the same names", gameFrame.getMessage());
     }
     @Test
     public void SetUpSameColorTest() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -72,7 +72,7 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
         setUpper.setUp(playerColor,playerNames,legalHeight,legalWidth,1, gameFrame);
-        Assertions.assertEquals("You can not have the same colors", gameFrame.getMessage());
+        Assertions.assertEquals("You cannot have the same colors", gameFrame.getMessage());
     }
 
     @Test
