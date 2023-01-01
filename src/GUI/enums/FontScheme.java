@@ -2,7 +2,7 @@ package GUI.enums;
 
 public enum FontScheme {
 
-    STANDARD_FONT("TimesRoman");
+    STANDARD_FONT("Times New Roman");
 
     private final String fontName;
 
