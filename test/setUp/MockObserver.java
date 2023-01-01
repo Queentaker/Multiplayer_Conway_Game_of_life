@@ -35,7 +35,7 @@ public class MockObserver implements FrameObserver {
     }
 
     @Override
-    public void setUpFinished(int length, int height, Color player1Color, String player1Name, Color player2Color, String player2Name, int livingCells) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void setUpFinished(int length, int height, Color player1Color, String player1Name, Color player2Color, String player2Name, int livingCells) {
         setUpFinished = true;
     }
 

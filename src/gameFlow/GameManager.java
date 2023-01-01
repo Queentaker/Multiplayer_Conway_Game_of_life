@@ -16,7 +16,6 @@ public class GameManager implements Subject {
     private int cellsAlivePlayer2;
     private int generation;
     private static GameManager uniqueInstance;
-
     private final List<Player> players;
     private int currentIndex;
     private final Turn turn;

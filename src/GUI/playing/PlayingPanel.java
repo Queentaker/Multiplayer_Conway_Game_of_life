@@ -15,7 +15,7 @@ public class PlayingPanel extends JPanel {
     StatesPanel stats;
 
     public PlayingPanel(int length, int height, Color player1Color, String player1Name, Color player2Color,
-                        String player2Name, int livingCells) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+                        String player2Name, int livingCells) {
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
         JPanel borderPanelLeft = new JPanel();

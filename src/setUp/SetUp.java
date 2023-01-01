@@ -19,9 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
-    String soundName = "src/GUI/sounds/openingguisound.wav";
 
-    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, FrameObserver frame) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, FrameObserver frame) {
         assert playerColors.size()==playerNames.size();
 
         if (isColorToBright(playerColors)){
@@ -40,7 +39,6 @@ public class SetUp {
         } else {
             int i = 0;
             List<PlayersSignature> playersSignature = new ArrayList<>();
-            //must be again private
             List<Player> players = new ArrayList<>();
             while (i < playerColors.size()) {
                 Player player = new HumanPlayer(playerNames.get(i), playerColors.get(i));
@@ -56,7 +54,6 @@ public class SetUp {
             frame.setUpFinished(width, height, playerColors.get(0), playerNames.get(0), playerColors.get(1), playerNames.get(1),
                     cellsAlive);
             gameManager.registerObserver(frame);
-            GUI_Utility.soundNotification(soundName);
             gameManager.setMeasurements("remove");
         }
     }

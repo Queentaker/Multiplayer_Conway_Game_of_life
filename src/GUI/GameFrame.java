@@ -20,6 +20,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     private static final String winningSoundName = "src/GUI/sounds/winnersound.wav";
     private static final String errorSoundName = "src/GUI/sounds/clickerrorsound.wav";
     private static final String successSoundName = "src/GUI/sounds/clicksound.wav";
+    private static final String setUpSoundName = "src/GUI/sounds/openingguisound.wav";
 
     public GameFrame() {
         this.setTitle("Conway's Game of Life");
@@ -45,11 +46,12 @@ public class GameFrame extends JFrame implements FrameObserver {
     }
 
     public void setUpFinished(int length, int height, Color player1Color, String player1Name, Color player2Color,
-                              String player2Name, int livingCells) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+                              String player2Name, int livingCells) {
         setUpPanel.setVisible(false);
         this.remove(setUpPanel);
         playingPanel = new PlayingPanel(length, height, player1Color, player1Name, player2Color, player2Name, livingCells);
         this.add(playingPanel);
+        GUI_Utility.soundNotification(setUpSoundName);
     }
 
     @Override

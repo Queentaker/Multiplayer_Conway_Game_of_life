@@ -83,14 +83,6 @@ public class SetUpPanel extends JPanel implements ActionListener {
         playersNames.add(player1Settings.getCurrentName());
         playersNames.add(player2Settings.getCurrentName());
         SetUp setUp = new SetUp();
-        try {
-            setUp.setUp(playersColors,playersNames,height,width,radioButtonPanel.getSelectedValue(), frame);
-        } catch (UnsupportedAudioFileException ex) {
-            throw new RuntimeException(ex);
-        } catch (LineUnavailableException ex) {
-            throw new RuntimeException(ex);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        setUp.setUp(playersColors,playersNames,height,width,radioButtonPanel.getSelectedValue(), frame);
     }
 }

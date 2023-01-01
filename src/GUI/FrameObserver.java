@@ -16,5 +16,5 @@ public interface FrameObserver {
                               ArrayList<ArrayList<Color>> gridColors);
 
     public void setUpFinished(int length, int height, Color player1Color, String player1Name, Color player2Color,
-                              String player2Name, int livingCells) throws UnsupportedAudioFileException, LineUnavailableException, IOException;
+                              String player2Name, int livingCells);
 }

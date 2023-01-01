@@ -19,7 +19,7 @@ public class GridButton extends JButton implements ActionListener {
     private final int yCoordinate;
     private final MouseListener aListener;
 
-    public GridButton (int xCoordinate, int yCoordinate) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public GridButton (int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.setBackground(ColorScheme.BACKGROUND_COLOR.getColor());

@@ -14,7 +14,7 @@ public class GridPanel extends JPanel {
     private final int length;
     private final int height;
 
-    public GridPanel(int length, int height) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public GridPanel(int length, int height) {
         this.length = length;
         this.height = height;
         grid = new ArrayList<>();
