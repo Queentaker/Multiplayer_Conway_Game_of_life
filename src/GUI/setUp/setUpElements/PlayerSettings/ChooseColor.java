@@ -10,8 +10,10 @@ import java.awt.event.ActionListener;
 
 public class ChooseColor extends JButton implements ActionListener {
     private Color currentColor;
+    private final Color defaultColor;
 
     public ChooseColor(Color defaultColor, String title) {
+        this.defaultColor = defaultColor;
         currentColor = defaultColor;
         this.setOpaque(true);
         this.setText(title);
@@ -31,6 +33,9 @@ public class ChooseColor extends JButton implements ActionListener {
     }
 
     public Color getCurrentColor() {
+        if (currentColor == null) {
+            return defaultColor;
+        }
         return currentColor;
     }
 }
