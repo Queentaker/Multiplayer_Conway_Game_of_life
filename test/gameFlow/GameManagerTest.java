@@ -21,7 +21,7 @@ import java.util.List;
 
 public class GameManagerTest {
     HumanPlayer testPlayer = new HumanPlayer("bob", Color.CYAN);
-    HumanPlayer testPlayer2 = new HumanPlayer("boba", Color.black);
+    HumanPlayer testPlayer2 = new HumanPlayer("anna", Color.BLACK);
     Grid testGrid =new Grid(3,3);
     List<Player> players = new ArrayList<>();
     Turn aTurn = new Turn(testPlayer,testGrid);

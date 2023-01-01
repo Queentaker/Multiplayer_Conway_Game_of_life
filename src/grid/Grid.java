@@ -78,7 +78,7 @@ public class Grid implements AddRemoveGridCell{
         String currentPlayer = playersSignature.getPlayerName();
         if (getGridCell(a,b).isOccupied()){
             GUI_Utility.soundNotification(soundName);
-            throw new IllegalUserInputException(currentPlayer +", you can't add a cell to an already occupied one!");
+            throw new IllegalUserInputException(currentPlayer +", you cannot add a cell to an already occupied one!");
         }
         setGridCell(a,b, cellFactory.getGridCell(playersSignature));
     }
@@ -90,11 +90,11 @@ public class Grid implements AddRemoveGridCell{
         String currentPlayer = playersSignature.getPlayerName();
         if (!getGridCell(a,b).isOccupied()){
             GUI_Utility.soundNotification(soundName);
-            throw new IllegalUserInputException(currentPlayer + ", you can't remove an empty cell!");
+            throw new IllegalUserInputException(currentPlayer + ", you cannot remove an empty cell!");
         }
         if (getGridCell(a, b).getPlayersSignature().getPlayerId().equals(playersSignature.getPlayerId())){
             GUI_Utility.soundNotification(soundName);
-            throw new IllegalUserInputException(currentPlayer + ", you can't remove your own cell!");
+            throw new IllegalUserInputException(currentPlayer + ", you cannot remove your own cell!");
         }
         setGridCell(a,b, cellFactory.getEmptyGridCell());
     }

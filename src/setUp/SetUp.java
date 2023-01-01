@@ -27,18 +27,18 @@ public class SetUp {
         assert playerColors.size()==playerNames.size();
 
         if (isColorToBright(playerColors)){
-            frame.updateMessage("One of the colors is to bright, make sure your colors aren't to whitish");
+            frame.updateMessage("One of the colors is to bright, make sure your colors are not too whitish");
         } else if (!uniqueColors(playerColors)){
-            frame.updateMessage("You can't have same colors");
+            frame.updateMessage("You cannot have the same colors");
         }else if (colorsToSimilar(playerColors)){
-            frame.updateMessage("Your colors are to similar");
+            frame.updateMessage("Your colors are too similar");
         }else if (!nameLengthValid(playerNames)){
             frame.updateMessage("The names are not between "+ Constants.minNameLen.constant
             + " and " +Constants.maxNameLen.constant+ " letters long");
         }else if (!uniqueNames(playerNames)){
-            frame.updateMessage("You can't have the same names");
+            frame.updateMessage("You cannot have the same names");
         } else if (!isGridSizeValid(height,width)){
-            frame.updateMessage("Grid doesn't meet limits");
+            frame.updateMessage("Grid does not meet the limits");
         } else {
 
             int i = 0;
