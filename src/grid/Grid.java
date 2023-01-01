@@ -10,12 +10,12 @@ import java.util.List;
 
 public class Grid implements AddRemoveGridCell{
 
-
     private final List<ArrayList<GridCell>> grid;
     private final int gridHeight;
     private final int gridWidth;
     private final GridCellFactory cellFactory =GridCellFactory.getInstance();
     String soundName = "src/GUI/sounds/clickerrorsound.wav";
+
     private void createGrid (){
         for (int i=0;i<gridHeight;i++){
             ArrayList<GridCell> row=new ArrayList<GridCell>();
@@ -34,13 +34,14 @@ public class Grid implements AddRemoveGridCell{
         this.gridWidth=width;
         createGrid();
     }
-    //grid constructer so that one can easily create a copy of the grid;
+
     public Grid(Grid anotherGrid){
         assert anotherGrid!=null;
         this.gridHeight=anotherGrid.gridHeight;
         this.gridWidth=anotherGrid.gridWidth;
         this.grid=copyGrid(anotherGrid);
     }
+
     private List<ArrayList<GridCell>> copyGrid(Grid anotherGrid){
         assert gridHeight== anotherGrid.gridHeight;
         assert gridWidth==anotherGrid.gridWidth;
@@ -59,6 +60,7 @@ public class Grid implements AddRemoveGridCell{
         List<GridCell> row=grid.get(a);
         row.set(b,gridCell);
     }
+
     public GridCell getGridCell(int a,int b){
         return grid.get(a).get(b);
     }
@@ -98,6 +100,7 @@ public class Grid implements AddRemoveGridCell{
         }
         setGridCell(a,b, cellFactory.getEmptyGridCell());
     }
+
     public int cellsAlivePlayer(PlayersSignature playersSignature){
         int cellsAlivePlayer=0;
         for(int a = 0; a < gridHeight; a++){

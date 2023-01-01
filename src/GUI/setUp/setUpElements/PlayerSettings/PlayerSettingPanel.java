@@ -16,17 +16,14 @@ public class PlayerSettingPanel extends JPanel {
         this.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
         this.setPreferredSize(new Dimension(300, 200));
         this.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
-
         JLabel title = new JLabel(defaultName + " Settings");
-        title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
+        title.setFont(new Font(FontScheme.STANDARD_FONT.getFontName(), Font.BOLD, 24));
         title.setForeground(ColorScheme.DARK_COLOR.getColor());
         title.setOpaque(false);
         title.setHorizontalAlignment(JLabel.CENTER);
         this.add(title, BorderLayout.NORTH);
-
         colorChoooser = new ChooseColor(defaultColor, defaultName + " Color");
         this.add(colorChoooser, BorderLayout.SOUTH);
-
         nameChooser = new ChooseName(defaultName + " Name");
         this.add(nameChooser, BorderLayout.CENTER);
     }
@@ -38,5 +35,4 @@ public class PlayerSettingPanel extends JPanel {
     public String getCurrentName() {
         return nameChooser.getText();
     }
-
 }

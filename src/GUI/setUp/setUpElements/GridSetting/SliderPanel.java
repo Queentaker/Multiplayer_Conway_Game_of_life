@@ -17,27 +17,24 @@ public class SliderPanel extends JPanel implements ChangeListener {
         this.setOpaque(true);
         this.setBackground(ColorScheme.MEDIUM_BRIGHT_COLOR.getColor());
         this.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
-
         JLabel title = new JLabel();
         title.setOpaque(true);
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setVerticalAlignment(JLabel.TOP);
         title.setText(Title);
         title.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
-        title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
+        title.setFont(new Font(FontScheme.STANDARD_FONT.getFontName(), Font.BOLD, 24));
         title.setForeground(ColorScheme.DARK_COLOR.getColor());
         title.setPreferredSize(new Dimension(30,30));
         this.add(title, BorderLayout.NORTH);
-
         number = new JLabel();
         number.setHorizontalAlignment(JLabel.CENTER);
         number.setText(Integer.toString(defaultValue));
-        number.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 24));
+        number.setFont(new Font(FontScheme.STANDARD_FONT.getFontName(), Font.PLAIN, 24));
         number.setForeground(ColorScheme.DARK_COLOR.getColor());
         number.setPreferredSize(new Dimension(30,30));
         number.setOpaque(false);
         this.add(number, BorderLayout.SOUTH);
-
         slider = new JSlider(min, max, defaultValue);
         slider.setOpaque(true);
         slider.setBackground(ColorScheme.MEDIUM_BRIGHT_COLOR.getColor());
@@ -49,7 +46,7 @@ public class SliderPanel extends JPanel implements ChangeListener {
         slider.setPaintLabels(true);
         slider.setOrientation(SwingConstants.HORIZONTAL);
         slider.addChangeListener(this);
-        slider.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 10));
+        slider.setFont(new Font(FontScheme.STANDARD_FONT.getFontName(), Font.PLAIN, 10));
         this.add(slider, BorderLayout.CENTER);
     }
 

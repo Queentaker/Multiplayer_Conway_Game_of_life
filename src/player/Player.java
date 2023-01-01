@@ -12,14 +12,17 @@ public abstract class Player implements PlayersSignature{
         this.playersColor=playersColor;
         this.playerId=UUID.randomUUID().toString();
     }
+
     @Override
     public String getPlayerId() {
         return playerId;
     }
+
     @Override
     public Color getPlayerColor() {
         return playersColor;
     }
+
     @Override
     public String getPlayerName() {
         return name;

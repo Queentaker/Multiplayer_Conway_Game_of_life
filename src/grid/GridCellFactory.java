@@ -6,15 +6,17 @@ import java.util.HashMap;
 
 public class GridCellFactory {
     private static GridCellFactory uniqueInstance;
+    private final HashMap<PlayersSignature,GridCell> occupiedGridCells= new HashMap<>();
+    private GridCell emptyCell;
+
     private GridCellFactory(){};
+
     public static synchronized GridCellFactory  getInstance(){
         if (uniqueInstance==null){
             uniqueInstance=new GridCellFactory();
         }
         return uniqueInstance;
     }
-    private final HashMap<PlayersSignature,GridCell> occupiedGridCells= new HashMap<>();
-    private GridCell emptyCell;
 
     public GridCell getEmptyGridCell() {
         if (emptyCell==null){
@@ -29,5 +31,4 @@ public class GridCellFactory {
         }
         return occupiedGridCells.get(playersSignature);
     }
-
 }

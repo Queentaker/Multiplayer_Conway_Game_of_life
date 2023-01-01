@@ -6,16 +6,12 @@ import grid.CoordinatesTuple;
 import grid.Grid;
 import player.Player;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager implements Subject {
 
-    private List<FrameObserver> observers;
+    private final List<FrameObserver> observers;
     private int cellsAlivePlayer1;
     private int cellsAlivePlayer2;
     private int generation;
@@ -23,10 +19,7 @@ public class GameManager implements Subject {
 
     private final List<Player> players;
     private int currentIndex;
-    private Turn turn;
-    private String message;
-
-
+    private final Turn turn;
 
     public static synchronized GameManager getInstance(List<Player> players, Grid grid){
         if(uniqueInstance==null){
@@ -101,7 +94,7 @@ public class GameManager implements Subject {
     }
 
     public void setMeasurements(String msg){
-        message = "It's " + turn.getName() + "'s turn! Please " + msg + " one cell.";
+        String message = "It's " + turn.getName() + "'s turn! Please " + msg + " one cell.";
         cellsAlivePlayer1 = turn.getCellsAlivePlayer(players.get(0));
         cellsAlivePlayer2 = turn.getCellsAlivePlayer(players.get(1));
         generation = turn.getGeneration();

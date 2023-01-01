@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
-    public List<Player> players; //must be again private
-    private GameManager gameManager;
     String soundName = "src/GUI/sounds/openingguisound.wav";
 
     public void setUp(List<Color> playerColors, List<String> playerNames, int height, int width, int startingTemplate, FrameObserver frame) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -40,10 +38,10 @@ public class SetUp {
         } else if (!isGridSizeValid(height,width)){
             frame.updateMessage("Grid does not meet the limits");
         } else {
-
             int i = 0;
             List<PlayersSignature> playersSignature = new ArrayList<>();
-            players = new ArrayList<>();
+            //must be again private
+            List<Player> players = new ArrayList<>();
             while (i < playerColors.size()) {
                 Player player = new HumanPlayer(playerNames.get(i), playerColors.get(i));
                 players.add(player);
@@ -53,7 +51,7 @@ public class SetUp {
             Grid grid = new Grid(height, width);
             Template template = TemplatesEnum.getTemplate(startingTemplate);
             template.addTemplate(grid, playersSignature);
-            gameManager = GameManager.getInstance(players, grid);
+            GameManager gameManager = GameManager.getInstance(players, grid);
             int cellsAlive = grid.cellsAlivePlayer(players.get(0));
             frame.setUpFinished(width, height, playerColors.get(0), playerNames.get(0), playerColors.get(1), playerNames.get(1),
                     cellsAlive);
@@ -62,6 +60,7 @@ public class SetUp {
             gameManager.setMeasurements("remove");
         }
     }
+
     private static boolean isGridSizeValid(int height, int width){
         return height>= Constants.minHeight.constant & height<=Constants.maxHeight.constant & width>=Constants.minWidth.constant & width<=Constants.maxWidth.constant;
     }
@@ -103,6 +102,7 @@ public class SetUp {
         }
         return true;
     }
+
     private static boolean nameLengthValid(List <String> playerNames){
         for (String name:playerNames){
             int length=name.length();

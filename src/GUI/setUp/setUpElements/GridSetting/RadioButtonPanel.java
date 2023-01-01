@@ -13,20 +13,17 @@ public class RadioButtonPanel extends JPanel {
     public RadioButtonPanel() {
         this.setOpaque(false);
         this.setLayout(new FlowLayout());
-
         JPanel container = new JPanel();
         container.setOpaque(true);
         container.setBorder(BorderFactory.createLineBorder(ColorScheme.BRIGHT_COLOR.getColor(), 12));
         container.setBackground(ColorScheme.BRIGHT_COLOR.getColor());
         container.setLayout(new BorderLayout());
-
         JLabel title = new JLabel("Start Layout");
-        title.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
+        title.setFont(new Font(FontScheme.STANDARD_FONT.getFontName(), Font.BOLD, 24));
         title.setForeground(ColorScheme.DARK_COLOR.getColor());
         title.setOpaque(false);
         title.setHorizontalAlignment(JLabel.CENTER);
         container.add(title, BorderLayout.NORTH);
-
         JPanel buttonContainer = new JPanel();
         buttonContainer.setOpaque(false);
         buttonContainer.setLayout(new FlowLayout());

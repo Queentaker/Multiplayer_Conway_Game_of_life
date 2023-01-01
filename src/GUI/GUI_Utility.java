@@ -43,14 +43,14 @@ public class GUI_Utility {
         //MacOS
         try {
             taskBar.setIconImage(ownIcon);
-        } catch (final UnsupportedOperationException e) {
-            System.out.println("Can't change the Taskbar Icon on this OS");
+        } catch (final UnsupportedOperationException ignored) {
         } catch (final SecurityException e) {
             System.out.println("Not possible to change the Taskbar Icon, because of security settings");
         }
         //Windows
         frame.setIconImage(ownIcon);
     }
+
     public static synchronized void soundNotification(String soundName) {
         new Thread(() -> {
             try {

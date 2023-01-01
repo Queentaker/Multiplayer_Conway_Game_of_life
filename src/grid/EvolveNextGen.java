@@ -8,8 +8,7 @@ public class EvolveNextGen {
     private Grid beforeEvolution;
     private int upperBoundaryRow;
     private int upperBoundaryColumn;
-    private final int lowerBoundary = 0;
-    
+
     private final GridCellFactory factory = GridCellFactory.getInstance();
 
     public void evolve(Grid grid) {
@@ -26,7 +25,6 @@ public class EvolveNextGen {
                     if (!alreadyAlive){
                         grid.setGridCell(row,colum,factory.getGridCell(dominantPlayer(aliveNeighborsMap)));
                     }
-                    //else stays the same
                 }
                 else {
                     grid.setGridCell(row, colum, factory.getEmptyGridCell());
@@ -36,8 +34,6 @@ public class EvolveNextGen {
         }
     }
 
-
-
     private NumNeighbors totalNeighbors(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
         NumNeighbors neighbors=NumNeighbors.Zero;
         for (Map.Entry<PlayersSignature, NumNeighbors> entry : AliveNeighbors.entrySet()){
@@ -45,11 +41,10 @@ public class EvolveNextGen {
             neighbors=NumNeighbors.getEnum(neighbors.value+numNeighbors.value);
         }
         return neighbors;
-
     }
+
     private PlayersSignature dominantPlayer(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
         NumNeighbors mostNeighbors=NumNeighbors.Zero;
-
         PlayersSignature signature=null;
         for (Map.Entry<PlayersSignature, NumNeighbors> entry : AliveNeighbors.entrySet()){
             PlayersSignature playersSignature= entry.getKey();
@@ -81,6 +76,7 @@ public class EvolveNextGen {
     }
 
     private boolean doesCoordinateExist(int row, int column) {
+        int lowerBoundary = 0;
         return row >= lowerBoundary && column >= lowerBoundary && row < upperBoundaryRow && column < upperBoundaryColumn;
     }
 
@@ -108,9 +104,8 @@ public class EvolveNextGen {
     private static boolean requiredNeighborsToSurvive(NumNeighbors aliveNeighbors) {
         return aliveNeighbors == NumNeighbors.Two || aliveNeighbors == NumNeighbors.Three;
     }
+
     private static boolean requiredNeighborsCreate(NumNeighbors aliveNeighbors){
         return aliveNeighbors==NumNeighbors.Three;
     }
-
-
 }

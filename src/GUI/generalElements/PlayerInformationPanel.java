@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class PlayerInformationPanel extends JPanel {
     JLabel information;
+
     public PlayerInformationPanel() {
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
@@ -17,13 +18,12 @@ public class PlayerInformationPanel extends JPanel {
         this.add(leftUpperDecoration, BorderLayout.WEST);
         JLabel RightUpperDecoration = GUI_Utility.ImageNameToLabel("Corners/RightLowerCorner", 240, 120);
         this.add(RightUpperDecoration, BorderLayout.EAST);
-
         information = new JLabel();
         information.setText("");
         information.setOpaque(false);
         information.setHorizontalAlignment(JLabel.CENTER);
         information.setVerticalAlignment(JLabel.CENTER);
-        information.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.BOLD, 24));
+        information.setFont(new Font(FontScheme.STANDARD_FONT.getFontName(), Font.BOLD, 24));
         information.setForeground(ColorScheme.DARK_COLOR.getColor());
         this.add(information, BorderLayout.CENTER);
     }

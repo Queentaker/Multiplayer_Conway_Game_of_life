@@ -31,6 +31,7 @@ public class GridPanel extends JPanel {
             grid.add(row);
         }
     }
+
     public void update(ArrayList<ArrayList<Color>> gridColors) {
         for(int a = 0; a < height; a++) {
             for (int b = 0; b < length; b++) {

@@ -16,7 +16,6 @@ public class Template1 extends Template {
                 grid.setGridCell(a +i, b +j,factory.getGridCell(signature));
             }
         }
-
     }
 }
 

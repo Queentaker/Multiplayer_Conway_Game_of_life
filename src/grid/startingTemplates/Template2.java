@@ -18,9 +18,11 @@ public class Template2 extends Template {
             }
         }
     }
+
     private boolean middleEdgeRow(int i,int j){
         return j==2 && (i==0||i==4);
     }
+
     private boolean secondColum(int i,int j){
         if (i!=0&&i!=4){
             return j == 1 || j == 3;

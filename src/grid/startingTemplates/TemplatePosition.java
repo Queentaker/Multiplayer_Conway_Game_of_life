@@ -1,7 +1,5 @@
 package grid.startingTemplates;
 
-
-
 import static enums.Constants.dist;
 
 public enum TemplatePosition {

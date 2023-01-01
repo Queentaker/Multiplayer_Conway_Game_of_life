@@ -23,7 +23,7 @@ public class StatsProgressBar extends JPanel {
         this.add(progressBar, BorderLayout.CENTER);
 
         percentage = new JLabel("50 %");
-        percentage.setFont(new Font(FontScheme.STANDARD_FONT.getName(), Font.PLAIN, 24));
+        percentage.setFont(new Font(FontScheme.STANDARD_FONT.getFontName(), Font.PLAIN, 24));
         percentage.setForeground(ColorScheme.DARK_COLOR.getColor());
         percentage.setOpaque(false);
         percentage.setHorizontalAlignment(JLabel.CENTER);

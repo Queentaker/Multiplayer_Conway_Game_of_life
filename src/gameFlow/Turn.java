@@ -11,16 +11,15 @@ import player.PlayersSignature;
 
 import java.awt.*;
 import java.util.ArrayList;
+
 public class Turn {
-
-
-
     private Player currentPlayer;
-    private Grid grid;
+    private final Grid grid;
     private CoordinatesTuple coordinates;
-    private EvolveNextGen evolveNextGen;
+    private final EvolveNextGen evolveNextGen;
     private int generation;
-    private TurnState currentState = new RemoveCell(this, grid);
+    private TurnState currentState;
+
     public void setCurrentState(TurnState currentState){
         this.currentState=currentState;
     }
@@ -32,16 +31,24 @@ public class Turn {
         generation = 0;
         setCurrentState(new RemoveCell(this, grid));
     }
-    public void execute() throws IllegalUserInputException {currentState.next();}
+    public void execute() throws IllegalUserInputException {
+        currentState.next();
+    }
 
     public void addGeneration(){
         this.generation++;
     }
+
     public void setEvolveNextGen(){
         evolveNextGen.evolve(grid);
     }
-    public void setCoordinates(CoordinatesTuple coordinates){this.coordinates = coordinates;}
-    public CoordinatesTuple getCoordinates(){return coordinates;}
+    public void setCoordinates(CoordinatesTuple coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public CoordinatesTuple getCoordinates() {
+        return coordinates;
+    }
 
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;

@@ -15,6 +15,7 @@ public class GridCell {
         this.color= GameColor.EmptyColor.color;
         occupied=false;
     }
+
     public GridCell(PlayersSignature playersSignature){
         this.playersSignature = playersSignature;
         this.color=playersSignature.getPlayerColor();

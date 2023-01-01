@@ -5,7 +5,6 @@ public enum Constants {
     minHeight(20),
     maxHeight(40),
     minWidth(30),
-
     dist(4),
     allowedPlayers(2),
     minimumRGBDistance(10),
@@ -14,6 +13,7 @@ public enum Constants {
     maxWidth(60);
 
     public final int constant;
+
     Constants(Integer definedConstant){
         this.constant=definedConstant;
     }

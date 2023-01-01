@@ -19,20 +19,16 @@ public class GameFrame extends JFrame implements FrameObserver {
     SetUpPanel setUpPanel;
     String soundName = "src/GUI/sounds/winnersound.wav";
 
-
     public GameFrame() {
         this.setTitle("Conway's Game of Life");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1280,850);
         this.getContentPane().setBackground(ColorScheme.BACKGROUND_COLOR.getColor());
         GUI_Utility.changeIcon(this, "ownTaskbarLogo");
-
         title = new Title();
         this.add(title, BorderLayout.NORTH);
-
         information = new PlayerInformationPanel();
         this.add(information, BorderLayout.SOUTH);
-
         JPanel borderPanelLeft = new JPanel();
         borderPanelLeft.setOpaque(false);
         borderPanelLeft.setPreferredSize(new Dimension(100,50));
@@ -41,10 +37,8 @@ public class GameFrame extends JFrame implements FrameObserver {
         borderPanelRight.setOpaque(false);
         borderPanelRight.setPreferredSize(new Dimension(100,50));
         this.add(borderPanelRight, BorderLayout.EAST);
-
         setUpPanel = new SetUpPanel(this);
         this.add(setUpPanel, BorderLayout.CENTER);
-
         this.setVisible(true);
     }
 
@@ -52,7 +46,6 @@ public class GameFrame extends JFrame implements FrameObserver {
                               String player2Name, int livingCells) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         setUpPanel.setVisible(false);
         this.remove(setUpPanel);
-
         playingPanel = new PlayingPanel(length, height, player1Color, player1Name, player2Color, player2Name, livingCells);
         this.add(playingPanel);
     }
@@ -60,7 +53,7 @@ public class GameFrame extends JFrame implements FrameObserver {
     @Override
     public void updateGeneral(int cellsAlivePlayer1, int cellsAlivePlayer2, int generation, String message,
                               ArrayList<ArrayList<Color>> gridColors) {
-        updateMessage(message);
+        information.update(message);
         playingPanel.update(cellsAlivePlayer1, cellsAlivePlayer2, generation, gridColors);
     }
     @Override

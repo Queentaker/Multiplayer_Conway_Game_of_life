@@ -5,7 +5,6 @@ import player.PlayersSignature;
 
 public class Template3 extends Template {
 
-
     public Template3() {
         this.templateSize=5;
     }

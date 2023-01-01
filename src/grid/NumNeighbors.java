@@ -26,6 +26,7 @@ public enum NumNeighbors {
             map.put(numNeighbors.value,numNeighbors);
         }
     }
+
     public static NumNeighbors getEnum(int value){
         return map.get(value);
     }

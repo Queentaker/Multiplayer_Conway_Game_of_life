@@ -18,8 +18,8 @@ public class GridButton extends JButton implements ActionListener {
 
     private final int xCoordinate;
     private final int yCoordinate;
-    private MouseListener aListener;
-    String soundName = "src/GUI/sounds/clicksound.wav";
+    private final MouseListener aListener;
+    private static final String soundName = "src/GUI/sounds/clicksound.wav";
 
 
     public GridButton (int xCoordinate, int yCoordinate) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -29,8 +29,6 @@ public class GridButton extends JButton implements ActionListener {
         this.setFocusable(false);
         this.setOpaque(true);
         GridButton.this.setBorder(defaultBorder);
-
-
         aListener = (new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent entered) {
@@ -42,9 +40,7 @@ public class GridButton extends JButton implements ActionListener {
                 GridButton.this.setBorder(defaultBorder);
             }
         });
-
         this.addMouseListener(aListener);
-
         this.addActionListener(this);
     }
 
