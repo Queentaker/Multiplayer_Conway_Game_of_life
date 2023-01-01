@@ -11,8 +11,6 @@ import player.PlayersSignature;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
-
 public class Turn {
 
 
@@ -22,7 +20,6 @@ public class Turn {
     private CoordinatesTuple coordinates;
     private EvolveNextGen evolveNextGen;
     private int generation;
-    private int currentIndex;
     private TurnState currentState = new RemoveCell(this, grid);
     public void setCurrentState(TurnState currentState){
         this.currentState=currentState;
