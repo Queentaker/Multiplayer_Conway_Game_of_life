@@ -40,5 +40,4 @@ public abstract class Template {
 
     }
     protected abstract void addCustomTemplate(int a, int b, Grid grid, PlayersSignature signature);
-    //make sure that it is the same and fair
 }

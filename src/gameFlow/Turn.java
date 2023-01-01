@@ -49,29 +49,13 @@ public class Turn {
     public PlayersSignature getCurrentPlayersSignature() {
         return currentPlayer;
     }
-/*
-    private List<PlayersSignature> getPlayersSignature(List<Player> players){
-        List<PlayersSignature> signatures=new ArrayList<>();
-        for (Player player: players){
-            signatures.add(player);
-        }
-        return signatures;
-    }*/
+
     public String getName(){
         return currentPlayer.getPlayerName();
     }
 
-    //checks for all cells alive from a player
     public int getCellsAlivePlayer(PlayersSignature playersSignature){
-        int cellsAlivePlayer=0;
-        for(int y = 0; y < grid.getGridWidth(); y++){
-            for(int x = 0; x < grid.getGridHeight(); x++){
-                if(grid.getGridCell(x,y).isOccupied() && grid.getGridCell(x,y).getPlayersSignature()==playersSignature){
-                    cellsAlivePlayer++;
-                }
-            }
-        }
-        return cellsAlivePlayer;
+        return grid.cellsAlivePlayer(playersSignature);
     }
 
     public ArrayList<ArrayList<Color>> getColors() {

@@ -16,7 +16,7 @@ public class EvolveNextGenTest {
 
 
     @Test
-    public void evolveTest4(){
+    public void evolveTest1(){
         grid.setGridCell(0,1,new GridCell(signatureAnna));
         grid.setGridCell(0,2,new GridCell(signatureAnna));
         grid.setGridCell(1,0,new GridCell(signatureAnna));
@@ -24,7 +24,7 @@ public class EvolveNextGenTest {
         Assertions.assertEquals(grid.getGridCell(1,1).getPlayersSignature(),signatureAnna);
     }
     @Test
-    public void evolveTest5(){
+    public void evolveTest2(){
         grid.setGridCell(0,1,new GridCell(signatureAnna));
         grid.setGridCell(0,2,new GridCell(signatureAnna));
         grid.setGridCell(1,0,new GridCell(signatureBob));
@@ -33,14 +33,14 @@ public class EvolveNextGenTest {
     }
 
     @Test
-    public void evolveTest6(){
+    public void evolveTest3(){
         grid.setGridCell(0,1,new GridCell(signatureAnna));
         grid.setGridCell(0,2,new GridCell(signatureAnna));
         evolveNextGen.evolve(grid);
         Assertions.assertFalse(grid.getGridCell(1,1).isOccupied());
     }
     @Test
-    public void evolveTest7(){
+    public void evolveTest4(){
         grid.setGridCell(1,1,new GridCell(signatureAnna));
         grid.setGridCell(0,1,new GridCell(signatureAnna));
         grid.setGridCell(0,2,new GridCell(signatureAnna));

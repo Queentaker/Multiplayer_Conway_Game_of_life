@@ -1,7 +1,6 @@
 package grid.startingTemplates;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import static enums.Constants.dist;
 

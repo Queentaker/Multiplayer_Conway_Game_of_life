@@ -41,15 +41,7 @@ public class TurnTest {
         int cellsAlive = testTurn.getCellsAlivePlayer(testPlayer);
         Assertions.assertEquals(2,cellsAlive);
     }
-    /*
-    @Test
-    public void getPlayersSignatureTest(){
-        List<Player> testPlayers = new ArrayList<>();
-        testPlayers.add(0,testPlayer);
-        List<PlayersSignature> testPlayersSignatures = new ArrayList<>();
-        testPlayersSignatures.add(0,testPlayer);
-        Assertions.assertEquals(testPlayer,testTurn.);
-    }*/
+
     @Test
     public void coordinatesTest(){
         testTurn.setCoordinates(coordinatesTupleTest);

@@ -1,6 +1,6 @@
 package setUp;
 
-import GUI.GameFrame;
+
 
 
 import grid.CoordinatesTuple;
@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SetUpTest {
     SetUp setUpper = new SetUp();
@@ -99,6 +98,6 @@ public class SetUpTest {
         playerColor.add(Color.BLUE);
         List<CoordinatesTuple> startingPosition = new ArrayList<>();
         setUpper.setUp(playerColor,playerNames,30,40,1, gameFrame);
-        Assertions.assertTrue(gameFrame.isSetUpFinished()); // other test
+        Assertions.assertTrue(gameFrame.isSetUpFinished());
     }
 }

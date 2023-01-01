@@ -24,7 +24,7 @@ public class GridCell {
     public boolean isOccupied() {
         return occupied;
     }
-    //needs a better name but with function one can get the playersID
+
     public PlayersSignature getPlayersSignature(){
         assert playersSignature !=null;
         return playersSignature;

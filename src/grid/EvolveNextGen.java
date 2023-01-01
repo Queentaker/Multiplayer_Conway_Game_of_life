@@ -35,7 +35,7 @@ public class EvolveNextGen {
             }
         }
     }
-        //work needs to be done
+
 
 
     private NumNeighbors totalNeighbors(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
@@ -64,13 +64,13 @@ public class EvolveNextGen {
         return signature;
     }
 
-    private Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(int x, int y) {
+    private Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(int a, int b) {
         Map<PlayersSignature, NumNeighbors> neighborCountMap = new HashMap<PlayersSignature, NumNeighbors>();
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++){
                 if (!(i==0 & j==0)) {
-                    int row = x + i;
-                    int colum = y + j;
+                    int row = a + i;
+                    int colum = b + j;
                     if (doesCoordinateExist(row, colum)) {
                         updateHashTable(row, colum, neighborCountMap);
                     }
