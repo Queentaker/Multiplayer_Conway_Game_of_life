@@ -16,7 +16,6 @@ public class Turn {
     private Player currentPlayer;
     private final Grid grid;
     private CoordinatesTuple coordinates;
-    private final EvolveNextGen evolveNextGen;
     private int generation;
     private TurnState currentState;
 
@@ -25,7 +24,6 @@ public class Turn {
     }
     public Turn(Player currentPlayer, Grid grid) {
         assert currentPlayer != null;
-        this.evolveNextGen = new EvolveNextGen();
         this.currentPlayer = currentPlayer;
         this.grid = grid;
         generation = 0;
@@ -40,7 +38,7 @@ public class Turn {
     }
 
     public void setEvolveNextGen(){
-        evolveNextGen.evolve(grid);
+        EvolveNextGen.evolve(grid);
     }
     public void setCoordinates(CoordinatesTuple coordinates) {
         this.coordinates = coordinates;

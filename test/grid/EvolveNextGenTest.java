@@ -20,7 +20,7 @@ public class EvolveNextGenTest {
         grid.setGridCell(0,1,new GridCell(signatureAnna));
         grid.setGridCell(0,2,new GridCell(signatureAnna));
         grid.setGridCell(1,0,new GridCell(signatureAnna));
-        evolveNextGen.evolve(grid);
+        EvolveNextGen.evolve(grid);
         Assertions.assertEquals(grid.getGridCell(1,1).getPlayersSignature(),signatureAnna);
     }
     @Test

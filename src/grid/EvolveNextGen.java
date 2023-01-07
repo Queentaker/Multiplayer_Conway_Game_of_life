@@ -5,20 +5,16 @@ import player.PlayersSignature;
 import java.util.*;
 
 public class EvolveNextGen {
-    private Grid beforeEvolution;
-    private int upperBoundaryRow;
-    private int upperBoundaryColumn;
 
-    private final GridCellFactory factory = GridCellFactory.getInstance();
-
-    public void evolve(Grid grid) {
-        beforeEvolution = new Grid(grid);
-        upperBoundaryRow = beforeEvolution.getGridHeight();
-        upperBoundaryColumn = beforeEvolution.getGridWidth();
+    public static void evolve(Grid grid) {
+        Grid beforeEvolution = new Grid(grid);
+        int upperBoundaryRow = beforeEvolution.getGridHeight();
+        int upperBoundaryColumn = beforeEvolution.getGridWidth();
+        GridCellFactory factory=GridCellFactory.getInstance();
 
         for (int row = 0; row < upperBoundaryRow; row++) {
             for (int colum = 0; colum < upperBoundaryColumn; colum++) {
-                Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(row, colum);
+                Map<PlayersSignature, NumNeighbors> aliveNeighborsMap = getAliveNeighborsMap(beforeEvolution,row, colum, upperBoundaryRow,upperBoundaryColumn);
                 NumNeighbors amountofNeighbors=totalNeighbors(aliveNeighborsMap);
                 boolean alreadyAlive=grid.getGridCell(row,colum).isOccupied();
                 if (doesGridCellLive(amountofNeighbors,alreadyAlive)){
@@ -34,7 +30,7 @@ public class EvolveNextGen {
         }
     }
 
-    private NumNeighbors totalNeighbors(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
+    private static NumNeighbors totalNeighbors(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
         NumNeighbors neighbors=NumNeighbors.Zero;
         for (Map.Entry<PlayersSignature, NumNeighbors> entry : AliveNeighbors.entrySet()){
             NumNeighbors numNeighbors=entry.getValue();
@@ -43,7 +39,7 @@ public class EvolveNextGen {
         return neighbors;
     }
 
-    private PlayersSignature dominantPlayer(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
+    private static PlayersSignature dominantPlayer(Map<PlayersSignature, NumNeighbors> AliveNeighbors){
         NumNeighbors mostNeighbors=NumNeighbors.Zero;
         PlayersSignature signature=null;
         for (Map.Entry<PlayersSignature, NumNeighbors> entry : AliveNeighbors.entrySet()){
@@ -59,15 +55,15 @@ public class EvolveNextGen {
         return signature;
     }
 
-    private Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(int a, int b) {
+    private static Map<PlayersSignature, NumNeighbors> getAliveNeighborsMap(Grid beforeEvolution, int a, int b, int upperBoundaryRow, int upperBoundaryColumn) {
         Map<PlayersSignature, NumNeighbors> neighborCountMap = new HashMap<PlayersSignature, NumNeighbors>();
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++){
                 if (!(i==0 & j==0)) {
                     int row = a + i;
                     int colum = b + j;
-                    if (doesCoordinateExist(row, colum)) {
-                        updateHashTable(row, colum, neighborCountMap);
+                    if (doesCoordinateExist(row, colum,upperBoundaryRow,upperBoundaryColumn)) {
+                        updateHashTable(beforeEvolution,row, colum, neighborCountMap);
                     }
                 }
             }
@@ -75,12 +71,12 @@ public class EvolveNextGen {
         return neighborCountMap;
     }
 
-    private boolean doesCoordinateExist(int row, int column) {
+    private static boolean doesCoordinateExist(int row, int column,int upperBoundaryRow,int upperBoundaryColumn) {
         int lowerBoundary = 0;
         return row >= lowerBoundary && column >= lowerBoundary && row < upperBoundaryRow && column < upperBoundaryColumn;
     }
 
-    private void updateHashTable(int row, int colum, Map<PlayersSignature, NumNeighbors> neighborCountMap) {
+    private static void updateHashTable(Grid beforeEvolution, int row, int colum, Map<PlayersSignature, NumNeighbors> neighborCountMap) {
         GridCell gridCell = beforeEvolution.getGridCell(row, colum);
         if (gridCell.isOccupied()) {
             PlayersSignature signature = gridCell.getPlayersSignature();
